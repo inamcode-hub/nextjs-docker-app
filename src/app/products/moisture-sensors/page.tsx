@@ -1,5 +1,13 @@
 import PageTemplate from "@/components/PageTemplate";
 import Link from "next/link";
+import { generateMetadata as genMeta } from "@/lib/metadata";
+
+export const metadata = genMeta({
+  title: "Real-Time Moisture Sensors for Grain Dryers",
+  description: "Precision moisture sensors with ±0.1% accuracy for optimal grain drying. Real-time monitoring, wireless connectivity, and durable construction for all dryer types.",
+  keywords: ["moisture sensors", "grain dryer sensors", "precision moisture measurement", "real-time monitoring", "wireless sensors", "agricultural sensors"],
+  canonical: "/products/moisture-sensors",
+});
 
 export default function MoistureSensors() {
   return (

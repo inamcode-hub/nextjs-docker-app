@@ -1,12 +1,66 @@
 import PageTemplate from "@/components/PageTemplate";
 import Link from "next/link";
+import { generateMetadata as genMeta } from "@/lib/metadata";
+
+export const metadata = genMeta({
+  title: "Real-Time Moisture Monitoring Solutions for Agriculture",
+  description: "Leading provider of precision moisture monitoring technology for grain dryers. Advanced sensors, DM510 controllers, and mobile monitoring systems for optimal grain drying.",
+  keywords: ["real-time moisture monitoring", "grain drying", "moisture sensors", "DM510 controller", "agricultural automation", "precision farming"],
+  canonical: "/",
+});
 
 export default function Home() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Dryer Master",
+    "url": "https://www.dryermaster.com",
+    "logo": "https://www.dryermaster.com/header-logo.png",
+    "description": "Leading provider of real-time moisture monitoring solutions for grain dryers and agricultural applications",
+    "foundingDate": "2001",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "123 Innovation Drive",
+      "addressLocality": "Farm City",
+      "addressRegion": "FC",
+      "postalCode": "12345",
+      "addressCountry": "US"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "1-800-DRYER-MASTER",
+      "contactType": "customer service",
+      "email": "info@dryermaster.com"
+    },
+    "sameAs": [
+      "https://www.facebook.com/dryermaster",
+      "https://www.twitter.com/dryermaster",
+      "https://www.linkedin.com/company/dryermaster"
+    ],
+    "service": [
+      {
+        "@type": "Service",
+        "name": "Moisture Monitoring Systems",
+        "description": "Real-time moisture monitoring solutions for agricultural applications"
+      },
+      {
+        "@type": "Service", 
+        "name": "Grain Dryer Controllers",
+        "description": "Advanced controllers for optimal grain drying performance"
+      }
+    ]
+  };
+
   return (
-    <PageTemplate 
-      title="Real-Time Moisture Monitoring Solutions" 
-      description="Leading provider of innovative moisture monitoring technology for grain dryers and agricultural applications worldwide."
-    >
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <PageTemplate 
+        title="Real-Time Moisture Monitoring Solutions" 
+        description="Leading provider of innovative moisture monitoring technology for grain dryers and agricultural applications worldwide."
+      >
       <div className="hero-section">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-12">
           <div>
@@ -70,6 +124,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-    </PageTemplate>
+      </PageTemplate>
+    </>
   );
 }

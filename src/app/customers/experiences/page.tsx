@@ -11,8 +11,8 @@ export default function CustomerExperiences() {
           <div className="card-body">
             <h3 className="card-title">Midwest Grain Co.</h3>
             <p className="card-text">
-              "Dryer Master's moisture monitoring system has reduced our drying costs by 25% 
-              while improving grain quality. The real-time data helps us make better decisions."
+              &ldquo;Dryer Master&rsquo;s moisture monitoring system has reduced our drying costs by 25% 
+              while improving grain quality. The real-time data helps us make better decisions.&rdquo;
             </p>
             <p className="text-muted mt-2">- John Smith, Operations Manager</p>
           </div>
@@ -22,8 +22,8 @@ export default function CustomerExperiences() {
           <div className="card-body">
             <h3 className="card-title">Prairie Farms LLC</h3>
             <p className="card-text">
-              "Installation was quick and easy. The system pays for itself through energy 
-              savings and improved grain quality. Excellent technical support."
+              &ldquo;Installation was quick and easy. The system pays for itself through energy 
+              savings and improved grain quality. Excellent technical support.&rdquo;
             </p>
             <p className="text-muted mt-2">- Sarah Johnson, Farm Owner</p>
           </div>

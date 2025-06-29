@@ -1,5 +1,4 @@
 import PageTemplate from "@/components/PageTemplate";
-import Link from "next/link";
 
 export default function Manuals() {
   return (

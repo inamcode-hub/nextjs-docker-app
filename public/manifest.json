@@ -1,0 +1,27 @@
+{
+  "name": "Dryer Master - Moisture Monitoring Solutions",
+  "short_name": "Dryer Master",
+  "description": "Real-time moisture monitoring solutions for grain dryers and agricultural applications",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#213966",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/header-logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/header-logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity", "agriculture"],
+  "lang": "en",
+  "dir": "ltr"
+}

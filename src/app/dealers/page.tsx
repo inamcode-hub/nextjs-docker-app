@@ -1,4 +1,12 @@
 import PageTemplate from "@/components/PageTemplate";
+import { generateMetadata as genMeta } from "@/lib/metadata";
+
+export const metadata = genMeta({
+  title: "Find Authorized Dryer Master Dealers Near You",
+  description: "Locate authorized Dryer Master dealers in your area. Find local representatives for moisture monitoring systems, technical support, and product installation.",
+  keywords: ["dryer master dealers", "authorized dealers", "local representatives", "dealer locator", "agricultural dealers"],
+  canonical: "/dealers",
+});
 
 export default function Dealers() {
   return (

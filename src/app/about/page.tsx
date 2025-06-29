@@ -1,4 +1,12 @@
 import PageTemplate from "@/components/PageTemplate";
+import { generateMetadata as genMeta } from "@/lib/metadata";
+
+export const metadata = genMeta({
+  title: "About Dryer Master - Agricultural Technology Leaders",
+  description: "Learn about Dryer Master's 20+ years of experience in moisture monitoring technology. Our mission to provide innovative agricultural solutions for optimal grain drying.",
+  keywords: ["agricultural technology", "company history", "moisture monitoring experts", "grain drying innovation", "agricultural solutions"],
+  canonical: "/about",
+});
 
 export default function About() {
   return (

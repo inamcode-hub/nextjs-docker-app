@@ -1,11 +1,58 @@
 import PageTemplate from "@/components/PageTemplate";
+import { generateMetadata as genMeta } from "@/lib/metadata";
+
+export const metadata = genMeta({
+  title: "Contact Dryer Master - Sales & Technical Support",
+  description: "Contact Dryer Master for sales inquiries, technical support, and product information. 24/7 support available. Call 1-800-DRYER-MASTER or email info@dryermaster.com",
+  keywords: ["contact dryer master", "technical support", "sales inquiry", "customer service", "agricultural support"],
+  canonical: "/contact",
+});
 
 export default function Contact() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Dryer Master",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "123 Innovation Drive",
+        "addressLocality": "Farm City",
+        "addressRegion": "FC",
+        "postalCode": "12345",
+        "addressCountry": "US"
+      },
+      "telephone": "1-800-DRYER-MASTER",
+      "email": "info@dryermaster.com",
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "contactType": "sales",
+          "telephone": "1-800-DRYER-MASTER",
+          "email": "info@dryermaster.com"
+        },
+        {
+          "@type": "ContactPoint",
+          "contactType": "technical support",
+          "telephone": "1-800-DRYER-MASTER",
+          "email": "support@dryermaster.com",
+          "hoursAvailable": "24/7"
+        }
+      ]
+    }
+  };
+
   return (
-    <PageTemplate 
-      title="Contact Us" 
-      description="Get in touch with our team for sales, support, or technical questions."
-    >
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <PageTemplate 
+        title="Contact Us" 
+        description="Get in touch with our team for sales, support, or technical questions."
+      >
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div>
           <div className="card">
@@ -84,6 +131,7 @@ export default function Contact() {
           </div>
         </div>
       </div>
-    </PageTemplate>
+      </PageTemplate>
+    </>
   );
 }

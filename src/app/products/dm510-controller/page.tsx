@@ -1,5 +1,13 @@
 import PageTemplate from "@/components/PageTemplate";
 import Link from "next/link";
+import { generateMetadata as genMeta } from "@/lib/metadata";
+
+export const metadata = genMeta({
+  title: "DM510 Controller - Advanced Moisture Control System",
+  description: "Professional DM510 controller for grain dryers with real-time moisture monitoring, automated adjustments, and precision control. Industry-leading dryer controller technology.",
+  keywords: ["DM510 controller", "grain dryer controller", "moisture control system", "automated dryer control", "precision agriculture"],
+  canonical: "/products/dm510-controller",
+});
 
 export default function ProductPage() {
   const productName = "${dir}".replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
