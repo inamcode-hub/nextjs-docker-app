@@ -3,83 +3,264 @@ import Image from 'next/image';
 
 const Footer = () => {
   return (
-    <footer className="footer">
+    <footer className="modern-footer">
       <div className="container">
-        <div className="footer-content">
-          <div className="footer-section">
+        {/* Main Footer Content */}
+        <div className="footer-main">
+          
+          {/* Company Section */}
+          <div className="footer-section footer-brand">
             <div className="footer-logo">
               <Image
-                src="/footer-logo.png"
+                src="/header-logo.png"
                 alt="Dryer Master"
-                width={180}
+                width={200}
                 height={60}
                 className="footer-logo-img"
               />
             </div>
-            <p className="footer-description">
-              Leading provider of real-time moisture monitoring solutions for grain dryers and agricultural applications.
+            <p className="footer-tagline">
+              Revolutionizing agriculture with intelligent moisture monitoring solutions for the modern farm.
             </p>
-          </div>
-
-          <div className="footer-section">
-            <h3>Products</h3>
-            <ul className="footer-links">
-              <li><Link href="/products/moisture-sensors">Real-Time Moisture Sensors</Link></li>
-              <li><Link href="/products/dm510-controller">DM510 Controller</Link></li>
-              <li><Link href="/products/dm510-embedded">DM510 Embedded</Link></li>
-              <li><Link href="/products/dm-mobile">DM Mobile</Link></li>
-              <li><Link href="/products/moisture-monitor-pro">Moisture Monitor Pro</Link></li>
-              <li><Link href="/products/dm100">Dryer Master DM100</Link></li>
-            </ul>
-          </div>
-
-          <div className="footer-section">
-            <h3>Support</h3>
-            <ul className="footer-links">
-              <li><Link href="/support/manuals">Manuals</Link></li>
-              <li><Link href="/support/videos">Videos</Link></li>
-              <li><Link href="/support/help">Support</Link></li>
-              <li><Link href="/support/register">Register</Link></li>
-            </ul>
-          </div>
-
-          <div className="footer-section">
-            <h3>Company</h3>
-            <ul className="footer-links">
-              <li><Link href="/about">About Us</Link></li>
-              <li><Link href="/customers/experiences">Customer Experiences</Link></li>
-              <li><Link href="/dealers">Find a Dealer</Link></li>
-              <li><Link href="/contact">Contact Us</Link></li>
-            </ul>
-          </div>
-
-          <div className="footer-section">
-            <h3>Contact Info</h3>
-            <div className="contact-info">
-              <div className="phone-contact">
-                <Image
-                  src="/phone-icon.png"
-                  alt="Phone"
-                  width={24}
-                  height={24}
-                  className="phone-icon"
-                />
-                <span>1-800-DRYER-MASTER</span>
+            <div className="footer-stats">
+              <div className="stat-item">
+                <div className="stat-icon">🌾</div>
+                <div className="stat-content">
+                  <span className="stat-number">50K+</span>
+                  <span className="stat-label">Farms Served</span>
+                </div>
               </div>
-              <p>Email: info@dryermaster.com</p>
-              <p>Address: Agricultural Technology Center<br />
-                 123 Innovation Drive<br />
-                 Farm City, FC 12345</p>
+              <div className="stat-item">
+                <div className="stat-icon">⏱️</div>
+                <div className="stat-content">
+                  <span className="stat-number">99.9%</span>
+                  <span className="stat-label">Uptime</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Products Section */}
+          <div className="footer-section">
+            <h3 className="footer-heading">
+              <span className="heading-icon">📊</span>
+              Products
+            </h3>
+            <ul className="footer-links">
+              <li>
+                <Link href="/products/moisture-sensors" className="footer-link">
+                  <span className="link-icon">🎯</span>
+                  Real-Time Moisture Sensors
+                </Link>
+              </li>
+              <li>
+                <Link href="/products/dm510-controller" className="footer-link">
+                  <span className="link-icon">🎛️</span>
+                  DM510 Controller
+                </Link>
+              </li>
+              <li>
+                <Link href="/products/dm510-embedded" className="footer-link">
+                  <span className="link-icon">💻</span>
+                  DM510 Embedded
+                </Link>
+              </li>
+              <li>
+                <Link href="/products/dm-mobile" className="footer-link">
+                  <span className="link-icon">📱</span>
+                  DM Mobile App
+                </Link>
+              </li>
+              <li>
+                <Link href="/products/moisture-monitor-pro" className="footer-link">
+                  <span className="link-icon">📈</span>
+                  Moisture Monitor Pro
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Support Section */}
+          <div className="footer-section">
+            <h3 className="footer-heading">
+              <span className="heading-icon">🛠️</span>
+              Support
+            </h3>
+            <ul className="footer-links">
+              <li>
+                <Link href="/support/help" className="footer-link">
+                  <span className="link-icon">💬</span>
+                  Get Help
+                </Link>
+              </li>
+              <li>
+                <Link href="/support/manuals" className="footer-link">
+                  <span className="link-icon">📖</span>
+                  Documentation
+                </Link>
+              </li>
+              <li>
+                <Link href="/support/videos" className="footer-link">
+                  <span className="link-icon">🎥</span>
+                  Video Tutorials
+                </Link>
+              </li>
+              <li>
+                <Link href="/support/register" className="footer-link">
+                  <span className="link-icon">📝</span>
+                  Product Registration
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Company Section */}
+          <div className="footer-section">
+            <h3 className="footer-heading">
+              <span className="heading-icon">🏢</span>
+              Company
+            </h3>
+            <ul className="footer-links">
+              <li>
+                <Link href="/about" className="footer-link">
+                  <span className="link-icon">ℹ️</span>
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link href="/customers/experiences" className="footer-link">
+                  <span className="link-icon">⭐</span>
+                  Success Stories
+                </Link>
+              </li>
+              <li>
+                <Link href="/dealers" className="footer-link">
+                  <span className="link-icon">🗺️</span>
+                  Find Dealers
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="footer-link">
+                  <span className="link-icon">📧</span>
+                  Contact Us
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Contact & Newsletter */}
+          <div className="footer-section footer-contact">
+            <h3 className="footer-heading">
+              <span className="heading-icon">📞</span>
+              Get In Touch
+            </h3>
+            <div className="contact-methods">
+              <div className="contact-item">
+                <div className="contact-icon">📞</div>
+                <div className="contact-details">
+                  <span className="contact-label">Call Us</span>
+                  <a href="tel:1-800-DRYER-MASTER" className="contact-value">1-800-DRYER-MASTER</a>
+                </div>
+              </div>
+              <div className="contact-item">
+                <div className="contact-icon">✉️</div>
+                <div className="contact-details">
+                  <span className="contact-label">Email</span>
+                  <a href="mailto:info@dryermaster.com" className="contact-value">info@dryermaster.com</a>
+                </div>
+              </div>
+              <div className="contact-item">
+                <div className="contact-icon">📍</div>
+                <div className="contact-details">
+                  <span className="contact-label">Visit Us</span>
+                  <span className="contact-value">
+                    DryerMaster Technologies Inc.<br />
+                    123 King Street West<br />
+                    Kitchener, ON N2G 1A7<br />
+                    Canada
+                  </span>
+                  <a 
+                    href="https://maps.google.com/?q=DryerMaster+Technologies+Kitchener+Ontario" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="map-link"
+                  >
+                    <span className="map-icon">🗺️</span>
+                    View on Google Maps
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Newsletter Signup */}
+            <div className="newsletter-section">
+              <h4 className="newsletter-title">Stay Updated</h4>
+              <p className="newsletter-description">Get the latest agricultural insights and product updates.</p>
+              <form className="newsletter-form">
+                <input 
+                  type="email" 
+                  placeholder="Enter your email" 
+                  className="newsletter-input"
+                />
+                <button type="submit" className="newsletter-button">
+                  Subscribe
+                </button>
+              </form>
             </div>
           </div>
         </div>
 
+        {/* Social Links */}
+        <div className="footer-social">
+          <div className="social-section">
+            <h4 className="social-title">Follow Us</h4>
+            <div className="social-links">
+              <a href="#" className="social-link" aria-label="LinkedIn">
+                <span className="social-icon">💼</span>
+                LinkedIn
+              </a>
+              <a href="#" className="social-link" aria-label="YouTube">
+                <span className="social-icon">📺</span>
+                YouTube
+              </a>
+              <a href="#" className="social-link" aria-label="Facebook">
+                <span className="social-icon">👤</span>
+                Facebook
+              </a>
+              <a href="#" className="social-link" aria-label="Twitter">
+                <span className="social-icon">🐦</span>
+                Twitter
+              </a>
+            </div>
+          </div>
+          <div className="certifications">
+            <div className="cert-item">
+              <span className="cert-icon">🛡️</span>
+              ISO Certified
+            </div>
+            <div className="cert-item">
+              <span className="cert-icon">🌱</span>
+              Eco Friendly
+            </div>
+            <div className="cert-item">
+              <span className="cert-icon">🔒</span>
+              Secure Technology
+            </div>
+          </div>
+        </div>
+
+        {/* Footer Bottom */}
         <div className="footer-bottom">
           <div className="footer-bottom-content">
-            <p>&copy; {new Date().getFullYear()} Dryer Master. All rights reserved.</p>
+            <div className="copyright">
+              <span>&copy; {new Date().getFullYear()} Dryer Master Corporation. All rights reserved.</span>
+              <span className="version">v2.5.0</span>
+            </div>
             <div className="footer-bottom-links">
-              <Link href="/privacy">Privacy Policy</Link>
-              <Link href="/terms">Terms of Service</Link>
+              <Link href="/privacy" className="legal-link">Privacy Policy</Link>
+              <Link href="/terms" className="legal-link">Terms of Service</Link>
+              <Link href="/cookies" className="legal-link">Cookie Policy</Link>
+              <Link href="/accessibility" className="legal-link">Accessibility</Link>
             </div>
           </div>
         </div>
