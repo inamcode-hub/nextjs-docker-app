@@ -217,7 +217,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Social Links */}
+        {/* Social Links & Certifications */}
         <div className="footer-social">
           <div className="social-section">
             <h4 className="social-title">Follow Us</h4>
@@ -240,18 +240,21 @@ const Footer = () => {
               </a>
             </div>
           </div>
-          <div className="certifications">
-            <div className="cert-item">
-              <span className="cert-icon">🛡️</span>
-              ISO Certified
-            </div>
-            <div className="cert-item">
-              <span className="cert-icon">🌱</span>
-              Eco Friendly
-            </div>
-            <div className="cert-item">
-              <span className="cert-icon">🔒</span>
-              Secure Technology
+          <div className="certifications-section">
+            <h4 className="certifications-title">Our Standards</h4>
+            <div className="certifications">
+              <div className="cert-item">
+                <span className="cert-icon">🛡️</span>
+                ISO Certified
+              </div>
+              <div className="cert-item">
+                <span className="cert-icon">🌱</span>
+                Eco Friendly
+              </div>
+              <div className="cert-item">
+                <span className="cert-icon">🔒</span>
+                Secure Technology
+              </div>
             </div>
           </div>
         </div>

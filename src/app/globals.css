@@ -1529,3 +1529,17 @@ p {
     transform: rotate(180deg) !important;
   }
 }
+
+/* Certifications Section Styling */
+.certifications-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.certifications-title {
+  color: var(--secondary);
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin: 0;
+}
