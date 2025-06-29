@@ -151,15 +151,22 @@ const Footer = () => {
           {/* Contact & Newsletter */}
           <div className="footer-section footer-contact">
             <h3 className="footer-heading">
-              <span className="heading-icon">📞</span>
+              <span className="heading-icon">�</span>
               Get In Touch
             </h3>
             <div className="contact-methods">
               <div className="contact-item">
                 <div className="contact-icon">📞</div>
                 <div className="contact-details">
-                  <span className="contact-label">Call Us</span>
-                  <a href="tel:1-800-DRYER-MASTER" className="contact-value">1-800-DRYER-MASTER</a>
+                  <span className="contact-label">Phone</span>
+                  <a href="tel:1-519-725-4700" className="contact-value">1.519.725.4700</a>
+                </div>
+              </div>
+              <div className="contact-item">
+                <div className="contact-icon">📱</div>
+                <div className="contact-details">
+                  <span className="contact-label">Toll Free</span>
+                  <a href="tel:1-800-265-2757" className="contact-value">1.800.265.2757</a>
                 </div>
               </div>
               <div className="contact-item">
@@ -175,12 +182,12 @@ const Footer = () => {
                   <span className="contact-label">Visit Us</span>
                   <span className="contact-value">
                     DryerMaster Technologies Inc.<br />
-                    123 King Street West<br />
-                    Kitchener, ON N2G 1A7<br />
-                    Canada
+                    115 Ardelt Ave., Building #2<br />
+                    Kitchener, ON, Canada<br />
+                    N2C 2E1
                   </span>
                   <a 
-                    href="https://maps.google.com/?q=DryerMaster+Technologies+Kitchener+Ontario" 
+                    href="https://maps.google.com/?q=115+Ardelt+Ave+Building+2+Kitchener+ON+N2C+2E1" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="map-link"
