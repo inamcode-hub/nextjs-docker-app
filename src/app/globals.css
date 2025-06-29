@@ -367,8 +367,9 @@ p {
 .nav-menu {
   display: flex;
   list-style: none;
-  gap: 3rem;
+  gap: 2rem;
   margin: 0;
+  align-items: center;
 }
 
 .nav-menu a {
@@ -381,6 +382,11 @@ p {
 
 .nav-menu a:hover {
   color: var(--primary);
+}
+
+.nav-menu a.active {
+  color: var(--primary);
+  font-weight: 600;
 }
 
 /* Footer Styles */
@@ -468,9 +474,18 @@ p {
   color: var(--primary);
 }
 
+.dropdown-toggle.active {
+  color: var(--primary);
+  font-weight: 600;
+}
+
 .dropdown-arrow {
   font-size: 1rem;
   transition: transform 0.3s ease;
+}
+
+.dropdown:hover .dropdown-arrow {
+  transform: rotate(180deg);
 }
 
 .dropdown-menu {
@@ -479,13 +494,28 @@ p {
   left: 0;
   background: var(--white);
   border: 1px solid var(--border);
-  border-radius: 0.6rem;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  min-width: 250px;
+  border-radius: 0.8rem;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+  min-width: 280px;
   z-index: 1000;
-  padding: 1rem 0;
+  padding: 1.2rem 0;
   list-style: none;
-  margin: 0.5rem 0 0 0;
+  margin: 0.3rem 0 0 0;
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.3s ease;
+}
+
+/* Add a bridge area to prevent dropdown from disappearing */
+.dropdown::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 0.3rem;
+  background: transparent;
+  z-index: 999;
 }
 
 .dropdown-menu li {
@@ -494,16 +524,26 @@ p {
 
 .dropdown-menu a {
   display: block;
-  padding: 1rem 2rem;
+  padding: 1.2rem 2.4rem;
   color: var(--foreground);
   text-decoration: none;
   transition: all 0.3s ease;
   font-size: var(--text-sm);
+  font-weight: 500;
+  border-radius: 0.4rem;
+  margin: 0 0.8rem;
 }
 
 .dropdown-menu a:hover {
   background-color: var(--primary-1);
   color: var(--primary);
+  transform: translateX(0.5rem);
+}
+
+.dropdown-menu a.active {
+  background-color: var(--primary);
+  color: var(--white);
+  font-weight: 600;
 }
 
 /* Mobile Menu Styles */
@@ -569,11 +609,37 @@ p {
   color: var(--primary);
 }
 
+.mobile-nav > li > a.active {
+  background-color: var(--primary);
+  color: var(--white);
+}
+
+.mobile-nav > li > button.active {
+  background-color: var(--primary);
+  color: var(--white);
+}
+
+.mobile-dropdown-toggle {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mobile-dropdown-arrow {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.mobile-dropdown-arrow.open {
+  transform: rotate(180deg);
+}
+
 .mobile-submenu {
   list-style: none;
   margin: 0;
   padding: 0;
   background-color: var(--gray-2);
+  border-top: 1px solid var(--border);
 }
 
 .mobile-submenu a {
@@ -583,11 +649,18 @@ p {
   text-decoration: none;
   font-size: 1.4rem;
   transition: all 0.3s ease;
+  border-bottom: 1px solid var(--border);
 }
 
 .mobile-submenu a:hover {
   background-color: var(--primary-1);
   color: var(--primary);
+}
+
+.mobile-submenu a.active {
+  background-color: var(--primary);
+  color: var(--white);
+  font-weight: 600;
 }
 
 .sr-only {
@@ -711,5 +784,92 @@ p {
   
   .card {
     margin-bottom: 2rem;
+  }
+}
+
+/* IMPORTANT: Desktop Navigation - Improved UI at End */
+@media (min-width: 768px) {
+  /* Improve nav menu spacing */
+  .nav-menu {
+    gap: 1rem !important;
+    align-items: center !important;
+  }
+
+  /* Navigation Links Base Styling */
+  .nav-menu .nav-link {
+    display: inline-block !important;
+    padding: 0.6rem 1.2rem !important;
+    color: #28427b !important;
+    text-decoration: none !important;
+    font-weight: 500 !important;
+    border-radius: 0.4rem !important;
+    transition: all 0.2s ease !important;
+    background: transparent !important;
+    border: 1px solid transparent !important;
+    font-size: 1.4rem !important;
+    white-space: nowrap !important;
+  }
+
+  /* Navigation Links Hover */
+  .nav-menu .nav-link:hover {
+    color: #213966 !important;
+    background-color: rgba(33, 57, 102, 0.08) !important;
+    text-decoration: none !important;
+    transform: translateY(-1px) !important;
+  }
+
+  /* Navigation Links Active State */
+  .nav-menu .nav-link.active {
+    color: #ffffff !important;
+    background-color: #213966 !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    box-shadow: 0 2px 8px rgba(33, 57, 102, 0.3) !important;
+  }
+
+  /* Dropdown Toggle Base Styling */
+  .nav-menu .dropdown-toggle {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.4rem !important;
+    padding: 0.6rem 1.2rem !important;
+    color: #28427b !important;
+    background: transparent !important;
+    border: 1px solid transparent !important;
+    border-radius: 0.4rem !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    text-decoration: none !important;
+    font-size: 1.4rem !important;
+    white-space: nowrap !important;
+  }
+
+  /* Dropdown Toggle Hover */
+  .nav-menu .dropdown-toggle:hover {
+    color: #213966 !important;
+    background-color: rgba(33, 57, 102, 0.08) !important;
+    text-decoration: none !important;
+    transform: translateY(-1px) !important;
+  }
+
+  /* Dropdown Toggle Active State */
+  .nav-menu .dropdown-toggle.active {
+    color: #ffffff !important;
+    background-color: #213966 !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    box-shadow: 0 2px 8px rgba(33, 57, 102, 0.3) !important;
+  }
+
+  /* Dropdown Arrow Styling */
+  .dropdown-arrow {
+    font-size: 1rem !important;
+    transition: transform 0.3s ease !important;
+  }
+
+  /* Improve dropdown hover area */
+  .dropdown:hover .dropdown-arrow {
+    transform: rotate(180deg) !important;
   }
 }
