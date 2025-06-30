@@ -173,7 +173,7 @@ const VideoThumbnail = ({ video }: { video: Video }) => {
       case 'DM Mobile':
         return 'from-green-500 via-green-600 to-green-700';
       case 'DM100':
-        return 'from-purple-500 via-purple-600 to-purple-700';
+        return 'from-gray-400 via-gray-500 to-gray-600';
       case 'Moisture Monitor Pro':
         return 'from-orange-500 via-orange-600 to-orange-700';
       case 'Moisture Sensors':
@@ -206,7 +206,7 @@ const VideoThumbnail = ({ video }: { video: Video }) => {
 
   return (
     <div className="relative h-48 overflow-hidden group rounded-t-2xl">
-      {!imageError && thumbnailUrl && video.category !== 'Professional Training' ? (
+      {!imageError && thumbnailUrl && video.category !== 'Professional Training' && video.category !== 'DM100' ? (
         <>
           <Image 
             src={thumbnailUrl}
