@@ -140,7 +140,7 @@ export default function ManualsClient({ manualsData, categories }: ManualsClient
           Can&apos;t find the manual you&apos;re looking for? Contact our technical support team for additional documentation and assistance.
         </p>
         <a
-          href="/support/help"
+          href="/contact"
           className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-lg font-semibold hover:bg-primary-dark transition-colors duration-300"
         >
           <FileText size={16} />
