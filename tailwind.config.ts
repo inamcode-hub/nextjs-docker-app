@@ -136,29 +136,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [
-    function({ addBase, addUtilities }: { addBase: any; addUtilities: any }) {
-      addBase({
-        'body': {
-          'overflow-x': 'hidden',
-        },
-        'header': {
-          'position': 'sticky !important',
-          'top': '0 !important',
-          'z-index': '50 !important',
-        },
-      });
-      addUtilities({
-        '.dropdown-menu': {
-          '@media (max-width: 1024px)': {
-            'left': 'auto !important',
-            'right': '0 !important',
-            'max-width': 'calc(100vw - 2rem)',
-          },
-        },
-      });
-    },
-  ],
+  plugins: [],
 }
 
 export default config
