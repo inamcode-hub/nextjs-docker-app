@@ -51,6 +51,27 @@ export default function About() {
           </div>
         </div>
       </div>
+
+      <div className="mt-8">
+        <div className="card bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200">
+          <div className="card-body">
+            <h3 className="card-title text-blue-900">Quality Excellence</h3>
+            <p className="card-text text-blue-800">
+              DryerMaster prides itself on providing industry-leading real-time moisture monitoring devices 
+              with exceptional customer service. Our Quality Management System is based on ISO 9001:2015, 
+              demonstrating our commitment to continual improvement of products and processes.
+            </p>
+            <div className="mt-4">
+              <a 
+                href="/quality" 
+                className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-300"
+              >
+                Learn More About Our Quality Standards
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </PageTemplate>
   );
 }
