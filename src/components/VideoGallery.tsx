@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import Image from 'next/image';
 import { Play, Clock, Filter, Search, X, Video as VideoIcon, Monitor, Smartphone, Settings, Target } from 'lucide-react';
 
 interface Video {
@@ -94,7 +95,7 @@ const videosData: Video[] = [
     id: 'dm100-interface',
     title: 'DM100 - User Interface Overview',
     description: 'This video goes over the basic operation of the DM100 system.',
-    category: 'Professional Training',
+    category: 'DM100',
     videoUrl: 'https://www.youtube.com/embed/sPRxJRw5zi4',
     thumbnailUrl: undefined
   },
@@ -102,7 +103,7 @@ const videosData: Video[] = [
     id: 'dm100-state-logic',
     title: 'DM100 - State Logic Control',
     description: 'This video covers state logic control and how it is used in the DM100.',
-    category: 'Professional Training',
+    category: 'DM100',
     videoUrl: 'https://www.youtube.com/embed/6cgTbz7bU5E',
     thumbnailUrl: undefined
   },
@@ -110,7 +111,7 @@ const videosData: Video[] = [
     id: 'dm100-calibration',
     title: 'DM100 - Moisture Sensor Calibration',
     description: 'This video goes over moisture sensor calibration on the DM100.',
-    category: 'Professional Training',
+    category: 'DM100',
     videoUrl: 'https://www.youtube.com/embed/U72nZad0Xuo',
     thumbnailUrl: undefined
   },
@@ -207,12 +208,14 @@ const VideoThumbnail = ({ video }: { video: Video }) => {
     <div className="relative h-48 overflow-hidden group rounded-t-2xl">
       {!imageError && thumbnailUrl && video.category !== 'Professional Training' ? (
         <>
-          <img 
+          <Image 
             src={thumbnailUrl}
             alt={video.title}
-            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 rounded-t-2xl"
+            fill
+            className="object-cover transition-transform duration-300 group-hover:scale-105 rounded-t-2xl"
             onError={handleImageError}
-            loading="lazy"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            priority={false}
           />
           <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors duration-300 rounded-t-2xl"></div>
         </>
