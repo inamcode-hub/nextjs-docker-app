@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import ReactCountryFlag from 'react-country-flag';
+import { Search, MapPin, Phone, Mail, Globe, Filter, X, Users, Star, Clock, ChevronDown } from 'lucide-react';
 
 interface Dealer {
   id: string;
@@ -176,40 +177,68 @@ const DealerLocator = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      {/* Search and Filter Section */}
-      <div className="bg-gradient-to-br from-primary-1 to-gray-50 rounded-3xl p-6 md:p-12 mb-16 border border-gray-200 shadow-xl">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Find Your Local Dealer</h2>
-          <p className="text-lg text-gray-600 max-w-4xl mx-auto">
-            Use the filters below to find authorized DryerMaster dealers in your area
+      {/* Hero Section */}
+      <div className="relative bg-gradient-to-br from-primary via-primary-dark to-secondary rounded-3xl p-8 md:p-16 mb-12 overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent transform rotate-12 translate-x-1/2 translate-y-1/2"></div>
+        </div>
+        
+        <div className="relative z-10 text-center text-white">
+          <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-6 py-3 mb-6">
+            <Users size={20} className="text-secondary-1" />
+            <span className="text-sm font-semibold">Global Network</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+            Find Your <span className="text-secondary-1">Local Dealer</span>
+          </h2>
+          <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+            Connect with authorized DryerMaster dealers worldwide for expert support, installation, and genuine parts
           </p>
+        </div>
+      </div>
+
+      {/* Search and Filter Section */}
+      <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 md:p-8 mb-12 border border-gray-200/50 shadow-lg">
+        <div className="text-center mb-8">
+          <div className="inline-flex items-center gap-2 text-primary mb-4">
+            <Filter size={20} />
+            <span className="text-lg font-semibold">Search & Filter</span>
+          </div>
         </div>
 
         {/* Country Statistics */}
-        <div className="my-12 text-center">
-          <h3 className="text-2xl md:text-3xl font-bold text-primary mb-8">Global Dealer Network</h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 max-w-6xl mx-auto">
+        <div className="mb-12">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl md:text-3xl font-bold text-primary mb-4">Global Network Overview</h3>
+            <p className="text-gray-600 max-w-2xl mx-auto">Select a country to filter dealers by region</p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
             {countryStats.map(({ country, count, countryCode }) => (
               <div 
                 key={country} 
-                className={`bg-white border-2 rounded-xl p-4 cursor-pointer transition-all duration-300 relative overflow-hidden hover:border-primary hover:-translate-y-1 hover:shadow-lg ${selectedCountry === country ? 'border-primary bg-gradient-to-br from-primary-1 to-white shadow-lg' : 'border-gray-200'}`}
+                className={`group relative bg-white/90 backdrop-blur-sm border-2 rounded-xl p-4 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl ${selectedCountry === country ? 'border-primary bg-gradient-to-br from-primary-1 to-white shadow-lg ring-2 ring-primary/20' : 'border-gray-200/50 hover:border-primary/50'}`}
                 onClick={() => handleCountryChange(selectedCountry === country ? '' : country)}
               >
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-secondary to-primary transform transition-transform duration-300 scale-x-0 origin-left group-hover:scale-x-100"></div>
-                <div className="mb-4 flex justify-center">
-                  <ReactCountryFlag 
-                    countryCode={countryCode} 
-                    svg 
-                    style={{ width: '2em', height: '2em' }}
-                    title={country}
-                  />
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl md:text-3xl font-bold text-primary mb-1">{count}</div>
-                  <div className="text-xs text-gray-500 uppercase font-semibold tracking-wide mb-2">
-                    {count === 1 ? 'Dealer' : 'Dealers'}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="relative z-10">
+                  <div className="mb-3 flex justify-center">
+                    <div className="p-2 bg-gray-50 rounded-lg group-hover:bg-white transition-colors duration-300">
+                      <ReactCountryFlag 
+                        countryCode={countryCode} 
+                        svg 
+                        style={{ width: '1.8em', height: '1.8em' }}
+                        title={country}
+                      />
+                    </div>
                   </div>
-                  <div className="text-sm font-semibold text-gray-700">{country}</div>
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-primary mb-1">{count}</div>
+                    <div className="text-xs text-gray-500 uppercase font-medium tracking-wide mb-2">
+                      {count === 1 ? 'Dealer' : 'Dealers'}
+                    </div>
+                    <div className="text-sm font-semibold text-gray-700 truncate" title={country}>{country}</div>
+                  </div>
                 </div>
               </div>
             ))}
@@ -219,81 +248,119 @@ const DealerLocator = () => {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 items-end mb-8">
           {/* Search Bar */}
           <div className="lg:col-span-2 relative">
-            <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-lg text-gray-400">🔍</div>
+            <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-primary/60">
+              <Search size={20} />
+            </div>
             <input
               type="text"
-              className="w-full pl-12 pr-12 py-4 border-2 border-gray-200 rounded-xl text-base bg-white transition-all duration-300 focus:outline-none focus:border-primary focus:shadow-lg"
-              placeholder="Search by dealer name, city, state, or country..."
+              className="w-full pl-12 pr-12 py-4 border-2 border-gray-200/50 rounded-xl text-base bg-white/90 backdrop-blur-sm transition-all duration-300 focus:outline-none focus:border-primary focus:shadow-lg focus:bg-white placeholder:text-gray-400"
+              placeholder="Search dealers, cities, or regions..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
             {searchTerm && (
               <button 
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-lg text-gray-400 hover:text-red-500 transition-colors duration-300"
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-red-500 transition-colors duration-300 p-1 rounded-full hover:bg-red-50"
                 onClick={() => setSearchTerm('')}
               >
-                ✕
+                <X size={16} />
               </button>
             )}
           </div>
 
           {/* Country Filter */}
           <div className="flex flex-col gap-2">
-            <label className="text-sm font-semibold text-primary">Country</label>
-            <select
-              className="py-4 px-4 border-2 border-gray-200 rounded-xl text-base bg-white min-w-0 transition-all duration-300 focus:outline-none focus:border-primary focus:shadow-lg"
-              value={selectedCountry}
-              onChange={(e) => handleCountryChange(e.target.value)}
-            >
-              <option value="">All Countries</option>
-              {countryStats.map(({ country, count }) => (
-                <option key={country} value={country}>
-                  {country} ({count} dealer{count !== 1 ? 's' : ''})
-                </option>
-              ))}
-            </select>
+            <label className="text-sm font-semibold text-primary flex items-center gap-2">
+              <Globe size={16} />
+              Country
+            </label>
+            <div className="relative">
+              <select
+                className="w-full py-4 px-4 pr-10 border-2 border-gray-200/50 rounded-xl text-base bg-white/90 backdrop-blur-sm min-w-0 transition-all duration-300 focus:outline-none focus:border-primary focus:shadow-lg focus:bg-white appearance-none cursor-pointer"
+                value={selectedCountry}
+                onChange={(e) => handleCountryChange(e.target.value)}
+              >
+                <option value="">All Countries</option>
+                {countryStats.map(({ country, count }) => (
+                  <option key={country} value={country}>
+                    {country} ({count} dealer{count !== 1 ? 's' : ''})
+                  </option>
+                ))}
+              </select>
+              <ChevronDown size={16} className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none" />
+            </div>
           </div>
 
           {/* State/Province Filter */}
           <div className="flex flex-col gap-2">
-            <label className="text-sm font-semibold text-primary">State/Province</label>
-            <select
-              className="py-4 px-4 border-2 border-gray-200 rounded-xl text-base bg-white min-w-0 transition-all duration-300 focus:outline-none focus:border-primary focus:shadow-lg disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed"
-              value={selectedState}
-              onChange={(e) => setSelectedState(e.target.value)}
-              disabled={!selectedCountry}
-            >
-              <option value="">All States/Provinces</option>
-              {states.map(state => (
-                <option key={state} value={state}>
-                  {state}
-                </option>
-              ))}
-            </select>
+            <label className="text-sm font-semibold text-primary flex items-center gap-2">
+              <MapPin size={16} />
+              State/Province
+            </label>
+            <div className="relative">
+              <select
+                className="w-full py-4 px-4 pr-10 border-2 border-gray-200/50 rounded-xl text-base bg-white/90 backdrop-blur-sm min-w-0 transition-all duration-300 focus:outline-none focus:border-primary focus:shadow-lg focus:bg-white appearance-none cursor-pointer disabled:bg-gray-100/50 disabled:text-gray-400 disabled:cursor-not-allowed"
+                value={selectedState}
+                onChange={(e) => setSelectedState(e.target.value)}
+                disabled={!selectedCountry}
+              >
+                <option value="">All States/Provinces</option>
+                {states.map(state => (
+                  <option key={state} value={state}>
+                    {state}
+                  </option>
+                ))}
+              </select>
+              <ChevronDown size={16} className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none" />
+            </div>
           </div>
         </div>
 
-        {/* Clear Filters and Results */}
+        {/* Results Summary and Clear Filters */}
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-          <div className="flex items-center justify-center gap-4 px-6 py-3 bg-white/80 rounded-xl border border-gray-200">
-            <span className="text-base font-semibold text-primary">
-              {filteredDealers.length} dealer{filteredDealers.length !== 1 ? 's' : ''} found
-            </span>
-            {(selectedCountry || selectedState || searchTerm) && (
-              <span className="text-sm text-gray-500">
-                {searchTerm && ` matching "${searchTerm}"`}
-                {selectedCountry && ` in ${selectedCountry}`}
-                {selectedState && `, ${selectedState}`}
+          <div className="flex items-center gap-4 px-6 py-4 bg-gradient-to-r from-primary-1 to-secondary-1 rounded-xl border border-primary/10">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                <Users size={16} className="text-primary" />
+              </div>
+              <span className="text-lg font-bold text-primary">
+                {filteredDealers.length}
               </span>
+              <span className="text-sm text-gray-600">
+                dealer{filteredDealers.length !== 1 ? 's' : ''} found
+              </span>
+            </div>
+            {(selectedCountry || selectedState || searchTerm) && (
+              <div className="hidden sm:block w-px h-6 bg-gray-300"></div>
+            )}
+            {(selectedCountry || selectedState || searchTerm) && (
+              <div className="text-sm text-gray-600 flex flex-wrap gap-1">
+                {searchTerm && (
+                  <span className="bg-white/80 px-2 py-1 rounded-md">
+                    "{searchTerm}"
+                  </span>
+                )}
+                {selectedCountry && (
+                  <span className="bg-white/80 px-2 py-1 rounded-md">
+                    {selectedCountry}
+                  </span>
+                )}
+                {selectedState && (
+                  <span className="bg-white/80 px-2 py-1 rounded-md">
+                    {selectedState}
+                  </span>
+                )}
+              </div>
             )}
           </div>
           
           {(selectedCountry || selectedState || searchTerm) && (
             <button 
-              className="px-6 py-3 bg-red-500 text-white border-none rounded-xl text-sm font-semibold cursor-pointer transition-all duration-300 whitespace-nowrap hover:bg-red-600 hover:-translate-y-1 hover:shadow-lg"
+              className="flex items-center gap-2 px-6 py-3 bg-red-500 text-white border-none rounded-xl text-sm font-semibold cursor-pointer transition-all duration-300 whitespace-nowrap hover:bg-red-600 hover:scale-105 hover:shadow-lg"
               onClick={clearFilters}
             >
-              Clear All Filters
+              <X size={16} />
+              Clear Filters
             </button>
           )}
         </div>
@@ -302,97 +369,139 @@ const DealerLocator = () => {
       {/* Dealer Results */}
       <div className="mb-24">
         {filteredDealers.length === 0 ? (
-          <div className="text-center py-24 bg-gray-50 rounded-3xl border border-gray-200">
-            <div className="text-6xl mb-8 opacity-60">🔍</div>
-            <h3 className="text-2xl md:text-3xl text-primary mb-4">No dealers found</h3>
-            <p className="text-lg text-gray-500 mb-12 max-w-2xl mx-auto">
-              Try adjusting your filters or search terms to find dealers in your area.
+          <div className="text-center py-24 bg-gradient-to-br from-gray-50 to-gray-100 rounded-3xl border border-gray-200">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-white rounded-full shadow-lg mb-8">
+              <Search size={32} className="text-gray-400" />
+            </div>
+            <h3 className="text-3xl font-bold text-primary mb-4">No dealers found</h3>
+            <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+              We couldn't find any dealers matching your search criteria. Try adjusting your filters or search terms.
             </p>
-            <button 
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 text-base font-semibold no-underline border-2 border-primary text-primary bg-transparent rounded-lg cursor-pointer transition-all duration-300 hover:bg-primary hover:text-white"
-              onClick={clearFilters}
-            >
-              Clear All Filters
-            </button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button 
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold bg-primary text-white rounded-xl cursor-pointer transition-all duration-300 hover:bg-primary-dark hover:scale-105 hover:shadow-lg"
+                onClick={clearFilters}
+              >
+                <X size={16} />
+                Clear All Filters
+              </button>
+              <a 
+                href="/contact" 
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold border-2 border-primary text-primary bg-transparent rounded-xl no-underline cursor-pointer transition-all duration-300 hover:bg-primary hover:text-white"
+              >
+                <Phone size={16} />
+                Contact Us for Help
+              </a>
+            </div>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredDealers.map(dealer => (
-              <div key={dealer.id} className="bg-white border border-gray-200 rounded-3xl overflow-hidden transition-all duration-300 shadow-md hover:-translate-y-2 hover:shadow-xl hover:border-primary">
-                <div className="bg-gradient-to-br from-primary to-primary-dark text-white p-6 flex justify-between items-center">
-                  <div className="flex items-center gap-3">
-                    <ReactCountryFlag 
-                      countryCode={dealer.countryCode} 
-                      svg 
-                      style={{ width: '1.8em', height: '1.8em' }}
-                      title={dealer.country}
-                      className="rounded"
-                    />
-                    <span className="text-base font-semibold">{dealer.country}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm opacity-90">
-                    <span className="text-base">📍</span>
-                    <span>{dealer.city}, {dealer.state}</span>
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            {filteredDealers.map((dealer, index) => (
+              <div 
+                key={dealer.id} 
+                className="group bg-white border border-gray-100 rounded-2xl overflow-hidden transition-all duration-500 shadow-md hover:shadow-xl hover:scale-105 hover:border-primary/20"
+                style={{
+                  animationDelay: `${index * 50}ms`,
+                  animation: 'fadeInUp 0.6s ease forwards'
+                }}
+              >
+                {/* Card Header */}
+                <div className="bg-gray-50/30 border-b border-gray-100 p-6">
+                  <div className="flex justify-between items-center">
+                    <div className="flex items-center gap-3">
+                      <div className="p-2 bg-white rounded-lg shadow-sm border border-gray-200/50 flex-shrink-0">
+                        <ReactCountryFlag 
+                          countryCode={dealer.countryCode} 
+                          svg 
+                          style={{ width: '1.2em', height: '1.2em' }}
+                          title={dealer.country}
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-xl font-semibold text-gray-800 leading-tight group-hover:text-primary transition-colors duration-300">
+                          {dealer.name}
+                        </h3>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2 bg-secondary/10 border border-secondary/20 text-secondary px-3 py-1.5 rounded-lg">
+                      <div className="w-1.5 h-1.5 bg-secondary rounded-full"></div>
+                      <span className="text-xs font-semibold uppercase tracking-wide">Authorized</span>
+                    </div>
                   </div>
                 </div>
 
+                {/* Card Content */}
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-primary mb-6 leading-tight">{dealer.name}</h3>
-                  <div className="text-sm leading-relaxed text-gray-700 mb-6">
-                    {dealer.address && <p className="mb-2">{dealer.address}</p>}
-                    <p className="mb-2">{dealer.city}, {dealer.state} {dealer.postalCode}</p>
-                    <p>{dealer.country}</p>
+                  {/* Address */}
+                  <div className="flex items-start gap-3 mb-6 p-3 bg-gray-50 rounded-lg border border-gray-100">
+                    <div className="w-8 h-8 bg-gray-200 rounded-lg flex items-center justify-center">
+                      <MapPin size={14} className="text-gray-600" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="text-xs text-gray-500 font-medium uppercase tracking-wide mb-1">Address</div>
+                      <div className="text-sm text-gray-700 leading-relaxed">
+                        {dealer.address && <div className="mb-1 font-medium">{dealer.address}</div>}
+                        <div className="mb-1">{dealer.city}, {dealer.state} {dealer.postalCode}</div>
+                        <div className="text-gray-500 text-xs">{dealer.country}</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Contact Information */}
+                  <div className="space-y-3 mb-6">
+                    <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg border border-gray-100 transition-all duration-300 hover:bg-gray-100">
+                      <div className="w-8 h-8 bg-gray-200 rounded-lg flex items-center justify-center">
+                        <Phone size={14} className="text-gray-600" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="text-xs text-gray-500 font-medium uppercase tracking-wide mb-1">Phone</div>
+                        <a 
+                          href={`tel:${dealer.phone}`} 
+                          className="text-gray-700 font-semibold text-sm no-underline hover:text-primary hover:underline transition-all duration-300 block truncate"
+                        >
+                          {dealer.phone}
+                        </a>
+                      </div>
+                    </div>
+                    
+                    {dealer.email && (
+                      <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg border border-gray-100 transition-all duration-300 hover:bg-gray-100">
+                        <div className="w-8 h-8 bg-gray-200 rounded-lg flex items-center justify-center">
+                          <Mail size={14} className="text-gray-600" />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="text-xs text-gray-500 font-medium uppercase tracking-wide mb-1">Email</div>
+                          <a 
+                            href={`mailto:${dealer.email}`} 
+                            className="text-gray-700 font-semibold text-sm no-underline hover:text-primary hover:underline transition-all duration-300 block truncate"
+                          >
+                            {dealer.email}
+                          </a>
+                        </div>
+                      </div>
+                    )}
+                    
+                    {dealer.website && (
+                      <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg border border-gray-100 transition-all duration-300 hover:bg-gray-100">
+                        <div className="w-8 h-8 bg-gray-200 rounded-lg flex items-center justify-center">
+                          <Globe size={14} className="text-gray-600" />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="text-xs text-gray-500 font-medium uppercase tracking-wide mb-1">Website</div>
+                          <a 
+                            href={`https://${dealer.website}`} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="text-gray-700 font-semibold text-sm no-underline hover:text-primary hover:underline transition-all duration-300 block truncate"
+                          >
+                            {dealer.website}
+                          </a>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
 
-                <div className="px-6 pb-6 flex flex-col gap-3">
-                  <div className="flex items-center gap-3">
-                    <span className="text-lg text-secondary">📞</span>
-                    <a href={`tel:${dealer.phone}`} className="text-primary no-underline font-medium transition-colors duration-300 hover:text-secondary hover:underline">
-                      {dealer.phone}
-                    </a>
-                  </div>
-                  {dealer.email && (
-                    <div className="flex items-center gap-3">
-                      <span className="text-lg text-secondary">✉️</span>
-                      <a href={`mailto:${dealer.email}`} className="text-primary no-underline font-medium transition-colors duration-300 hover:text-secondary hover:underline">
-                        {dealer.email}
-                      </a>
-                    </div>
-                  )}
-                  {dealer.website && (
-                    <div className="flex items-center gap-3">
-                      <span className="text-lg text-secondary">🌐</span>
-                      <a 
-                        href={`https://${dealer.website}`} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-primary no-underline font-medium transition-colors duration-300 hover:text-secondary hover:underline"
-                      >
-                        {dealer.website}
-                      </a>
-                    </div>
-                  )}
-                </div>
-
-                <div className="px-6 pb-6 flex gap-3">
-                  <a
-                    href={`https://maps.google.com/?q=${encodeURIComponent(`${dealer.address}, ${dealer.city}, ${dealer.state}, ${dealer.country}`)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 flex items-center justify-center gap-2 py-3 px-4 bg-secondary text-white border-2 border-secondary rounded-lg text-sm font-semibold no-underline transition-all duration-300 hover:bg-secondary-dark hover:border-secondary-dark hover:-translate-y-1"
-                  >
-                    <span className="text-base">🗺️</span>
-                    Get Directions
-                  </a>
-                  <a
-                    href={`tel:${dealer.phone}`}
-                    className="flex-1 flex items-center justify-center gap-2 py-3 px-4 bg-transparent text-primary border-2 border-primary rounded-lg text-sm font-semibold no-underline transition-all duration-300 hover:bg-primary hover:text-white hover:-translate-y-1"
-                  >
-                    <span className="text-base">📞</span>
-                    Call Now
-                  </a>
-                </div>
               </div>
             ))}
           </div>
@@ -401,26 +510,57 @@ const DealerLocator = () => {
 
       {/* Become a Dealer CTA */}
       <div className="mt-24 mb-16">
-        <div className="bg-gradient-to-br from-secondary to-secondary-dark rounded-3xl overflow-hidden shadow-xl">
-          <div className="flex flex-col lg:flex-row items-center gap-12 p-12 text-white">
-            <div className="text-6xl flex-shrink-0">🤝</div>
-            <div className="flex-1 text-center lg:text-left">
-              <h3 className="text-3xl font-bold mb-6 text-white">Become an Authorized Dealer</h3>
-              <p className="text-lg leading-relaxed opacity-90 mb-0">
-                Join our network of trusted dealers and grow your business with DryerMaster&rsquo;s innovative agricultural solutions.
-              </p>
+        <div className="relative bg-gradient-to-br from-secondary via-secondary-dark to-primary rounded-3xl overflow-hidden shadow-2xl">
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1),transparent_50%)]" />
+          </div>
+          
+          <div className="relative z-10 flex flex-col lg:flex-row items-center gap-12 p-12 text-white">
+            <div className="flex-shrink-0">
+              <div className="w-20 h-20 bg-white/15 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20">
+                <Users size={32} className="text-white" />
+              </div>
             </div>
-            <div className="flex flex-col sm:flex-row gap-6 flex-shrink-0">
+            <div className="flex-1 text-center lg:text-left">
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-4">
+                <Star size={16} className="text-yellow-300" />
+                <span className="text-sm font-medium">Partner Opportunity</span>
+              </div>
+              <h3 className="text-3xl lg:text-4xl font-bold mb-4 text-white leading-tight">
+                Become an Authorized Dealer
+              </h3>
+              <p className="text-lg leading-relaxed opacity-90 mb-6 max-w-2xl">
+                Join our growing network of trusted dealers and expand your business with DryerMaster's innovative agricultural solutions. Access exclusive products, training, and support.
+              </p>
+              <div className="flex flex-wrap gap-4 text-sm">
+                <div className="flex items-center gap-2 bg-white/10 rounded-full px-4 py-2">
+                  <Clock size={14} />
+                  <span>Quick Application</span>
+                </div>
+                <div className="flex items-center gap-2 bg-white/10 rounded-full px-4 py-2">
+                  <Star size={14} />
+                  <span>Exclusive Territory</span>
+                </div>
+                <div className="flex items-center gap-2 bg-white/10 rounded-full px-4 py-2">
+                  <Users size={14} />
+                  <span>Ongoing Support</span>
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4 flex-shrink-0">
               <a 
                 href="/contact" 
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold no-underline border-0 rounded-lg cursor-pointer transition-all duration-300 text-center whitespace-nowrap bg-white text-secondary border-2 border-white hover:bg-gray-100 hover:-translate-y-1"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold no-underline bg-white text-secondary rounded-xl cursor-pointer transition-all duration-300 hover:bg-gray-100 hover:scale-105 hover:shadow-lg"
               >
+                <Phone size={16} />
                 Apply Now
               </a>
               <a 
-                href="/contact" 
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold no-underline border-2 border-white text-white bg-transparent rounded-lg cursor-pointer transition-all duration-300 text-center whitespace-nowrap hover:bg-white hover:text-secondary"
+                href="/about" 
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold no-underline border-2 border-white text-white bg-transparent rounded-xl cursor-pointer transition-all duration-300 hover:bg-white hover:text-secondary"
               >
+                <Globe size={16} />
                 Learn More
               </a>
             </div>
