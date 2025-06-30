@@ -60,13 +60,13 @@ const Header = () => {
 
   return (
     <header className="bg-white shadow-soft sticky top-0 z-50">
-      <div className="max-w-6xl mx-auto px-8">
-        <nav className="flex justify-between items-center py-6">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <nav className="flex justify-between items-center py-4 sm:py-5 md:py-6">
           <Link href="/" className="block">
             <Image
               src="/header-logo.png"
               alt="Dryer Master"
-              className="h-16 sm:h-20 md:h-24 w-auto"
+              className="h-12 sm:h-16 md:h-20 lg:h-24 xl:h-28 w-auto transition-all duration-200"
               width={200}
               height={60}
               priority
@@ -101,7 +101,7 @@ const Header = () => {
                 <span className={`text-base transition-transform duration-300 ${hoverDropdown === 'products' ? 'rotate-180' : ''}`}>▼</span>
               </button>
               {hoverDropdown === 'products' && (
-                <ul className="absolute top-full left-0 bg-white border border-gray-5 rounded-lg shadow-strong min-w-72 z-50 py-3 list-none m-1 opacity-100 translate-y-0 transition-all duration-300">
+                <ul className="dropdown-menu absolute top-full left-0 bg-white border border-gray-5 rounded-lg shadow-strong w-64 sm:min-w-72 z-50 py-3 list-none m-1 opacity-100 translate-y-0 transition-all duration-300">
                   <li><Link href="/products/moisture-sensors" className={`block py-3 px-6 text-primary-text no-underline transition-all duration-300 text-base font-medium rounded-lg mx-2 hover:bg-primary-1 hover:text-primary hover:translate-x-2 ${pathname === '/products/moisture-sensors' ? 'bg-primary text-white font-semibold' : ''}`}>Real-Time Moisture Sensors</Link></li>
                   <li><Link href="/products/dm510-controller" className={`block py-3 px-6 text-primary-text no-underline transition-all duration-300 text-base font-medium rounded-lg mx-2 hover:bg-primary-1 hover:text-primary hover:translate-x-2 ${pathname === '/products/dm510-controller' ? 'bg-primary text-white font-semibold' : ''}`}>Dryer Master 510 Controller</Link></li>
                   <li><Link href="/products/dm510-embedded" className={`block py-3 px-6 text-primary-text no-underline transition-all duration-300 text-base font-medium rounded-lg mx-2 hover:bg-primary-1 hover:text-primary hover:translate-x-2 ${pathname === '/products/dm510-embedded' ? 'bg-primary text-white font-semibold' : ''}`}>DM510 Embedded Solution</Link></li>
@@ -121,7 +121,7 @@ const Header = () => {
                 <span className={`text-base transition-transform duration-300 ${hoverDropdown === 'customers' ? 'rotate-180' : ''}`}>▼</span>
               </button>
               {hoverDropdown === 'customers' && (
-                <ul className="absolute top-full left-0 bg-white border border-gray-5 rounded-lg shadow-strong min-w-72 z-50 py-3 list-none m-1 opacity-100 translate-y-0 transition-all duration-300">
+                <ul className="dropdown-menu absolute top-full left-0 bg-white border border-gray-5 rounded-lg shadow-strong w-64 sm:min-w-72 z-50 py-3 list-none m-1 opacity-100 translate-y-0 transition-all duration-300">
                   <li><Link href="/customers/experiences" className={`block py-3 px-6 text-primary-text no-underline transition-all duration-300 text-base font-medium rounded-lg mx-2 hover:bg-primary-1 hover:text-primary hover:translate-x-2 ${pathname === '/customers/experiences' ? 'bg-primary text-white font-semibold' : ''}`}>Customer Experiences</Link></li>
                   <li><Link href="/customers/manufacturers" className={`block py-3 px-6 text-primary-text no-underline transition-all duration-300 text-base font-medium rounded-lg mx-2 hover:bg-primary-1 hover:text-primary hover:translate-x-2 ${pathname === '/customers/manufacturers' ? 'bg-primary text-white font-semibold' : ''}`}>Dryer Manufacturers</Link></li>
                   <li><Link href="/customers/examples" className={`block py-3 px-6 text-primary-text no-underline transition-all duration-300 text-base font-medium rounded-lg mx-2 hover:bg-primary-1 hover:text-primary hover:translate-x-2 ${pathname === '/customers/examples' ? 'bg-primary text-white font-semibold' : ''}`}>Application Examples</Link></li>
@@ -138,7 +138,7 @@ const Header = () => {
                 <span className={`text-base transition-transform duration-300 ${hoverDropdown === 'support' ? 'rotate-180' : ''}`}>▼</span>
               </button>
               {hoverDropdown === 'support' && (
-                <ul className="absolute top-full left-0 bg-white border border-gray-5 rounded-lg shadow-strong min-w-72 z-50 py-3 list-none m-1 opacity-100 translate-y-0 transition-all duration-300">
+                <ul className="dropdown-menu absolute top-full left-0 bg-white border border-gray-5 rounded-lg shadow-strong w-64 sm:min-w-72 z-50 py-3 list-none m-1 opacity-100 translate-y-0 transition-all duration-300">
                   <li><Link href="/support/manuals" className={`block py-3 px-6 text-primary-text no-underline transition-all duration-300 text-base font-medium rounded-lg mx-2 hover:bg-primary-1 hover:text-primary hover:translate-x-2 ${pathname === '/support/manuals' ? 'bg-primary text-white font-semibold' : ''}`}>Manuals</Link></li>
                   <li><Link href="/support/videos" className={`block py-3 px-6 text-primary-text no-underline transition-all duration-300 text-base font-medium rounded-lg mx-2 hover:bg-primary-1 hover:text-primary hover:translate-x-2 ${pathname === '/support/videos' ? 'bg-primary text-white font-semibold' : ''}`}>Videos</Link></li>
                   <li><Link href="/support/help" className={`block py-3 px-6 text-primary-text no-underline transition-all duration-300 text-base font-medium rounded-lg mx-2 hover:bg-primary-1 hover:text-primary hover:translate-x-2 ${pathname === '/support/help' ? 'bg-primary text-white font-semibold' : ''}`}>Support</Link></li>
@@ -182,13 +182,13 @@ const Header = () => {
         <>
           {/* Overlay behind menu (doesn't cover header) */}
           <div 
-            className={`fixed top-24 left-0 right-0 bottom-0 bg-black transition-opacity duration-300 z-40 md:hidden ${isMenuOpen ? 'opacity-50 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+            className={`fixed top-20 sm:top-24 md:top-28 left-0 right-0 bottom-0 bg-black transition-opacity duration-300 z-40 md:hidden ${isMenuOpen ? 'opacity-50 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
             onClick={() => setIsMenuOpen(false)}
             style={{ touchAction: 'none' }}
           ></div>
           
           {/* Left-side slide menu with smooth transition */}
-          <div className={`fixed top-24 left-0 h-[calc(100vh-6rem)] w-full bg-white shadow-2xl z-50 md:hidden transform transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+          <div className={`fixed top-20 sm:top-24 md:top-28 left-0 h-[calc(100vh-5rem)] sm:h-[calc(100vh-6rem)] md:h-[calc(100vh-7rem)] w-full bg-white shadow-2xl z-50 md:hidden transform transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
             {/* Menu Content */}
             <div className="flex flex-col h-full py-6">
                                  <nav className="flex-1 px-8">
