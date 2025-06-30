@@ -14,12 +14,12 @@ interface Video {
   featured?: boolean;
 }
 
-// Video data with actual YouTube video IDs
+// Video data with actual YouTube video IDs - Updated from DryerMaster website analysis
 const videosData: Video[] = [
   // DM Mobile Videos
   {
     id: 'dm-mobile-overview',
-    title: 'An Overview of DM Mobile',
+    title: 'DM Mobile for the DM510',
     description: 'A walkthrough of the features of DM Mobile, Dryer Master\'s remote access feature for the DM510.',
     category: 'DM Mobile',
     videoUrl: 'https://www.youtube.com/embed/rWaXKL-Fx9Q',
@@ -33,8 +33,8 @@ const videosData: Video[] = [
     title: 'DM510 The Basics',
     description: 'A video going over the basics of operating a Dryer Master DM510 system, specifically geared to first time users.',
     category: 'DM510',
-    videoUrl: 'https://www.youtube.com/embed/Xcsl1haNCOo',
-    thumbnailUrl: 'https://img.youtube.com/vi/Xcsl1haNCOo/maxresdefault.jpg',
+    videoUrl: 'https://www.youtube.com/embed/BpwW9Ht-bDc',
+    thumbnailUrl: 'https://img.youtube.com/vi/BpwW9Ht-bDc/maxresdefault.jpg',
     featured: true
   },
   {
@@ -48,35 +48,35 @@ const videosData: Video[] = [
   {
     id: 'dm510-introduction',
     title: 'An introduction to Dryer Master\'s DM510',
-    description: 'An overview of how the DM510 system works.',
-    category: 'DM510',
+    description: 'An overview of how the DM510 system works and its grain drying capabilities.',
+    category: 'Professional Training',
     videoUrl: 'https://www.youtube.com/embed/HpfMRHYjUW0',
-    thumbnailUrl: 'https://img.youtube.com/vi/HpfMRHYjUW0/maxresdefault.jpg'
+    thumbnailUrl: null
   },
   {
     id: 'dm510-training',
     title: 'DM510 Training Video - Complete operator training video',
     description: 'Operator training video for the Dryer Master DM510 Computerized Grain Drying Control System.',
     category: 'DM510',
-    videoUrl: 'https://www.youtube.com/embed/U72nZad0Xuo',
-    thumbnailUrl: 'https://img.youtube.com/vi/U72nZad0Xuo/maxresdefault.jpg',
+    videoUrl: 'https://www.youtube.com/embed/Xcsl1haNCOo',
+    thumbnailUrl: 'https://img.youtube.com/vi/Xcsl1haNCOo/maxresdefault.jpg',
     featured: true
   },
   {
     id: 'grain-drying-approach',
-    title: 'The Dryer Master approach to grain drying - Excerpt from the training video',
+    title: 'The Dryer Master approach to grain drying',
     description: 'An excerpt from the DM510 training video that provides an overview of the Dryer Master approach to grain drying and how it can help improve your drying process.',
-    category: 'DM510',
+    category: 'Professional Training',
     videoUrl: 'https://www.youtube.com/embed/6KksSwgZfiw',
-    thumbnailUrl: 'https://img.youtube.com/vi/6KksSwgZfiw/maxresdefault.jpg'
+    thumbnailUrl: null
   },
   {
     id: 'moisture-sampling',
-    title: 'Moisture sampling and moisture sensor calibration - Excerpt from the training video',
+    title: 'Moisture sampling and moisture sensor calibration',
     description: 'An excerpt from the DM510 training video that focuses on suggested procedures for accurate moisture sampling and sensor calibration.',
-    category: 'DM510',
+    category: 'Professional Training',
     videoUrl: 'https://www.youtube.com/embed/dNlh3xRNLmc',
-    thumbnailUrl: 'https://img.youtube.com/vi/dNlh3xRNLmc/maxresdefault.jpg'
+    thumbnailUrl: null
   },
 
   // Moisture Monitor Pro Video
@@ -94,25 +94,25 @@ const videosData: Video[] = [
     id: 'dm100-interface',
     title: 'DM100 - User Interface Overview',
     description: 'This video goes over the basic operation of the DM100 system.',
-    category: 'DM100',
+    category: 'Professional Training',
     videoUrl: 'https://www.youtube.com/embed/sPRxJRw5zi4',
-    thumbnailUrl: 'https://img.youtube.com/vi/sPRxJRw5zi4/maxresdefault.jpg'
+    thumbnailUrl: null
   },
   {
     id: 'dm100-state-logic',
     title: 'DM100 - State Logic Control',
     description: 'This video covers state logic control and how it is used in the DM100.',
-    category: 'DM100',
+    category: 'Professional Training',
     videoUrl: 'https://www.youtube.com/embed/6cgTbz7bU5E',
-    thumbnailUrl: 'https://img.youtube.com/vi/6cgTbz7bU5E/maxresdefault.jpg'
+    thumbnailUrl: null
   },
   {
     id: 'dm100-calibration',
     title: 'DM100 - Moisture Sensor Calibration',
     description: 'This video goes over moisture sensor calibration on the DM100.',
-    category: 'DM100',
-    videoUrl: 'https://www.youtube.com/embed/giBn27nKs3Y',
-    thumbnailUrl: 'https://img.youtube.com/vi/giBn27nKs3Y/maxresdefault.jpg'
+    category: 'Professional Training',
+    videoUrl: 'https://www.youtube.com/embed/U72nZad0Xuo',
+    thumbnailUrl: null
   },
 
   // Moisture Sensor Videos
@@ -140,7 +140,8 @@ const categories = [
   { id: 'DM Mobile', name: 'DM Mobile', icon: Smartphone, count: videosData.filter(v => v.category === 'DM Mobile').length },
   { id: 'DM100', name: 'DM100 System', icon: Settings, count: videosData.filter(v => v.category === 'DM100').length },
   { id: 'Moisture Monitor Pro', name: 'Monitor Pro', icon: Monitor, count: videosData.filter(v => v.category === 'Moisture Monitor Pro').length },
-  { id: 'Moisture Sensors', name: 'Sensors', icon: Target, count: videosData.filter(v => v.category === 'Moisture Sensors').length }
+  { id: 'Moisture Sensors', name: 'Sensors', icon: Target, count: videosData.filter(v => v.category === 'Moisture Sensors').length },
+  { id: 'Professional Training', name: 'Pro Training', icon: VideoIcon, count: videosData.filter(v => v.category === 'Professional Training').length }
 ];
 
 // Extract YouTube video ID from URL for multiple thumbnail attempts
@@ -149,27 +150,22 @@ const getYouTubeId = (url: string): string => {
   return match ? match[1] : '';
 };
 
-// VideoThumbnail component with multiple fallback options
+// VideoThumbnail component with simple fallback design
 const VideoThumbnail = ({ video }: { video: Video }) => {
   const [imageError, setImageError] = useState(false);
-  const [currentThumbnailIndex, setCurrentThumbnailIndex] = useState(0);
+  const [imageLoaded, setImageLoaded] = useState(false);
   
   const videoId = getYouTubeId(video.videoUrl || '');
   
-  // Multiple thumbnail quality options
-  const thumbnailOptions = [
-    `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`, // Highest quality
-    `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`,     // High quality
-    `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`,     // Medium quality
-    `https://img.youtube.com/vi/${videoId}/default.jpg`        // Standard quality
-  ];
+  // Only try the highest quality thumbnail once
+  const thumbnailUrl = videoId ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg` : null;
 
   const handleImageError = () => {
-    if (currentThumbnailIndex < thumbnailOptions.length - 1) {
-      setCurrentThumbnailIndex(prev => prev + 1);
-    } else {
-      setImageError(true);
-    }
+    setImageError(true);
+  };
+
+  const handleImageLoad = () => {
+    setImageLoaded(true);
   };
 
   // Beautiful fallback based on category
@@ -185,6 +181,8 @@ const VideoThumbnail = ({ video }: { video: Video }) => {
         return 'from-orange-500 via-orange-600 to-orange-700';
       case 'Moisture Sensors':
         return 'from-teal-500 via-teal-600 to-teal-700';
+      case 'Professional Training':
+        return 'from-gray-400 via-gray-500 to-gray-600';
       default:
         return 'from-primary via-primary-dark to-secondary';
     }
@@ -202,51 +200,46 @@ const VideoThumbnail = ({ video }: { video: Video }) => {
         return <Monitor size={32} className="text-white/80" />;
       case 'Moisture Sensors':
         return <Target size={32} className="text-white/80" />;
+      case 'Professional Training':
+        return <VideoIcon size={32} className="text-white/90" />;
       default:
         return <VideoIcon size={32} className="text-white/80" />;
     }
   };
 
   return (
-    <div className="relative h-48 bg-gray-200 overflow-hidden group">
-      {!imageError && videoId ? (
+    <div className="relative h-48 overflow-hidden group rounded-t-2xl">
+      {!imageError && thumbnailUrl && video.category !== 'Professional Training' ? (
         <>
           <img 
-            src={thumbnailOptions[currentThumbnailIndex]}
+            src={thumbnailUrl}
             alt={video.title}
-            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 rounded-t-2xl"
             onError={handleImageError}
+            onLoad={handleImageLoad}
             loading="lazy"
           />
-          <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors duration-300"></div>
+          <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors duration-300 rounded-t-2xl"></div>
         </>
       ) : (
         // Beautiful fallback design
         <>
-          <div className={`w-full h-full bg-gradient-to-br ${getCategoryGradient(video.category)} relative overflow-hidden`}>
-            {/* Animated background pattern */}
-            <div className="absolute inset-0 opacity-10">
-              <div className="absolute top-0 left-0 w-full h-full">
-                <div className="absolute top-4 left-4 w-8 h-8 border-2 border-white/30 rounded-full"></div>
-                <div className="absolute top-8 right-8 w-4 h-4 border border-white/20 rounded-full"></div>
-                <div className="absolute bottom-8 left-8 w-6 h-6 border border-white/25 rounded-full"></div>
-                <div className="absolute bottom-4 right-4 w-3 h-3 bg-white/20 rounded-full"></div>
+          <div className={`w-full h-full bg-gradient-to-br ${getCategoryGradient(video.category)} relative overflow-hidden rounded-t-2xl`}>
+            {video.category !== 'Professional Training' && (
+              /* Only show content for non-Professional Training videos */
+              <div className="absolute inset-0 flex flex-col items-center justify-center">
+                <div className="mb-3 opacity-90">
+                  {getCategoryIcon(video.category)}
+                </div>
+                <div className="text-white/95 text-sm font-bold text-center px-4">
+                  {video.category}
+                </div>
+                <div className="text-white/75 text-xs mt-1">Training Video</div>
               </div>
-            </div>
+            )}
             
-            {/* Category icon and text */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center">
-              <div className="mb-3 opacity-80">
-                {getCategoryIcon(video.category)}
-              </div>
-              <div className="text-white/90 text-sm font-semibold uppercase tracking-wide text-center px-4">
-                {video.category}
-              </div>
-              <div className="text-white/70 text-xs mt-1">Training Video</div>
-            </div>
-            
-            {/* Subtle overlay */}
-            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
+            {/* Simple overlay */}
+            <div className="absolute inset-0 bg-black/10 group-hover:bg-black/5 transition-all duration-300"></div>
           </div>
         </>
       )}
@@ -262,13 +255,6 @@ const VideoThumbnail = ({ video }: { video: Video }) => {
       {video.featured && (
         <div className="absolute top-4 right-4 bg-secondary/90 backdrop-blur-sm px-3 py-1 rounded-full border border-white/20">
           <span className="text-white text-xs font-semibold">Featured</span>
-        </div>
-      )}
-      
-      {/* Loading indicator for thumbnail */}
-      {!imageError && videoId && currentThumbnailIndex === 0 && (
-        <div className="absolute bottom-2 left-2 text-xs text-white/60 bg-black/30 px-2 py-1 rounded">
-          Loading preview...
         </div>
       )}
     </div>
@@ -323,7 +309,8 @@ const VideoGallery = () => {
             {featuredVideos.map((video) => (
               <div 
                 key={video.id}
-                className="group bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-105 cursor-pointer"
+                className="group bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 cursor-pointer"
+                style={{ overflow: 'hidden' }}
                 onClick={() => setSelectedVideo(video)}
               >
                 <VideoThumbnail video={video} />
@@ -461,10 +448,11 @@ const VideoGallery = () => {
             {filteredVideos.map((video, index) => (
               <div 
                 key={video.id}
-                className="group bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-105 cursor-pointer"
+                className="group bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 cursor-pointer"
                 style={{
                   animationDelay: `${index * 50}ms`,
-                  animation: 'fadeInUp 0.6s ease forwards'
+                  animation: 'fadeInUp 0.6s ease forwards',
+                  overflow: 'hidden'
                 }}
                 onClick={() => setSelectedVideo(video)}
               >
