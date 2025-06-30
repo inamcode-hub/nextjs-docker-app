@@ -269,93 +269,124 @@ const Header = () => {
           <div className="lg:hidden">
             <button
               type="button"
-              className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary"
+              className="bg-white rounded-lg p-2 inline-flex items-center justify-center text-gray-600 hover:text-primary hover:bg-primary-1 focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-200 shadow-sm"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-expanded="false"
+              aria-expanded={isMenuOpen}
             >
-              <span className="sr-only">Open main menu</span>
-              {!isMenuOpen ? (
-                <svg className="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              ) : (
-                <svg className="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              )}
+              <span className="sr-only">{isMenuOpen ? 'Close menu' : 'Open menu'}</span>
+              <div className="relative w-6 h-6">
+                {/* Hamburger lines */}
+                <span className={`absolute left-0 top-1 w-6 h-0.5 bg-current transform transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+                <span className={`absolute left-0 top-3 w-6 h-0.5 bg-current transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></span>
+                <span className={`absolute left-0 top-5 w-6 h-0.5 bg-current transform transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+              </div>
             </button>
           </div>
         </nav>
       </div>
 
       {/* Mobile menu */}
-      <div className={`lg:hidden ${isMenuOpen ? 'block' : 'hidden'}`}>
+      <div className={`lg:hidden fixed inset-0 z-50 transition-all duration-300 ${isMenuOpen ? 'visible opacity-100' : 'invisible opacity-0'}`}>
         {/* Overlay */}
         <div 
-          className="fixed inset-0 bg-black bg-opacity-25 z-40"
+          className={`fixed inset-0 bg-black transition-opacity duration-300 ${isMenuOpen ? 'bg-opacity-50' : 'bg-opacity-0'}`}
           onClick={closeMenu}
         ></div>
         
-        {/* Menu panel */}
-        <div className="absolute top-full left-0 right-0 bg-white shadow-lg z-50 max-h-screen overflow-y-auto border-t border-gray-200">
-          <div className="px-2 pt-2 pb-3 space-y-1">
+        {/* Menu panel - Full screen */}
+        <div className={`fixed inset-0 bg-white transform transition-transform duration-300 ease-out ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'} overflow-y-auto`}>
+          {/* Mobile Header */}
+          <div className="flex items-center justify-between p-6 border-b border-gray-100 bg-gradient-to-r from-primary-1 to-white">
+            <Image
+              src="/header-logo.png"
+              alt="Dryer Master"
+              className="h-10 w-auto"
+              width={160}
+              height={40}
+              priority
+            />
+            <button
+              onClick={closeMenu}
+              className="p-2 rounded-lg hover:bg-white/50 transition-all duration-200 group"
+              aria-label="Close menu"
+            >
+              <div className="relative w-6 h-6">
+                <span className="absolute left-0 top-2.5 w-6 h-0.5 bg-gray-600 transform rotate-45 group-hover:bg-primary transition-colors duration-200"></span>
+                <span className="absolute left-0 top-2.5 w-6 h-0.5 bg-gray-600 transform -rotate-45 group-hover:bg-primary transition-colors duration-200"></span>
+              </div>
+            </button>
+          </div>
+          
+          {/* Menu Content */}
+          <div className="flex-1 p-6 space-y-3 bg-gradient-to-b from-white to-gray-50">
             <Link 
               href="/" 
               onClick={closeMenu}
-              className={`block px-3 py-2 rounded-md text-base font-medium transition-all duration-200 ${
+              className={`flex items-center px-4 py-3 rounded-xl text-base font-medium transition-all duration-200 ${
                 pathname === '/' 
-                  ? 'bg-primary text-white shadow-lg border-l-4 border-secondary border-2 border-primary-dark' 
-                  : 'text-gray-700 hover:text-primary hover:bg-gray-50 hover:shadow-sm'
+                  ? 'bg-primary text-white shadow-md' 
+                  : 'text-gray-700 hover:bg-primary-1 hover:text-primary'
               }`}
             >
+              <span className="mr-3 text-lg">🏠</span>
               Home
             </Link>
 
             <Link 
               href="/about" 
               onClick={closeMenu}
-              className={`block px-3 py-2 rounded-md text-base font-medium transition-all duration-200 ${
+              className={`flex items-center px-4 py-3 rounded-xl text-base font-medium transition-all duration-200 ${
                 pathname === '/about' 
-                  ? 'bg-primary text-white shadow-lg border-l-4 border-secondary border-2 border-primary-dark' 
-                  : 'text-gray-700 hover:text-primary hover:bg-gray-50 hover:shadow-sm'
+                  ? 'bg-primary text-white shadow-md' 
+                  : 'text-gray-700 hover:bg-primary-1 hover:text-primary'
               }`}
             >
+              <span className="mr-3 text-lg">ℹ️</span>
               About Us
             </Link>
 
             {/* Products Mobile Dropdown */}
-            <div>
+            <div className="border border-gray-100 rounded-xl overflow-hidden">
               <button
                 onClick={() => toggleDropdown('products-mobile')}
-                className={`w-full flex items-center justify-between px-3 py-2 rounded-md text-base font-medium transition-all duration-200 ${
+                className={`w-full flex items-center justify-between px-4 py-3 text-base font-medium transition-all duration-200 ${
                   isProductsActive() 
-                    ? 'bg-primary text-white shadow-lg border-l-4 border-secondary border-2 border-primary-dark' 
-                    : 'text-gray-700 hover:text-primary hover:bg-gray-50 hover:shadow-sm'
+                    ? 'bg-primary text-white' 
+                    : 'text-gray-700 hover:bg-primary-1 hover:text-primary bg-gray-50'
                 }`}
               >
-                Our Products
-                <svg className={`ml-1 h-5 w-5 transform transition-transform duration-200 ${activeDropdown === 'products-mobile' ? 'rotate-180' : ''}`} fill="currentColor" viewBox="0 0 20 20">
+                <div className="flex items-center">
+                  <span className="mr-3 text-lg">📊</span>
+                  Our Products
+                </div>
+                <svg className={`h-5 w-5 transform transition-transform duration-200 ${activeDropdown === 'products-mobile' ? 'rotate-180' : ''}`} fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
                 </svg>
               </button>
               {activeDropdown === 'products-mobile' && (
-                <div className="mt-1 space-y-1 pl-4">
-                  <Link href="/products/moisture-sensors" onClick={closeMenu} className={`block px-3 py-2 rounded-md text-sm ${pathname === '/products/moisture-sensors' ? 'bg-primary text-white' : 'text-gray-600 hover:text-primary hover:bg-gray-50'}`}>
+                <div className="bg-white border-t border-gray-100 space-y-1 p-2">
+                  <Link href="/products/moisture-sensors" onClick={closeMenu} className={`flex items-center px-3 py-2 rounded-lg text-sm transition-all duration-200 ${pathname === '/products/moisture-sensors' ? 'bg-secondary text-white shadow-sm' : 'text-gray-600 hover:text-secondary hover:bg-secondary-1'}`}>
+                    <span className="mr-2">🎯</span>
                     Real-Time Moisture Sensors
                   </Link>
-                  <Link href="/products/dm510-controller" onClick={closeMenu} className={`block px-3 py-2 rounded-md text-sm ${pathname === '/products/dm510-controller' ? 'bg-primary text-white' : 'text-gray-600 hover:text-primary hover:bg-gray-50'}`}>
+                  <Link href="/products/dm510-controller" onClick={closeMenu} className={`flex items-center px-3 py-2 rounded-lg text-sm transition-all duration-200 ${pathname === '/products/dm510-controller' ? 'bg-secondary text-white shadow-sm' : 'text-gray-600 hover:text-secondary hover:bg-secondary-1'}`}>
+                    <span className="mr-2">🏛️</span>
                     Dryer Master 510 Controller
                   </Link>
-                  <Link href="/products/dm510-embedded" onClick={closeMenu} className={`block px-3 py-2 rounded-md text-sm ${pathname === '/products/dm510-embedded' ? 'bg-primary text-white' : 'text-gray-600 hover:text-primary hover:bg-gray-50'}`}>
+                  <Link href="/products/dm510-embedded" onClick={closeMenu} className={`flex items-center px-3 py-2 rounded-lg text-sm transition-all duration-200 ${pathname === '/products/dm510-embedded' ? 'bg-secondary text-white shadow-sm' : 'text-gray-600 hover:text-secondary hover:bg-secondary-1'}`}>
+                    <span className="mr-2">💻</span>
                     DM510 Embedded Solution
                   </Link>
-                  <Link href="/products/dm-mobile" onClick={closeMenu} className={`block px-3 py-2 rounded-md text-sm ${pathname === '/products/dm-mobile' ? 'bg-primary text-white' : 'text-gray-600 hover:text-primary hover:bg-gray-50'}`}>
+                  <Link href="/products/dm-mobile" onClick={closeMenu} className={`flex items-center px-3 py-2 rounded-lg text-sm transition-all duration-200 ${pathname === '/products/dm-mobile' ? 'bg-secondary text-white shadow-sm' : 'text-gray-600 hover:text-secondary hover:bg-secondary-1'}`}>
+                    <span className="mr-2">📱</span>
                     DM Mobile (Remote Access)
                   </Link>
-                  <Link href="/products/moisture-monitor-pro" onClick={closeMenu} className={`block px-3 py-2 rounded-md text-sm ${pathname === '/products/moisture-monitor-pro' ? 'bg-primary text-white' : 'text-gray-600 hover:text-primary hover:bg-gray-50'}`}>
+                  <Link href="/products/moisture-monitor-pro" onClick={closeMenu} className={`flex items-center px-3 py-2 rounded-lg text-sm transition-all duration-200 ${pathname === '/products/moisture-monitor-pro' ? 'bg-secondary text-white shadow-sm' : 'text-gray-600 hover:text-secondary hover:bg-secondary-1'}`}>
+                    <span className="mr-2">📈</span>
                     Moisture Monitor Pro (MMP)
                   </Link>
-                  <Link href="/products/dm100" onClick={closeMenu} className={`block px-3 py-2 rounded-md text-sm ${pathname === '/products/dm100' ? 'bg-primary text-white' : 'text-gray-600 hover:text-primary hover:bg-gray-50'}`}>
+                  <Link href="/products/dm100" onClick={closeMenu} className={`flex items-center px-3 py-2 rounded-lg text-sm transition-all duration-200 ${pathname === '/products/dm100' ? 'bg-secondary text-white shadow-sm' : 'text-gray-600 hover:text-secondary hover:bg-secondary-1'}`}>
+                    <span className="mr-2">🏭</span>
                     Dryer Master DM100
                   </Link>
                 </div>
@@ -363,29 +394,35 @@ const Header = () => {
             </div>
 
             {/* Customers Mobile Dropdown */}
-            <div>
+            <div className="border border-gray-100 rounded-xl overflow-hidden">
               <button
                 onClick={() => toggleDropdown('customers-mobile')}
-                className={`w-full flex items-center justify-between px-3 py-2 rounded-md text-base font-medium transition-all duration-200 ${
+                className={`w-full flex items-center justify-between px-4 py-3 text-base font-medium transition-all duration-200 ${
                   isCustomersActive() 
-                    ? 'bg-primary text-white shadow-lg border-l-4 border-secondary border-2 border-primary-dark' 
-                    : 'text-gray-700 hover:text-primary hover:bg-gray-50 hover:shadow-sm'
+                    ? 'bg-primary text-white' 
+                    : 'text-gray-700 hover:bg-primary-1 hover:text-primary bg-gray-50'
                 }`}
               >
-                Our Customers
-                <svg className={`ml-1 h-5 w-5 transform transition-transform duration-200 ${activeDropdown === 'customers-mobile' ? 'rotate-180' : ''}`} fill="currentColor" viewBox="0 0 20 20">
+                <div className="flex items-center">
+                  <span className="mr-3 text-lg">👥</span>
+                  Our Customers
+                </div>
+                <svg className={`h-5 w-5 transform transition-transform duration-200 ${activeDropdown === 'customers-mobile' ? 'rotate-180' : ''}`} fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
                 </svg>
               </button>
               {activeDropdown === 'customers-mobile' && (
-                <div className="mt-1 space-y-1 pl-4">
-                  <Link href="/customers/experiences" onClick={closeMenu} className={`block px-3 py-2 rounded-md text-sm ${pathname === '/customers/experiences' ? 'bg-primary text-white' : 'text-gray-600 hover:text-primary hover:bg-gray-50'}`}>
+                <div className="bg-white border-t border-gray-100 space-y-1 p-2">
+                  <Link href="/customers/experiences" onClick={closeMenu} className={`flex items-center px-3 py-2 rounded-lg text-sm transition-all duration-200 ${pathname === '/customers/experiences' ? 'bg-secondary text-white shadow-sm' : 'text-gray-600 hover:text-secondary hover:bg-secondary-1'}`}>
+                    <span className="mr-2">⭐</span>
                     Customer Experiences
                   </Link>
-                  <Link href="/customers/manufacturers" onClick={closeMenu} className={`block px-3 py-2 rounded-md text-sm ${pathname === '/customers/manufacturers' ? 'bg-primary text-white' : 'text-gray-600 hover:text-primary hover:bg-gray-50'}`}>
+                  <Link href="/customers/manufacturers" onClick={closeMenu} className={`flex items-center px-3 py-2 rounded-lg text-sm transition-all duration-200 ${pathname === '/customers/manufacturers' ? 'bg-secondary text-white shadow-sm' : 'text-gray-600 hover:text-secondary hover:bg-secondary-1'}`}>
+                    <span className="mr-2">🏭</span>
                     Dryer Manufacturers
                   </Link>
-                  <Link href="/customers/examples" onClick={closeMenu} className={`block px-3 py-2 rounded-md text-sm ${pathname === '/customers/examples' ? 'bg-primary text-white' : 'text-gray-600 hover:text-primary hover:bg-gray-50'}`}>
+                  <Link href="/customers/examples" onClick={closeMenu} className={`flex items-center px-3 py-2 rounded-lg text-sm transition-all duration-200 ${pathname === '/customers/examples' ? 'bg-secondary text-white shadow-sm' : 'text-gray-600 hover:text-secondary hover:bg-secondary-1'}`}>
+                    <span className="mr-2">💡</span>
                     Application Examples
                   </Link>
                 </div>
@@ -393,32 +430,39 @@ const Header = () => {
             </div>
 
             {/* Support Mobile Dropdown */}
-            <div>
+            <div className="border border-gray-100 rounded-xl overflow-hidden">
               <button
                 onClick={() => toggleDropdown('support-mobile')}
-                className={`w-full flex items-center justify-between px-3 py-2 rounded-md text-base font-medium transition-all duration-200 ${
+                className={`w-full flex items-center justify-between px-4 py-3 text-base font-medium transition-all duration-200 ${
                   isSupportActive() 
-                    ? 'bg-primary text-white shadow-lg border-l-4 border-secondary border-2 border-primary-dark' 
-                    : 'text-gray-700 hover:text-primary hover:bg-gray-50 hover:shadow-sm'
+                    ? 'bg-primary text-white' 
+                    : 'text-gray-700 hover:bg-primary-1 hover:text-primary bg-gray-50'
                 }`}
               >
-                Support
-                <svg className={`ml-1 h-5 w-5 transform transition-transform duration-200 ${activeDropdown === 'support-mobile' ? 'rotate-180' : ''}`} fill="currentColor" viewBox="0 0 20 20">
+                <div className="flex items-center">
+                  <span className="mr-3 text-lg">🛠️</span>
+                  Support
+                </div>
+                <svg className={`h-5 w-5 transform transition-transform duration-200 ${activeDropdown === 'support-mobile' ? 'rotate-180' : ''}`} fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
                 </svg>
               </button>
               {activeDropdown === 'support-mobile' && (
-                <div className="mt-1 space-y-1 pl-4">
-                  <Link href="/support/manuals" onClick={closeMenu} className={`block px-3 py-2 rounded-md text-sm ${pathname === '/support/manuals' ? 'bg-primary text-white' : 'text-gray-600 hover:text-primary hover:bg-gray-50'}`}>
+                <div className="bg-white border-t border-gray-100 space-y-1 p-2">
+                  <Link href="/support/manuals" onClick={closeMenu} className={`flex items-center px-3 py-2 rounded-lg text-sm transition-all duration-200 ${pathname === '/support/manuals' ? 'bg-secondary text-white shadow-sm' : 'text-gray-600 hover:text-secondary hover:bg-secondary-1'}`}>
+                    <span className="mr-2">📖</span>
                     Manuals
                   </Link>
-                  <Link href="/support/videos" onClick={closeMenu} className={`block px-3 py-2 rounded-md text-sm ${pathname === '/support/videos' ? 'bg-primary text-white' : 'text-gray-600 hover:text-primary hover:bg-gray-50'}`}>
+                  <Link href="/support/videos" onClick={closeMenu} className={`flex items-center px-3 py-2 rounded-lg text-sm transition-all duration-200 ${pathname === '/support/videos' ? 'bg-secondary text-white shadow-sm' : 'text-gray-600 hover:text-secondary hover:bg-secondary-1'}`}>
+                    <span className="mr-2">🎥</span>
                     Videos
                   </Link>
-                  <Link href="/support/help" onClick={closeMenu} className={`block px-3 py-2 rounded-md text-sm ${pathname === '/support/help' ? 'bg-primary text-white' : 'text-gray-600 hover:text-primary hover:bg-gray-50'}`}>
-                    Support
+                  <Link href="/support/help" onClick={closeMenu} className={`flex items-center px-3 py-2 rounded-lg text-sm transition-all duration-200 ${pathname === '/support/help' ? 'bg-secondary text-white shadow-sm' : 'text-gray-600 hover:text-secondary hover:bg-secondary-1'}`}>
+                    <span className="mr-2">💬</span>
+                    Get Help
                   </Link>
-                  <Link href="/support/register" onClick={closeMenu} className={`block px-3 py-2 rounded-md text-sm ${pathname === '/support/register' ? 'bg-primary text-white' : 'text-gray-600 hover:text-primary hover:bg-gray-50'}`}>
+                  <Link href="/support/register" onClick={closeMenu} className={`flex items-center px-3 py-2 rounded-lg text-sm transition-all duration-200 ${pathname === '/support/register' ? 'bg-secondary text-white shadow-sm' : 'text-gray-600 hover:text-secondary hover:bg-secondary-1'}`}>
+                    <span className="mr-2">📝</span>
                     Register
                   </Link>
                 </div>
@@ -428,20 +472,25 @@ const Header = () => {
             <Link 
               href="/dealers" 
               onClick={closeMenu}
-              className={`block px-3 py-2 rounded-md text-base font-medium transition-all duration-200 ${
+              className={`flex items-center px-4 py-3 rounded-xl text-base font-medium transition-all duration-200 ${
                 pathname === '/dealers' 
-                  ? 'bg-primary text-white shadow-lg border-l-4 border-secondary border-2 border-primary-dark' 
-                  : 'text-gray-700 hover:text-primary hover:bg-gray-50 hover:shadow-sm'
+                  ? 'bg-primary text-white shadow-md' 
+                  : 'text-gray-700 hover:bg-primary-1 hover:text-primary'
               }`}
             >
+              <span className="mr-3 text-lg">🗺️</span>
               Find a Dealer
             </Link>
+
+            {/* Divider */}
+            <div className="border-t border-gray-200 my-4"></div>
 
             <Link 
               href="/contact" 
               onClick={closeMenu}
-              className="block w-full text-center bg-secondary text-white px-3 py-2 rounded-md text-base font-medium hover:bg-secondary-dark transition-colors duration-200 mt-4 shadow-md"
+              className="flex items-center justify-center px-4 py-3 bg-secondary text-white rounded-xl text-base font-medium hover:bg-secondary-dark transition-all duration-200 shadow-md hover:shadow-lg"
             >
+              <span className="mr-2 text-lg">📧</span>
               Contact Us
             </Link>
           </div>
