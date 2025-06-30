@@ -1,5 +1,7 @@
 import { generateMetadata as genMeta } from "@/lib/metadata";
 import DealerLocator from "@/components/DealerLocator";
+import { GlobalHeroCard, GlobalHeroCardBadge, GlobalHeroCardTitle, GlobalHeroCardDescription } from '@/components/GlobalHeroCard';
+import { Users } from 'lucide-react';
 
 export const metadata = genMeta({
   title: "Find Authorized Dryer Master Dealers Near You",
@@ -11,13 +13,20 @@ export const metadata = genMeta({
 export default function Dealers() {
   return (
     <div className="min-h-screen py-8">
-      <div className="text-center mb-16 py-12 border-b border-gray-5">
-        <div className="max-w-6xl mx-auto px-8">
-          <h1 className="text-4xl text-primary font-bold mb-4">Authorized Dealer Network</h1>
-          <p className="text-lg text-gray-7 max-w-3xl mx-auto">
-            Find trusted DryerMaster dealers in your region. Our global network provides expert support, installation services, and genuine parts for all your agricultural moisture monitoring needs.
-          </p>
-        </div>
+      <div className="mx-4 sm:mx-6 lg:mx-8 max-w-7xl xl:mx-auto">
+        <GlobalHeroCard>
+          <GlobalHeroCardBadge 
+            icon={<Users size={20} className="text-secondary-1" />}
+          >
+            Global Network
+          </GlobalHeroCardBadge>
+          <GlobalHeroCardTitle highlightText="Local Dealer">
+            Find Your
+          </GlobalHeroCardTitle>
+          <GlobalHeroCardDescription>
+            Connect with authorized DryerMaster dealers worldwide for expert support, installation, and genuine parts
+          </GlobalHeroCardDescription>
+        </GlobalHeroCard>
       </div>
       <div className="py-8">
         <DealerLocator />

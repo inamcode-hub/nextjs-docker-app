@@ -1,5 +1,6 @@
 import { generateMetadata as genMeta } from "@/lib/metadata";
 import { Cookie, Settings, Shield, Info, BarChart3, Globe } from 'lucide-react';
+import { GlobalHeroCard, GlobalHeroCardBadge, GlobalHeroCardTitle, GlobalHeroCardDescription } from '@/components/GlobalHeroCard';
 
 export const metadata = genMeta({
   title: "Cookie Policy - DryerMaster Technologies",
@@ -29,19 +30,20 @@ export default function Cookies() {
       
       <div className="min-h-screen py-8">
         {/* Hero Section */}
-        <div className="relative bg-gradient-to-br from-amber-500 via-orange-500 to-red-500 rounded-3xl p-8 md:p-16 mb-12 mx-4 sm:mx-6 lg:mx-8 max-w-7xl xl:mx-auto overflow-hidden">
-          <div className="relative z-10 text-center text-white">
-            <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-6 py-3 mb-6">
-              <Cookie size={20} className="text-white" />
-              <span className="text-sm font-semibold">Cookie Policy</span>
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-              Cookie <span className="text-orange-200">Policy</span>
-            </h1>
-            <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+        <div className="mx-4 sm:mx-6 lg:mx-8 max-w-7xl xl:mx-auto">
+          <GlobalHeroCard>
+            <GlobalHeroCardBadge 
+              icon={<Cookie size={20} className="text-secondary-1" />}
+            >
+              Cookie Policy
+            </GlobalHeroCardBadge>
+            <GlobalHeroCardTitle highlightText="Policy">
+              Cookie
+            </GlobalHeroCardTitle>
+            <GlobalHeroCardDescription>
               Learn how we use cookies and similar technologies to improve your browsing experience.
-            </p>
-          </div>
+            </GlobalHeroCardDescription>
+          </GlobalHeroCard>
         </div>
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

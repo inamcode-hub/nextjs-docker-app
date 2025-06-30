@@ -177,27 +177,6 @@ const DealerLocator = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      {/* Hero Section */}
-      <div className="relative bg-gradient-to-br from-primary via-primary-dark to-secondary rounded-3xl p-8 md:p-16 mb-12 overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent transform rotate-12 translate-x-1/2 translate-y-1/2"></div>
-        </div>
-        
-        <div className="relative z-10 text-center text-white">
-          <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-6 py-3 mb-6">
-            <Users size={20} className="text-secondary-1" />
-            <span className="text-sm font-semibold">Global Network</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-            Find Your <span className="text-secondary-1">Local Dealer</span>
-          </h2>
-          <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-            Connect with authorized DryerMaster dealers worldwide for expert support, installation, and genuine parts
-          </p>
-        </div>
-      </div>
-
       {/* Search and Filter Section */}
       <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 md:p-8 mb-12 border border-gray-200/50 shadow-lg">
         <div className="text-center mb-8">

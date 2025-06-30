@@ -1,11 +1,12 @@
 import { generateMetadata as genMeta } from "@/lib/metadata";
-import SupportHero from '../components/SupportHero';
 import SupportContact from '../components/SupportContact';
 import SupportNavigation from '../components/SupportNavigation';
 import MoistureSensorSection from '../components/MoistureSensorSection';
 import DryingControlSection from '../components/DryingControlSection';
 import RemoteAccessSection from '../components/RemoteAccessSection';
 import SupportResources from '../components/SupportResources';
+import { GlobalHeroCard, GlobalHeroCardBadge, GlobalHeroCardTitle, GlobalHeroCardDescription } from '@/components/GlobalHeroCard';
+import { Settings } from 'lucide-react';
 
 export const metadata = genMeta({
   title: "Support Centre - DryerMaster Technologies",
@@ -35,7 +36,21 @@ export default function Support() {
       
       <div id="top" className="min-h-screen py-8">
         {/* Hero Section */}
-        <SupportHero />
+        <div className="mx-4 sm:mx-6 lg:mx-8 max-w-7xl xl:mx-auto">
+          <GlobalHeroCard>
+            <GlobalHeroCardBadge 
+              icon={<Settings size={20} className="text-secondary-1" />}
+            >
+              Support Centre
+            </GlobalHeroCardBadge>
+            <GlobalHeroCardTitle highlightText="Support">
+              Technical
+            </GlobalHeroCardTitle>
+            <GlobalHeroCardDescription>
+              Get comprehensive help with installation, troubleshooting, and technical questions for all DryerMaster products.
+            </GlobalHeroCardDescription>
+          </GlobalHeroCard>
+        </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Support Contact */}

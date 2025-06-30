@@ -1,6 +1,7 @@
 import { generateMetadata as genMeta } from "@/lib/metadata";
 import ContactForm from "@/components/ContactForm";
 import { Phone, Smartphone, Mail, MapPin, Clock, Users, Star, Globe, MessageCircle } from 'lucide-react';
+import { GlobalHeroCard, GlobalHeroCardBadge, GlobalHeroCardTitle, GlobalHeroCardDescription } from '@/components/GlobalHeroCard';
 
 export const metadata = genMeta({
   title: "Contact DryerMaster - Sales & Technical Support",
@@ -52,24 +53,20 @@ export default function Contact() {
       
       <div className="min-h-screen py-8">
         {/* Hero Section */}
-        <div className="relative bg-gradient-to-br from-primary via-primary-dark to-secondary rounded-3xl p-8 md:p-16 mb-12 mx-4 sm:mx-6 lg:mx-8 max-w-7xl xl:mx-auto overflow-hidden">
-          {/* Background Pattern */}
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent transform rotate-12 translate-x-1/2 translate-y-1/2"></div>
-          </div>
-          
-          <div className="relative z-10 text-center text-white">
-            <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-6 py-3 mb-6">
-              <MessageCircle size={20} className="text-secondary-1" />
-              <span className="text-sm font-semibold">Get In Touch</span>
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-              Contact <span className="text-secondary-1">DryerMaster</span>
-            </h1>
-            <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+        <div className="mx-4 sm:mx-6 lg:mx-8 max-w-7xl xl:mx-auto">
+          <GlobalHeroCard>
+            <GlobalHeroCardBadge 
+              icon={<MessageCircle size={20} className="text-secondary-1" />}
+            >
+              Get In Touch
+            </GlobalHeroCardBadge>
+            <GlobalHeroCardTitle highlightText="DryerMaster">
+              Contact
+            </GlobalHeroCardTitle>
+            <GlobalHeroCardDescription>
               Whether you need technical support, product information, or want to become a dealer, our team is here to help you succeed.
-            </p>
-          </div>
+            </GlobalHeroCardDescription>
+          </GlobalHeroCard>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
