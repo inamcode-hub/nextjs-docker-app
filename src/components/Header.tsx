@@ -81,7 +81,7 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-white shadow-md sticky top-0 z-50 border-b border-gray-100">
+    <header className="bg-gradient-to-r from-amber-50 via-green-50 to-primary-1 shadow-md sticky top-0 z-50 border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <nav className="flex justify-between items-center h-16 sm:h-18 md:h-20">
           {/* Logo */}
@@ -97,27 +97,31 @@ const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-1">
+          <div className="hidden lg:flex items-center space-x-0.5 xl:space-x-1 2xl:space-x-2">
             <Link 
               href="/" 
-              className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
+              className={`flex items-center gap-0.5 lg:gap-1 px-1.5 lg:px-2 xl:px-3 py-2 rounded-md text-xs xl:text-sm font-medium transition-all duration-200 ${
                 pathname === '/' 
                   ? 'bg-primary text-white shadow-md border-2 border-primary-dark' 
-                  : 'text-gray-700 hover:text-primary hover:bg-primary-2 hover:shadow-sm'
+                  : 'text-gray-700 hover:text-primary hover:bg-primary-1 hover:shadow-sm'
               }`}
             >
-              Home
+              <span className="text-xs lg:text-sm">🏡</span>
+              <span className="whitespace-nowrap hidden lg:inline xl:inline">Farm Home</span>
+              <span className="whitespace-nowrap lg:hidden">Home</span>
             </Link>
 
             <Link 
               href="/about" 
-              className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
+              className={`flex items-center gap-0.5 lg:gap-1 px-1.5 lg:px-2 xl:px-3 py-2 rounded-md text-xs xl:text-sm font-medium transition-all duration-200 ${
                 pathname === '/about' 
                   ? 'bg-primary text-white shadow-md border-2 border-primary-dark' 
-                  : 'text-gray-700 hover:text-primary hover:bg-primary-2 hover:shadow-sm'
+                  : 'text-gray-700 hover:text-primary hover:bg-primary-1 hover:shadow-sm'
               }`}
             >
-              About Us
+              <span className="text-xs lg:text-sm">🌾</span>
+              <span className="whitespace-nowrap hidden lg:inline xl:inline">Our Story</span>
+              <span className="whitespace-nowrap lg:hidden">About</span>
             </Link>
 
             {/* Products Dropdown */}
@@ -126,13 +130,15 @@ const Header = () => {
               onMouseEnter={() => handleButtonMouseEnter('products')}
               onMouseLeave={handleButtonMouseLeave}
             >
-              <button className={`flex items-center px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
+              <button className={`flex items-center gap-0.5 lg:gap-1 px-1.5 lg:px-2 xl:px-3 py-2 rounded-md text-xs xl:text-sm font-medium transition-all duration-200 ${
                 isProductsActive() 
                   ? 'bg-primary text-white shadow-md border-2 border-primary-dark' 
-                  : 'text-gray-700 hover:text-primary hover:bg-primary-2 hover:shadow-sm'
+                  : 'text-gray-700 hover:text-primary hover:bg-primary-1 hover:shadow-sm'
               }`}>
-                Our Products
-                <svg className="ml-1 h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+                <span className="text-xs lg:text-sm">🏭</span>
+                <span className="whitespace-nowrap hidden lg:inline xl:inline">Grain Solutions</span>
+                <span className="whitespace-nowrap lg:hidden">Products</span>
+                <svg className="ml-0.5 h-3 w-3 xl:h-4 xl:w-4" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
                 </svg>
               </button>
@@ -144,23 +150,29 @@ const Header = () => {
                   onMouseLeave={handleDropdownMouseLeave}
                 >
                   <div className="py-1">
-                    <Link href="/products/moisture-sensors" className={`block px-4 py-2 text-sm transition-colors duration-150 ${pathname === '/products/moisture-sensors' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-primary-2 hover:text-primary'}`}>
-                      Real-Time Moisture Sensors
+                    <Link href="/products/moisture-sensors" className={`flex items-center gap-2 px-4 py-2 text-sm transition-colors duration-150 ${pathname === '/products/moisture-sensors' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-primary-1 hover:text-primary'}`}>
+                      <span>🌾</span>
+                      Moisture Sensors
                     </Link>
-                    <Link href="/products/dm510-controller" className={`block px-4 py-2 text-sm transition-colors duration-150 ${pathname === '/products/dm510-controller' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-primary-2 hover:text-primary'}`}>
-                      Dryer Master 510 Controller
+                    <Link href="/products/dm510-controller" className={`flex items-center gap-2 px-4 py-2 text-sm transition-colors duration-150 ${pathname === '/products/dm510-controller' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-primary-1 hover:text-primary'}`}>
+                      <span>🌽</span>
+                      DM510 Controller
                     </Link>
-                    <Link href="/products/dm510-embedded" className={`block px-4 py-2 text-sm transition-colors duration-150 ${pathname === '/products/dm510-embedded' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-primary-2 hover:text-primary'}`}>
-                      DM510 Embedded Solution
+                    <Link href="/products/dm510-embedded" className={`flex items-center gap-2 px-4 py-2 text-sm transition-colors duration-150 ${pathname === '/products/dm510-embedded' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-primary-1 hover:text-primary'}`}>
+                      <span>🌾</span>
+                      Embedded Solution
                     </Link>
-                    <Link href="/products/dm-mobile" className={`block px-4 py-2 text-sm transition-colors duration-150 ${pathname === '/products/dm-mobile' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-primary-2 hover:text-primary'}`}>
-                      DM Mobile (Remote Access)
+                    <Link href="/products/dm-mobile" className={`flex items-center gap-2 px-4 py-2 text-sm transition-colors duration-150 ${pathname === '/products/dm-mobile' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-primary-1 hover:text-primary'}`}>
+                      <span>📱</span>
+                      Mobile Monitoring
                     </Link>
-                    <Link href="/products/moisture-monitor-pro" className={`block px-4 py-2 text-sm transition-colors duration-150 ${pathname === '/products/moisture-monitor-pro' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-primary-2 hover:text-primary'}`}>
-                      Moisture Monitor Pro (MMP)
+                    <Link href="/products/moisture-monitor-pro" className={`flex items-center gap-2 px-4 py-2 text-sm transition-colors duration-150 ${pathname === '/products/moisture-monitor-pro' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-primary-1 hover:text-primary'}`}>
+                      <span>🌾</span>
+                      Monitor Pro (MMP)
                     </Link>
-                    <Link href="/products/dm100" className={`block px-4 py-2 text-sm transition-colors duration-150 ${pathname === '/products/dm100' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-primary-2 hover:text-primary'}`}>
-                      Dryer Master DM100
+                    <Link href="/products/dm100" className={`flex items-center gap-2 px-4 py-2 text-sm transition-colors duration-150 ${pathname === '/products/dm100' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-primary-1 hover:text-primary'}`}>
+                      <span>🌽</span>
+                      DM100 System
                     </Link>
                   </div>
                 </div>
@@ -173,13 +185,15 @@ const Header = () => {
               onMouseEnter={() => handleButtonMouseEnter('customers')}
               onMouseLeave={handleButtonMouseLeave}
             >
-              <button className={`flex items-center px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
+              <button className={`flex items-center gap-0.5 lg:gap-1 px-1.5 lg:px-2 xl:px-3 py-2 rounded-md text-xs xl:text-sm font-medium transition-all duration-200 ${
                 isCustomersActive() 
                   ? 'bg-primary text-white shadow-md border-2 border-primary-dark' 
-                  : 'text-gray-700 hover:text-primary hover:bg-primary-2 hover:shadow-sm'
+                  : 'text-gray-700 hover:text-primary hover:bg-primary-1 hover:shadow-sm'
               }`}>
-                Our Customers
-                <svg className="ml-1 h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+                <span className="text-xs lg:text-sm">👨‍🌾</span>
+                <span className="whitespace-nowrap hidden lg:inline xl:inline">Farm Partners</span>
+                <span className="whitespace-nowrap lg:hidden">Partners</span>
+                <svg className="ml-0.5 h-3 w-3 xl:h-4 xl:w-4" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
                 </svg>
               </button>
@@ -191,14 +205,17 @@ const Header = () => {
                   onMouseLeave={handleDropdownMouseLeave}
                 >
                   <div className="py-1">
-                    <Link href="/customers/experiences" className={`block px-4 py-2 text-sm transition-colors duration-150 ${pathname === '/customers/experiences' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-primary-2 hover:text-primary'}`}>
-                      Customer Experiences
+                    <Link href="/customers/experiences" className={`flex items-center gap-2 px-4 py-2 text-sm transition-colors duration-150 ${pathname === '/customers/experiences' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-primary-1 hover:text-primary'}`}>
+                      <span>🌾</span>
+                      Farm Success Stories
                     </Link>
-                    <Link href="/customers/manufacturers" className={`block px-4 py-2 text-sm transition-colors duration-150 ${pathname === '/customers/manufacturers' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-primary-2 hover:text-primary'}`}>
-                      Dryer Manufacturers
+                    <Link href="/customers/manufacturers" className={`flex items-center gap-2 px-4 py-2 text-sm transition-colors duration-150 ${pathname === '/customers/manufacturers' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-primary-1 hover:text-primary'}`}>
+                      <span>🏭</span>
+                      Equipment Partners
                     </Link>
-                    <Link href="/customers/examples" className={`block px-4 py-2 text-sm transition-colors duration-150 ${pathname === '/customers/examples' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-primary-2 hover:text-primary'}`}>
-                      Application Examples
+                    <Link href="/customers/examples" className={`flex items-center gap-2 px-4 py-2 text-sm transition-colors duration-150 ${pathname === '/customers/examples' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-primary-1 hover:text-primary'}`}>
+                      <span>🌽</span>
+                      Farm Applications
                     </Link>
                   </div>
                 </div>
@@ -211,13 +228,15 @@ const Header = () => {
               onMouseEnter={() => handleButtonMouseEnter('support')}
               onMouseLeave={handleButtonMouseLeave}
             >
-              <button className={`flex items-center px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
+              <button className={`flex items-center gap-0.5 lg:gap-1 px-1.5 lg:px-2 xl:px-3 py-2 rounded-md text-xs xl:text-sm font-medium transition-all duration-200 ${
                 isSupportActive() 
                   ? 'bg-primary text-white shadow-md border-2 border-primary-dark' 
-                  : 'text-gray-700 hover:text-primary hover:bg-primary-2 hover:shadow-sm'
+                  : 'text-gray-700 hover:text-primary hover:bg-primary-1 hover:shadow-sm'
               }`}>
-                Support
-                <svg className="ml-1 h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+                <span className="text-xs lg:text-sm">🔧</span>
+                <span className="whitespace-nowrap hidden lg:inline xl:inline">Farm Support</span>
+                <span className="whitespace-nowrap lg:hidden">Support</span>
+                <svg className="ml-0.5 h-3 w-3 xl:h-4 xl:w-4" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
                 </svg>
               </button>
@@ -229,17 +248,21 @@ const Header = () => {
                   onMouseLeave={handleDropdownMouseLeave}
                 >
                   <div className="py-1">
-                    <Link href="/support/manuals" className={`block px-4 py-2 text-sm transition-colors duration-150 ${pathname === '/support/manuals' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-primary-2 hover:text-primary'}`}>
-                      Manuals
+                    <Link href="/support/manuals" className={`flex items-center gap-2 px-4 py-2 text-sm transition-colors duration-150 ${pathname === '/support/manuals' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-primary-1 hover:text-primary'}`}>
+                      <span>📖</span>
+                      Equipment Manuals
                     </Link>
-                    <Link href="/support/videos" className={`block px-4 py-2 text-sm transition-colors duration-150 ${pathname === '/support/videos' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-primary-2 hover:text-primary'}`}>
-                      Videos
+                    <Link href="/support/videos" className={`flex items-center gap-2 px-4 py-2 text-sm transition-colors duration-150 ${pathname === '/support/videos' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-primary-1 hover:text-primary'}`}>
+                      <span>🎥</span>
+                      Training Videos
                     </Link>
-                    <Link href="/support/help" className={`block px-4 py-2 text-sm transition-colors duration-150 ${pathname === '/support/help' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-primary-2 hover:text-primary'}`}>
-                      Support
+                    <Link href="/support/help" className={`flex items-center gap-2 px-4 py-2 text-sm transition-colors duration-150 ${pathname === '/support/help' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-primary-1 hover:text-primary'}`}>
+                      <span>💬</span>
+                      Farm Assistance
                     </Link>
-                    <Link href="/support/register" className={`block px-4 py-2 text-sm transition-colors duration-150 ${pathname === '/support/register' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-primary-2 hover:text-primary'}`}>
-                      Register
+                    <Link href="/support/register" className={`flex items-center gap-2 px-4 py-2 text-sm transition-colors duration-150 ${pathname === '/support/register' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-primary-1 hover:text-primary'}`}>
+                      <span>📝</span>
+                      Register Equipment
                     </Link>
                   </div>
                 </div>
@@ -248,20 +271,24 @@ const Header = () => {
 
             <Link 
               href="/dealers" 
-              className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
+              className={`flex items-center gap-0.5 lg:gap-1 px-1.5 lg:px-2 xl:px-3 py-2 rounded-md text-xs xl:text-sm font-medium transition-all duration-200 ${
                 pathname === '/dealers' 
                   ? 'bg-primary text-white shadow-md border-2 border-primary-dark' 
-                  : 'text-gray-700 hover:text-primary hover:bg-primary-2 hover:shadow-sm'
+                  : 'text-gray-700 hover:text-primary hover:bg-primary-1 hover:shadow-sm'
               }`}
             >
-              Find a Dealer
+              <span className="text-xs lg:text-sm">🏪</span>
+              <span className="whitespace-nowrap hidden lg:inline xl:inline">Find Local Dealer</span>
+              <span className="whitespace-nowrap lg:hidden">Dealers</span>
             </Link>
 
             <Link 
               href="/contact" 
-              className="ml-4 bg-secondary text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-secondary-dark transition-colors duration-200 shadow-md"
+              className="ml-1 lg:ml-2 xl:ml-4 flex items-center gap-0.5 lg:gap-1 bg-secondary text-white px-2 lg:px-3 xl:px-4 py-2 rounded-md text-xs xl:text-sm font-medium hover:bg-secondary-dark transition-colors duration-200 shadow-md"
             >
-              Contact Us
+              <span className="text-xs lg:text-sm">📞</span>
+              <span className="whitespace-nowrap hidden lg:inline xl:inline">Talk to Expert</span>
+              <span className="whitespace-nowrap lg:hidden">Contact</span>
             </Link>
           </div>
 
@@ -296,7 +323,7 @@ const Header = () => {
         {/* Menu panel - Full screen */}
         <div className={`fixed inset-0 bg-white transform transition-transform duration-300 ease-out ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'} overflow-y-auto`}>
           {/* Mobile Header */}
-          <div className="flex items-center justify-between p-6 border-b border-gray-100 bg-gradient-to-r from-primary-1 to-white">
+          <div className="flex items-center justify-between p-6 border-b border-gray-100 bg-gradient-to-r from-amber-50 via-green-50 to-primary-1">
             <Image
               src="/header-logo.png"
               alt="Dryer Master"
@@ -318,7 +345,7 @@ const Header = () => {
           </div>
           
           {/* Menu Content */}
-          <div className="flex-1 p-6 space-y-3 bg-gradient-to-b from-white to-gray-50">
+          <div className="flex-1 p-6 space-y-3 bg-gradient-to-b from-amber-50/30 via-white to-green-50/30">
             <Link 
               href="/" 
               onClick={closeMenu}
@@ -328,8 +355,8 @@ const Header = () => {
                   : 'text-gray-700 hover:bg-primary-1 hover:text-primary'
               }`}
             >
-              <span className="mr-3 text-lg">🏠</span>
-              Home
+              <span className="mr-3 text-lg">🏡</span>
+              Farm Home
             </Link>
 
             <Link 
@@ -341,8 +368,8 @@ const Header = () => {
                   : 'text-gray-700 hover:bg-primary-1 hover:text-primary'
               }`}
             >
-              <span className="mr-3 text-lg">ℹ️</span>
-              About Us
+              <span className="mr-3 text-lg">🌾</span>
+              Our Story
             </Link>
 
             {/* Products Mobile Dropdown */}
@@ -356,8 +383,8 @@ const Header = () => {
                 }`}
               >
                 <div className="flex items-center">
-                  <span className="mr-3 text-lg">📊</span>
-                  Our Products
+                  <span className="mr-3 text-lg">🏭</span>
+                  Grain Solutions
                 </div>
                 <svg className={`h-5 w-5 transform transition-transform duration-200 ${activeDropdown === 'products-mobile' ? 'rotate-180' : ''}`} fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
@@ -366,28 +393,28 @@ const Header = () => {
               {activeDropdown === 'products-mobile' && (
                 <div className="bg-white border-t border-gray-100 space-y-1 p-2">
                   <Link href="/products/moisture-sensors" onClick={closeMenu} className={`flex items-center px-3 py-2 rounded-lg text-sm transition-all duration-200 ${pathname === '/products/moisture-sensors' ? 'bg-secondary text-white shadow-sm' : 'text-gray-600 hover:text-secondary hover:bg-secondary-1'}`}>
-                    <span className="mr-2">🎯</span>
-                    Real-Time Moisture Sensors
+                    <span className="mr-2">🌾</span>
+                    Moisture Sensors
                   </Link>
                   <Link href="/products/dm510-controller" onClick={closeMenu} className={`flex items-center px-3 py-2 rounded-lg text-sm transition-all duration-200 ${pathname === '/products/dm510-controller' ? 'bg-secondary text-white shadow-sm' : 'text-gray-600 hover:text-secondary hover:bg-secondary-1'}`}>
-                    <span className="mr-2">🏛️</span>
-                    Dryer Master 510 Controller
+                    <span className="mr-2">🌽</span>
+                    DM510 Controller
                   </Link>
                   <Link href="/products/dm510-embedded" onClick={closeMenu} className={`flex items-center px-3 py-2 rounded-lg text-sm transition-all duration-200 ${pathname === '/products/dm510-embedded' ? 'bg-secondary text-white shadow-sm' : 'text-gray-600 hover:text-secondary hover:bg-secondary-1'}`}>
-                    <span className="mr-2">💻</span>
-                    DM510 Embedded Solution
+                    <span className="mr-2">🌾</span>
+                    Embedded Solution
                   </Link>
                   <Link href="/products/dm-mobile" onClick={closeMenu} className={`flex items-center px-3 py-2 rounded-lg text-sm transition-all duration-200 ${pathname === '/products/dm-mobile' ? 'bg-secondary text-white shadow-sm' : 'text-gray-600 hover:text-secondary hover:bg-secondary-1'}`}>
                     <span className="mr-2">📱</span>
-                    DM Mobile (Remote Access)
+                    Mobile Monitoring
                   </Link>
                   <Link href="/products/moisture-monitor-pro" onClick={closeMenu} className={`flex items-center px-3 py-2 rounded-lg text-sm transition-all duration-200 ${pathname === '/products/moisture-monitor-pro' ? 'bg-secondary text-white shadow-sm' : 'text-gray-600 hover:text-secondary hover:bg-secondary-1'}`}>
-                    <span className="mr-2">📈</span>
-                    Moisture Monitor Pro (MMP)
+                    <span className="mr-2">🌾</span>
+                    Monitor Pro (MMP)
                   </Link>
                   <Link href="/products/dm100" onClick={closeMenu} className={`flex items-center px-3 py-2 rounded-lg text-sm transition-all duration-200 ${pathname === '/products/dm100' ? 'bg-secondary text-white shadow-sm' : 'text-gray-600 hover:text-secondary hover:bg-secondary-1'}`}>
-                    <span className="mr-2">🏭</span>
-                    Dryer Master DM100
+                    <span className="mr-2">🌽</span>
+                    DM100 System
                   </Link>
                 </div>
               )}
@@ -404,8 +431,8 @@ const Header = () => {
                 }`}
               >
                 <div className="flex items-center">
-                  <span className="mr-3 text-lg">👥</span>
-                  Our Customers
+                  <span className="mr-3 text-lg">👨‍🌾</span>
+                  Farm Partners
                 </div>
                 <svg className={`h-5 w-5 transform transition-transform duration-200 ${activeDropdown === 'customers-mobile' ? 'rotate-180' : ''}`} fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
@@ -414,16 +441,16 @@ const Header = () => {
               {activeDropdown === 'customers-mobile' && (
                 <div className="bg-white border-t border-gray-100 space-y-1 p-2">
                   <Link href="/customers/experiences" onClick={closeMenu} className={`flex items-center px-3 py-2 rounded-lg text-sm transition-all duration-200 ${pathname === '/customers/experiences' ? 'bg-secondary text-white shadow-sm' : 'text-gray-600 hover:text-secondary hover:bg-secondary-1'}`}>
-                    <span className="mr-2">⭐</span>
-                    Customer Experiences
+                    <span className="mr-2">🌾</span>
+                    Farm Success Stories
                   </Link>
                   <Link href="/customers/manufacturers" onClick={closeMenu} className={`flex items-center px-3 py-2 rounded-lg text-sm transition-all duration-200 ${pathname === '/customers/manufacturers' ? 'bg-secondary text-white shadow-sm' : 'text-gray-600 hover:text-secondary hover:bg-secondary-1'}`}>
                     <span className="mr-2">🏭</span>
-                    Dryer Manufacturers
+                    Equipment Partners
                   </Link>
                   <Link href="/customers/examples" onClick={closeMenu} className={`flex items-center px-3 py-2 rounded-lg text-sm transition-all duration-200 ${pathname === '/customers/examples' ? 'bg-secondary text-white shadow-sm' : 'text-gray-600 hover:text-secondary hover:bg-secondary-1'}`}>
-                    <span className="mr-2">💡</span>
-                    Application Examples
+                    <span className="mr-2">🌽</span>
+                    Farm Applications
                   </Link>
                 </div>
               )}
@@ -440,8 +467,8 @@ const Header = () => {
                 }`}
               >
                 <div className="flex items-center">
-                  <span className="mr-3 text-lg">🛠️</span>
-                  Support
+                  <span className="mr-3 text-lg">🔧</span>
+                  Farm Support
                 </div>
                 <svg className={`h-5 w-5 transform transition-transform duration-200 ${activeDropdown === 'support-mobile' ? 'rotate-180' : ''}`} fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
@@ -451,19 +478,19 @@ const Header = () => {
                 <div className="bg-white border-t border-gray-100 space-y-1 p-2">
                   <Link href="/support/manuals" onClick={closeMenu} className={`flex items-center px-3 py-2 rounded-lg text-sm transition-all duration-200 ${pathname === '/support/manuals' ? 'bg-secondary text-white shadow-sm' : 'text-gray-600 hover:text-secondary hover:bg-secondary-1'}`}>
                     <span className="mr-2">📖</span>
-                    Manuals
+                    Equipment Manuals
                   </Link>
                   <Link href="/support/videos" onClick={closeMenu} className={`flex items-center px-3 py-2 rounded-lg text-sm transition-all duration-200 ${pathname === '/support/videos' ? 'bg-secondary text-white shadow-sm' : 'text-gray-600 hover:text-secondary hover:bg-secondary-1'}`}>
                     <span className="mr-2">🎥</span>
-                    Videos
+                    Training Videos
                   </Link>
                   <Link href="/support/help" onClick={closeMenu} className={`flex items-center px-3 py-2 rounded-lg text-sm transition-all duration-200 ${pathname === '/support/help' ? 'bg-secondary text-white shadow-sm' : 'text-gray-600 hover:text-secondary hover:bg-secondary-1'}`}>
                     <span className="mr-2">💬</span>
-                    Get Help
+                    Farm Assistance
                   </Link>
                   <Link href="/support/register" onClick={closeMenu} className={`flex items-center px-3 py-2 rounded-lg text-sm transition-all duration-200 ${pathname === '/support/register' ? 'bg-secondary text-white shadow-sm' : 'text-gray-600 hover:text-secondary hover:bg-secondary-1'}`}>
                     <span className="mr-2">📝</span>
-                    Register
+                    Register Equipment
                   </Link>
                 </div>
               )}
@@ -478,8 +505,8 @@ const Header = () => {
                   : 'text-gray-700 hover:bg-primary-1 hover:text-primary'
               }`}
             >
-              <span className="mr-3 text-lg">🗺️</span>
-              Find a Dealer
+              <span className="mr-3 text-lg">🏪</span>
+              Find Local Dealer
             </Link>
 
             {/* Divider */}
@@ -490,8 +517,8 @@ const Header = () => {
               onClick={closeMenu}
               className="flex items-center justify-center px-4 py-3 bg-secondary text-white rounded-xl text-base font-medium hover:bg-secondary-dark transition-all duration-200 shadow-md hover:shadow-lg"
             >
-              <span className="mr-2 text-lg">📧</span>
-              Contact Us
+              <span className="mr-2 text-lg">📞</span>
+              Talk to Expert
             </Link>
           </div>
         </div>

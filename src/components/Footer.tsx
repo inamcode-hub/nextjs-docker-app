@@ -49,22 +49,32 @@ const Footer = () => {
                 className="mb-6 filter-none bg-white p-4 sm:p-6 rounded-lg border-2 border-gray-300 transition-all duration-200 shadow-md max-w-48 sm:max-w-64 w-auto h-auto object-contain block hover:shadow-lg hover:border-secondary"
               />
             </div>
-            <p className="text-gray-300 text-lg leading-relaxed mb-12">
-              Revolutionizing agriculture with intelligent moisture monitoring solutions for the modern farm.
+            <p className="text-gray-300 text-lg leading-relaxed mb-8">
+              🌾 Empowering farmers with intelligent grain drying solutions since 2001 🌾
             </p>
-            <div className="flex gap-8 mt-8">
-              <div className="flex items-center gap-4 p-6 bg-white/10 rounded-lg backdrop-blur-sm border border-white/20">
+            <div className="text-amber-200 text-sm mb-8 italic">
+              "Trusted by 50,000+ farms worldwide for superior grain quality"
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
+              <div className="flex items-center gap-3 p-4 bg-amber-900/20 rounded-lg backdrop-blur-sm border border-amber-600/30">
                 <div className="text-xl">🌾</div>
                 <div className="flex flex-col">
-                  <span className="text-xl font-bold text-secondary">50K+</span>
-                  <span className="text-xs text-gray-300">Farms Served</span>
+                  <span className="text-lg font-bold text-amber-300">50K+</span>
+                  <span className="text-xs text-amber-200">Farms Protected</span>
                 </div>
               </div>
-              <div className="flex items-center gap-4 p-6 bg-white/10 rounded-lg backdrop-blur-sm border border-white/20">
-                <div className="text-xl">⏱️</div>
+              <div className="flex items-center gap-3 p-4 bg-green-900/20 rounded-lg backdrop-blur-sm border border-green-600/30">
+                <div className="text-xl">🌽</div>
                 <div className="flex flex-col">
-                  <span className="text-xl font-bold text-secondary">99.9%</span>
-                  <span className="text-xs text-gray-300">Uptime</span>
+                  <span className="text-lg font-bold text-green-300">99.9%</span>
+                  <span className="text-xs text-green-200">Grain Quality</span>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 p-4 bg-yellow-900/20 rounded-lg backdrop-blur-sm border border-yellow-600/30">
+                <div className="text-xl">🚜</div>
+                <div className="flex flex-col">
+                  <span className="text-lg font-bold text-yellow-300">24/7</span>
+                  <span className="text-xs text-yellow-200">Farm Support</span>
                 </div>
               </div>
             </div>
@@ -74,7 +84,7 @@ const Footer = () => {
           <div className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
             <h3 className="flex items-center gap-3 text-secondary text-lg font-semibold mb-6">
               <BarChart3 size={20} />
-              Products
+              Grain Solutions
             </h3>
             <ul className="list-none m-0 p-0">
               <li className="mb-3">
@@ -114,7 +124,7 @@ const Footer = () => {
           <div className="animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
             <h3 className="flex items-center gap-3 text-secondary text-lg font-semibold mb-6">
               <Wrench size={20} />
-              Support
+              Farm Support
             </h3>
             <ul className="list-none m-0 p-0">
               <li className="mb-3">
@@ -331,8 +341,8 @@ const Footer = () => {
             {/* Bottom Bar */}
             <div className="pt-4 border-t border-white/5">
               <div className="flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-gray-500">
-                <span>Built with ❤️ for modern agriculture</span>
-                <span>Trusted by 50,000+ farms worldwide</span>
+                <span>🌾 Proudly serving farmers since 2001 🌾</span>
+                <span>🚜 Protecting harvests across North America 🚜</span>
               </div>
             </div>
           </div>
