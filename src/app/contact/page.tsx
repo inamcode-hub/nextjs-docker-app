@@ -257,7 +257,7 @@ export default function Contact() {
                     <div className="text-xs text-gray-600 uppercase tracking-wide">Support</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">20+</div>
+                    <div className="text-2xl font-bold text-primary">40+</div>
                     <div className="text-xs text-gray-600 uppercase tracking-wide">Years Experience</div>
                   </div>
                   <div className="text-center">

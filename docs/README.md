@@ -50,4 +50,4 @@ docs/
 
 ---
 
-*Last Updated: $(date)*
+*Last Updated: December 2024*
