@@ -52,7 +52,7 @@ const videosData: Video[] = [
     description: 'An overview of how the DM510 system works and its grain drying capabilities.',
     category: 'Professional Training',
     videoUrl: 'https://www.youtube.com/embed/HpfMRHYjUW0',
-    thumbnailUrl: undefined
+    thumbnailUrl: '/video-thumbnails/dm510/dm510-introduction.jpg'
   },
   {
     id: 'dm510-training',
@@ -69,7 +69,7 @@ const videosData: Video[] = [
     description: 'An excerpt from the DM510 training video that provides an overview of the Dryer Master approach to grain drying and how it can help improve your drying process.',
     category: 'Professional Training',
     videoUrl: 'https://www.youtube.com/embed/6KksSwgZfiw',
-    thumbnailUrl: undefined
+    thumbnailUrl: '/video-thumbnails/professional-training/grain-drying-approach.jpg'
   },
   {
     id: 'moisture-sampling',
@@ -77,7 +77,7 @@ const videosData: Video[] = [
     description: 'An excerpt from the DM510 training video that focuses on suggested procedures for accurate moisture sampling and sensor calibration.',
     category: 'Professional Training',
     videoUrl: 'https://www.youtube.com/embed/dNlh3xRNLmc',
-    thumbnailUrl: undefined
+    thumbnailUrl: '/video-thumbnails/professional-training/moisture-sampling.jpg'
   },
 
   // Moisture Monitor Pro Video
@@ -97,7 +97,7 @@ const videosData: Video[] = [
     description: 'This video goes over the basic operation of the DM100 system.',
     category: 'DM100',
     videoUrl: 'https://www.youtube.com/embed/sPRxJRw5zi4',
-    thumbnailUrl: undefined
+    thumbnailUrl: '/video-thumbnails/dm100/dm100-interface.jpg'
   },
   {
     id: 'dm100-state-logic',
@@ -105,7 +105,7 @@ const videosData: Video[] = [
     description: 'This video covers state logic control and how it is used in the DM100.',
     category: 'DM100',
     videoUrl: 'https://www.youtube.com/embed/6cgTbz7bU5E',
-    thumbnailUrl: undefined
+    thumbnailUrl: '/video-thumbnails/dm100/dm100-state-logic.jpg'
   },
   {
     id: 'dm100-calibration',
@@ -113,7 +113,7 @@ const videosData: Video[] = [
     description: 'This video goes over moisture sensor calibration on the DM100.',
     category: 'DM100',
     videoUrl: 'https://www.youtube.com/embed/U72nZad0Xuo',
-    thumbnailUrl: undefined
+    thumbnailUrl: '/video-thumbnails/dm100/dm100-calibration.jpg'
   },
 
   // Moisture Sensor Videos
@@ -157,8 +157,8 @@ const VideoThumbnail = ({ video }: { video: Video }) => {
   
   const videoId = getYouTubeId(video.videoUrl || '');
   
-  // Only try the highest quality thumbnail once
-  const thumbnailUrl = videoId ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg` : null;
+  // Use provided thumbnail URL or generate YouTube thumbnail
+  const thumbnailUrl = video.thumbnailUrl || (videoId ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg` : null);
 
   const handleImageError = () => {
     setImageError(true);
@@ -206,7 +206,7 @@ const VideoThumbnail = ({ video }: { video: Video }) => {
 
   return (
     <div className="relative h-48 overflow-hidden group rounded-t-2xl">
-      {!imageError && thumbnailUrl && video.category !== 'Professional Training' && video.category !== 'DM100' ? (
+      {!imageError && thumbnailUrl && video.category !== 'Professional Training' ? (
         <>
           <Image 
             src={thumbnailUrl}
