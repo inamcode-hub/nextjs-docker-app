@@ -84,7 +84,7 @@ const Footer = () => {
           <div className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
             <h3 className="flex items-center gap-3 text-secondary text-lg font-semibold mb-6">
               <BarChart3 size={20} />
-              Grain Solutions
+              Products
             </h3>
             <ul className="list-none m-0 p-0">
               <li className="mb-3">
@@ -96,25 +96,31 @@ const Footer = () => {
               <li className="mb-3">
                 <Link href="/products/dm510-controller" className="flex items-center gap-3 text-gray-300 no-underline text-sm py-2 px-3 transition-all duration-200 rounded-md border border-transparent hover:text-white hover:bg-secondary hover:shadow-sm">
                   <Settings size={16} />
-                  DM510 Controller
+                  Dryer Master 510 Controller
                 </Link>
               </li>
               <li className="mb-3">
                 <Link href="/products/dm510-embedded" className="flex items-center gap-3 text-gray-300 no-underline text-sm py-2 px-3 transition-all duration-200 rounded-md border border-transparent hover:text-white hover:bg-secondary hover:shadow-sm">
                   <Laptop size={16} />
-                  DM510 Embedded
+                  DM510 Embedded Solution
                 </Link>
               </li>
               <li className="mb-3">
                 <Link href="/products/dm-mobile" className="flex items-center gap-3 text-gray-300 no-underline text-sm py-2 px-3 transition-all duration-200 rounded-md border border-transparent hover:text-white hover:bg-secondary hover:shadow-sm">
                   <Smartphone size={16} />
-                  DM Mobile App
+                  DM Mobile (Remote Access)
                 </Link>
               </li>
               <li className="mb-3">
                 <Link href="/products/moisture-monitor-pro" className="flex items-center gap-3 text-gray-300 no-underline text-sm py-2 px-3 transition-all duration-200 rounded-md border border-transparent hover:text-white hover:bg-secondary hover:shadow-sm">
                   <BarChart3 size={16} />
-                  Moisture Monitor Pro
+                  Moisture Monitor Pro (MMP)
+                </Link>
+              </li>
+              <li className="mb-3">
+                <Link href="/products/dm100" className="flex items-center gap-3 text-gray-300 no-underline text-sm py-2 px-3 transition-all duration-200 rounded-md border border-transparent hover:text-white hover:bg-secondary hover:shadow-sm">
+                  <Settings size={16} />
+                  Dryer Master DM100
                 </Link>
               </li>
             </ul>
@@ -124,31 +130,31 @@ const Footer = () => {
           <div className="animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
             <h3 className="flex items-center gap-3 text-secondary text-lg font-semibold mb-6">
               <Wrench size={20} />
-              Farm Support
+              Support
             </h3>
             <ul className="list-none m-0 p-0">
               <li className="mb-3">
                 <Link href="/support/help" className="flex items-center gap-3 text-gray-300 no-underline text-sm py-2 px-3 transition-all duration-200 rounded-md border border-transparent hover:text-white hover:bg-secondary hover:shadow-sm">
                   <MessageCircle size={16} />
-                  Get Help
+                  Support
                 </Link>
               </li>
               <li className="mb-3">
                 <Link href="/support/manuals" className="flex items-center gap-3 text-gray-300 no-underline text-sm py-2 px-3 transition-all duration-200 rounded-md border border-transparent hover:text-white hover:bg-secondary hover:shadow-sm">
                   <Book size={16} />
-                  Documentation
+                  Manuals
                 </Link>
               </li>
               <li className="mb-3">
                 <Link href="/support/videos" className="flex items-center gap-3 text-gray-300 no-underline text-sm py-2 px-3 transition-all duration-200 rounded-md border border-transparent hover:text-white hover:bg-secondary hover:shadow-sm">
                   <Video size={16} />
-                  Video Tutorials
+                  Videos
                 </Link>
               </li>
               <li className="mb-3">
                 <Link href="/support/register" className="flex items-center gap-3 text-gray-300 no-underline text-sm py-2 px-3 transition-all duration-200 rounded-md border border-transparent hover:text-white hover:bg-secondary hover:shadow-sm">
                   <FileText size={16} />
-                  Product Registration
+                  Register
                 </Link>
               </li>
             </ul>
@@ -170,13 +176,13 @@ const Footer = () => {
               <li className="mb-3">
                 <Link href="/customers/experiences" className="flex items-center gap-3 text-gray-300 no-underline text-sm py-2 px-3 transition-all duration-200 rounded-md border border-transparent hover:text-white hover:bg-secondary hover:shadow-sm">
                   <Star size={16} />
-                  Success Stories
+                  Customer Experiences
                 </Link>
               </li>
               <li className="mb-3">
                 <Link href="/dealers" className="flex items-center gap-3 text-gray-300 no-underline text-sm py-2 px-3 transition-all duration-200 rounded-md border border-transparent hover:text-white hover:bg-secondary hover:shadow-sm">
                   <Map size={16} />
-                  Find Dealers
+                  Find a Dealer
                 </Link>
               </li>
               <li className="mb-3">
