@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { Play, Clock, Filter, Search, X, Video as VideoIcon, Monitor, Smartphone, Settings, Target, Image as ImageIcon } from 'lucide-react';
+import { Play, Clock, Filter, Search, X, Video as VideoIcon, Monitor, Smartphone, Settings, Target } from 'lucide-react';
 
 interface Video {
   id: string;
@@ -51,7 +51,7 @@ const videosData: Video[] = [
     description: 'An overview of how the DM510 system works and its grain drying capabilities.',
     category: 'Professional Training',
     videoUrl: 'https://www.youtube.com/embed/HpfMRHYjUW0',
-    thumbnailUrl: null
+    thumbnailUrl: undefined
   },
   {
     id: 'dm510-training',
@@ -68,7 +68,7 @@ const videosData: Video[] = [
     description: 'An excerpt from the DM510 training video that provides an overview of the Dryer Master approach to grain drying and how it can help improve your drying process.',
     category: 'Professional Training',
     videoUrl: 'https://www.youtube.com/embed/6KksSwgZfiw',
-    thumbnailUrl: null
+    thumbnailUrl: undefined
   },
   {
     id: 'moisture-sampling',
@@ -76,7 +76,7 @@ const videosData: Video[] = [
     description: 'An excerpt from the DM510 training video that focuses on suggested procedures for accurate moisture sampling and sensor calibration.',
     category: 'Professional Training',
     videoUrl: 'https://www.youtube.com/embed/dNlh3xRNLmc',
-    thumbnailUrl: null
+    thumbnailUrl: undefined
   },
 
   // Moisture Monitor Pro Video
@@ -96,7 +96,7 @@ const videosData: Video[] = [
     description: 'This video goes over the basic operation of the DM100 system.',
     category: 'Professional Training',
     videoUrl: 'https://www.youtube.com/embed/sPRxJRw5zi4',
-    thumbnailUrl: null
+    thumbnailUrl: undefined
   },
   {
     id: 'dm100-state-logic',
@@ -104,7 +104,7 @@ const videosData: Video[] = [
     description: 'This video covers state logic control and how it is used in the DM100.',
     category: 'Professional Training',
     videoUrl: 'https://www.youtube.com/embed/6cgTbz7bU5E',
-    thumbnailUrl: null
+    thumbnailUrl: undefined
   },
   {
     id: 'dm100-calibration',
@@ -112,7 +112,7 @@ const videosData: Video[] = [
     description: 'This video goes over moisture sensor calibration on the DM100.',
     category: 'Professional Training',
     videoUrl: 'https://www.youtube.com/embed/U72nZad0Xuo',
-    thumbnailUrl: null
+    thumbnailUrl: undefined
   },
 
   // Moisture Sensor Videos
@@ -153,7 +153,6 @@ const getYouTubeId = (url: string): string => {
 // VideoThumbnail component with simple fallback design
 const VideoThumbnail = ({ video }: { video: Video }) => {
   const [imageError, setImageError] = useState(false);
-  const [imageLoaded, setImageLoaded] = useState(false);
   
   const videoId = getYouTubeId(video.videoUrl || '');
   
@@ -164,9 +163,6 @@ const VideoThumbnail = ({ video }: { video: Video }) => {
     setImageError(true);
   };
 
-  const handleImageLoad = () => {
-    setImageLoaded(true);
-  };
 
   // Beautiful fallback based on category
   const getCategoryGradient = (category: string) => {
@@ -216,7 +212,6 @@ const VideoThumbnail = ({ video }: { video: Video }) => {
             alt={video.title}
             className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 rounded-t-2xl"
             onError={handleImageError}
-            onLoad={handleImageLoad}
             loading="lazy"
           />
           <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors duration-300 rounded-t-2xl"></div>
@@ -433,7 +428,7 @@ const VideoGallery = () => {
             </div>
             <h3 className="text-3xl font-bold text-primary mb-4">No videos found</h3>
             <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
-              We couldn't find any videos matching your search criteria. Try adjusting your filters or search terms.
+              We couldn&apos;t find any videos matching your search criteria. Try adjusting your filters or search terms.
             </p>
             <button 
               className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold bg-primary text-white rounded-xl hover:bg-primary-dark hover:scale-105 transition-all duration-300"
@@ -539,7 +534,7 @@ const VideoGallery = () => {
                 {!selectedVideo.videoUrl && (
                   <div className="mt-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
                     <p className="text-sm text-blue-800">
-                      <strong>Note:</strong> We're currently updating our video library with direct embeddings. 
+                      <strong>Note:</strong> We&apos;re currently updating our video library with direct embeddings. 
                       In the meantime, all videos are available on our official YouTube channel.
                     </p>
                   </div>

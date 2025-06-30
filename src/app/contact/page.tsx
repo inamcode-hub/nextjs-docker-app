@@ -1,6 +1,6 @@
 import { generateMetadata as genMeta } from "@/lib/metadata";
 import ContactForm from "@/components/ContactForm";
-import { Phone, Smartphone, Mail, MapPin, Clock, Users, Star, Globe, MessageCircle, Headphones } from 'lucide-react';
+import { Phone, Smartphone, Mail, MapPin, Clock, Users, Star, Globe, MessageCircle } from 'lucide-react';
 
 export const metadata = genMeta({
   title: "Contact DryerMaster - Sales & Technical Support",
@@ -80,7 +80,7 @@ export default function Contact() {
               <div className="bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden">
                 <div className="bg-gradient-to-r from-gray-50 to-gray-100/50 border-b border-gray-200 p-6">
                   <h2 className="text-2xl font-bold text-gray-800 mb-2">Send us a Message</h2>
-                  <p className="text-gray-600">Fill out the form below and we'll get back to you within 24 hours.</p>
+                  <p className="text-gray-600">Fill out the form below and we&apos;ll get back to you within 24 hours.</p>
                 </div>
                 <div className="p-6 lg:p-8">
                   <ContactForm />
@@ -181,7 +181,7 @@ export default function Contact() {
                     <Clock size={20} />
                     Business Hours
                   </h3>
-                  <p className="text-white/90 text-sm">When we're available</p>
+                  <p className="text-white/90 text-sm">When we&apos;re available</p>
                 </div>
                 <div className="p-6">
                   <div className="space-y-3 text-sm">
@@ -218,7 +218,7 @@ export default function Contact() {
                 </div>
                 <div className="p-6">
                   <p className="text-gray-600 text-sm mb-4 leading-relaxed">
-                    Be part of a growing company that's revolutionizing agricultural technology. We offer competitive benefits, growth opportunities, and a collaborative work environment.
+                    Be part of a growing company that&apos;s revolutionizing agricultural technology. We offer competitive benefits, growth opportunities, and a collaborative work environment.
                   </p>
                   <div className="space-y-2 mb-4">
                     <div className="flex items-center gap-2 text-sm text-gray-600">
@@ -236,7 +236,7 @@ export default function Contact() {
                   </div>
                   <div className="text-center">
                     <p className="text-sm text-gray-500 mb-3">Interested in working with us?</p>
-                    <p className="text-sm font-semibold text-primary">Select "Careers & Employment" in the contact form above</p>
+                    <p className="text-sm font-semibold text-primary">Select &quot;Careers &amp; Employment&quot; in the contact form above</p>
                   </div>
                 </div>
               </div>

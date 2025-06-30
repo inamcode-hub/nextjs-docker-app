@@ -337,7 +337,7 @@ const DealerLocator = () => {
               <div className="text-sm text-gray-600 flex flex-wrap gap-1">
                 {searchTerm && (
                   <span className="bg-white/80 px-2 py-1 rounded-md">
-                    "{searchTerm}"
+                    &quot;{searchTerm}&quot;
                   </span>
                 )}
                 {selectedCountry && (
@@ -375,7 +375,7 @@ const DealerLocator = () => {
             </div>
             <h3 className="text-3xl font-bold text-primary mb-4">No dealers found</h3>
             <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
-              We couldn't find any dealers matching your search criteria. Try adjusting your filters or search terms.
+              We couldn&apos;t find any dealers matching your search criteria. Try adjusting your filters or search terms.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button 
@@ -531,7 +531,7 @@ const DealerLocator = () => {
                 Become an Authorized Dealer
               </h3>
               <p className="text-lg leading-relaxed opacity-90 mb-6 max-w-2xl">
-                Join our growing network of trusted dealers and expand your business with DryerMaster's innovative agricultural solutions. Access exclusive products, training, and support.
+                Join our growing network of trusted dealers and expand your business with DryerMaster&apos;s innovative agricultural solutions. Access exclusive products, training, and support.
               </p>
               <div className="flex flex-wrap gap-4 text-sm">
                 <div className="flex items-center gap-2 bg-white/10 rounded-full px-4 py-2">

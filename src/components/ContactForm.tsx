@@ -72,7 +72,7 @@ const ContactForm = () => {
       } else {
         throw new Error('Failed to send message');
       }
-    } catch (error) {
+    } catch {
       setStatus({ 
         type: 'error', 
         message: 'Sorry, there was an error sending your message. Please try again or contact us directly.' 

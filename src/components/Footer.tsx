@@ -53,7 +53,7 @@ const Footer = () => {
               🌾 Empowering farmers with intelligent grain drying solutions since 2001 🌾
             </p>
             <div className="text-amber-200 text-sm mb-8 italic">
-              "Trusted by 50,000+ farms worldwide for superior grain quality"
+              &quot;Trusted by 50,000+ farms worldwide for superior grain quality&quot;
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
               <div className="flex items-center gap-3 p-4 bg-amber-900/20 rounded-lg backdrop-blur-sm border border-amber-600/30">
