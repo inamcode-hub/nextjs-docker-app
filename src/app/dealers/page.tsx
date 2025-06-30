@@ -10,16 +10,16 @@ export const metadata = genMeta({
 
 export default function Dealers() {
   return (
-    <div className="main-content">
-      <div className="page-header">
-        <div className="container">
-          <h1 className="page-title">Authorized Dealer Network</h1>
-          <p className="page-description">
+    <div className="min-h-screen py-8">
+      <div className="text-center mb-16 py-12 border-b border-gray-5">
+        <div className="max-w-6xl mx-auto px-8">
+          <h1 className="text-4xl text-primary font-bold mb-4">Authorized Dealer Network</h1>
+          <p className="text-lg text-gray-7 max-w-3xl mx-auto">
             Find trusted DryerMaster dealers in your region. Our global network provides expert support, installation services, and genuine parts for all your agricultural moisture monitoring needs.
           </p>
         </div>
       </div>
-      <div className="page-content">
+      <div className="py-8">
         <DealerLocator />
       </div>
     </div>
