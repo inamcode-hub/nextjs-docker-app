@@ -33,6 +33,23 @@ const Header = () => {
     }
   }, [pathname, isProductsActive, isCustomersActive, isSupportActive]);
 
+  // Prevent body scroll when menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.touchAction = 'none';
+    } else {
+      document.body.style.overflow = '';
+      document.body.style.touchAction = '';
+    }
+    
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = '';
+      document.body.style.touchAction = '';
+    };
+  }, [isMenuOpen]);
+
   const handleMouseEnter = (menu: string) => {
     setHoverDropdown(menu);
   };
@@ -49,7 +66,7 @@ const Header = () => {
             <Image
               src="/header-logo.png"
               alt="Dryer Master"
-              className="h-24 w-auto"
+              className="h-16 sm:h-20 md:h-24 w-auto"
               width={200}
               height={60}
               priority
@@ -149,72 +166,132 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="bg-none border-none cursor-pointer p-2 md:hidden"
+            className="bg-none border-none cursor-pointer p-2 md:hidden relative z-60"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            <span className="sr-only">Open main menu</span>
+            <span className="sr-only">{isMenuOpen ? 'Close menu' : 'Open main menu'}</span>
             <div className="flex flex-col gap-1">
-              <span className="w-10 h-1 bg-primary rounded-sm transition-all duration-300"></span>
-              <span className="w-10 h-1 bg-primary rounded-sm transition-all duration-300"></span>
-              <span className="w-10 h-1 bg-primary rounded-sm transition-all duration-300"></span>
+              <span className={`w-10 h-1 bg-primary rounded-sm transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+              <span className={`w-10 h-1 bg-primary rounded-sm transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></span>
+              <span className={`w-10 h-1 bg-primary rounded-sm transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
             </div>
           </button>
         </nav>
 
         {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="absolute top-full left-0 right-0 bg-white border-t border-gray-5 shadow-strong z-50 md:hidden">
-            <ul className="list-none m-0 py-4">
-              <li><Link href="/" onClick={() => setIsMenuOpen(false)} className={`block py-6 px-8 text-primary-text no-underline border-none bg-none w-full text-left text-lg transition-all duration-300 hover:bg-primary-1 hover:text-primary ${pathname === '/' ? 'bg-primary text-white' : ''}`}>Home</Link></li>
-              <li><Link href="/about" onClick={() => setIsMenuOpen(false)} className={`block py-6 px-8 text-primary-text no-underline border-none bg-none w-full text-left text-lg transition-all duration-300 hover:bg-primary-1 hover:text-primary ${pathname === '/about' ? 'bg-primary text-white' : ''}`}>About Us</Link></li>
-              <li>
-                <button onClick={() => toggleDropdown('products-mobile')} className={`flex justify-between items-center py-6 px-8 text-primary-text border-none bg-none w-full text-left text-lg transition-all duration-300 hover:bg-primary-1 hover:text-primary ${isProductsActive() ? 'bg-primary text-white' : ''}`}>
-                  Our Products
-                  <span className={`text-lg transition-transform duration-300 ${activeDropdown === 'products-mobile' ? 'rotate-180' : ''}`}>▼</span>
-                </button>
-                {activeDropdown === 'products-mobile' && (
-                  <ul className="list-none m-0 p-0 bg-gray-2 border-t border-gray-5">
-                    <li><Link href="/products/moisture-sensors" onClick={() => setIsMenuOpen(false)} className={`block py-4 px-12 text-primary-text no-underline text-sm transition-all duration-300 border-b border-gray-5 hover:bg-primary-1 hover:text-primary ${pathname === '/products/moisture-sensors' ? 'bg-primary text-white font-semibold' : ''}`}>Real-Time Moisture Sensors</Link></li>
-                    <li><Link href="/products/dm510-controller" onClick={() => setIsMenuOpen(false)} className={`block py-4 px-12 text-primary-text no-underline text-sm transition-all duration-300 border-b border-gray-5 hover:bg-primary-1 hover:text-primary ${pathname === '/products/dm510-controller' ? 'bg-primary text-white font-semibold' : ''}`}>Dryer Master 510 Controller</Link></li>
-                    <li><Link href="/products/dm510-embedded" onClick={() => setIsMenuOpen(false)} className={`block py-4 px-12 text-primary-text no-underline text-sm transition-all duration-300 border-b border-gray-5 hover:bg-primary-1 hover:text-primary ${pathname === '/products/dm510-embedded' ? 'bg-primary text-white font-semibold' : ''}`}>DM510 Embedded Solution</Link></li>
-                    <li><Link href="/products/dm-mobile" onClick={() => setIsMenuOpen(false)} className={`block py-4 px-12 text-primary-text no-underline text-sm transition-all duration-300 border-b border-gray-5 hover:bg-primary-1 hover:text-primary ${pathname === '/products/dm-mobile' ? 'bg-primary text-white font-semibold' : ''}`}>DM Mobile (Remote Access)</Link></li>
-                    <li><Link href="/products/moisture-monitor-pro" onClick={() => setIsMenuOpen(false)} className={`block py-4 px-12 text-primary-text no-underline text-sm transition-all duration-300 border-b border-gray-5 hover:bg-primary-1 hover:text-primary ${pathname === '/products/moisture-monitor-pro' ? 'bg-primary text-white font-semibold' : ''}`}>Moisture Monitor Pro (MMP)</Link></li>
-                    <li><Link href="/products/dm100" onClick={() => setIsMenuOpen(false)} className={`block py-4 px-12 text-primary-text no-underline text-sm transition-all duration-300 border-b border-gray-5 hover:bg-primary-1 hover:text-primary ${pathname === '/products/dm100' ? 'bg-primary text-white font-semibold' : ''}`}>Dryer Master DM100</Link></li>
-                  </ul>
-                )}
-              </li>
-              <li>
-                <button onClick={() => toggleDropdown('customers-mobile')} className={`flex justify-between items-center py-6 px-8 text-primary-text border-none bg-none w-full text-left text-lg transition-all duration-300 hover:bg-primary-1 hover:text-primary ${isCustomersActive() ? 'bg-primary text-white' : ''}`}>
-                  Our Customers
-                  <span className={`text-lg transition-transform duration-300 ${activeDropdown === 'customers-mobile' ? 'rotate-180' : ''}`}>▼</span>
-                </button>
-                {activeDropdown === 'customers-mobile' && (
-                  <ul className="list-none m-0 p-0 bg-gray-2 border-t border-gray-5">
-                    <li><Link href="/customers/experiences" onClick={() => setIsMenuOpen(false)} className={`block py-4 px-12 text-primary-text no-underline text-sm transition-all duration-300 border-b border-gray-5 hover:bg-primary-1 hover:text-primary ${pathname === '/customers/experiences' ? 'bg-primary text-white font-semibold' : ''}`}>Customer Experiences</Link></li>
-                    <li><Link href="/customers/manufacturers" onClick={() => setIsMenuOpen(false)} className={`block py-4 px-12 text-primary-text no-underline text-sm transition-all duration-300 border-b border-gray-5 hover:bg-primary-1 hover:text-primary ${pathname === '/customers/manufacturers' ? 'bg-primary text-white font-semibold' : ''}`}>Dryer Manufacturers</Link></li>
-                    <li><Link href="/customers/examples" onClick={() => setIsMenuOpen(false)} className={`block py-4 px-12 text-primary-text no-underline text-sm transition-all duration-300 border-b border-gray-5 hover:bg-primary-1 hover:text-primary ${pathname === '/customers/examples' ? 'bg-primary text-white font-semibold' : ''}`}>Application Examples</Link></li>
-                  </ul>
-                )}
-              </li>
-              <li>
-                <button onClick={() => toggleDropdown('support-mobile')} className={`flex justify-between items-center py-6 px-8 text-primary-text border-none bg-none w-full text-left text-lg transition-all duration-300 hover:bg-primary-1 hover:text-primary ${isSupportActive() ? 'bg-primary text-white' : ''}`}>
-                  Support
-                  <span className={`text-lg transition-transform duration-300 ${activeDropdown === 'support-mobile' ? 'rotate-180' : ''}`}>▼</span>
-                </button>
-                {activeDropdown === 'support-mobile' && (
-                  <ul className="list-none m-0 p-0 bg-gray-2 border-t border-gray-5">
-                    <li><Link href="/support/manuals" onClick={() => setIsMenuOpen(false)} className={`block py-4 px-12 text-primary-text no-underline text-sm transition-all duration-300 border-b border-gray-5 hover:bg-primary-1 hover:text-primary ${pathname === '/support/manuals' ? 'bg-primary text-white font-semibold' : ''}`}>Manuals</Link></li>
-                    <li><Link href="/support/videos" onClick={() => setIsMenuOpen(false)} className={`block py-4 px-12 text-primary-text no-underline text-sm transition-all duration-300 border-b border-gray-5 hover:bg-primary-1 hover:text-primary ${pathname === '/support/videos' ? 'bg-primary text-white font-semibold' : ''}`}>Videos</Link></li>
-                    <li><Link href="/support/help" onClick={() => setIsMenuOpen(false)} className={`block py-4 px-12 text-primary-text no-underline text-sm transition-all duration-300 border-b border-gray-5 hover:bg-primary-1 hover:text-primary ${pathname === '/support/help' ? 'bg-primary text-white font-semibold' : ''}`}>Support</Link></li>
-                    <li><Link href="/support/register" onClick={() => setIsMenuOpen(false)} className={`block py-4 px-12 text-primary-text no-underline text-sm transition-all duration-300 border-b border-gray-5 hover:bg-primary-1 hover:text-primary ${pathname === '/support/register' ? 'bg-primary text-white font-semibold' : ''}`}>Register</Link></li>
-                  </ul>
-                )}
-              </li>
-              <li><Link href="/dealers" onClick={() => setIsMenuOpen(false)} className={`block py-6 px-8 text-primary-text no-underline border-none bg-none w-full text-left text-lg transition-all duration-300 hover:bg-primary-1 hover:text-primary ${pathname === '/dealers' ? 'bg-primary text-white' : ''}`}>Find a Dealer Near You</Link></li>
-              <li><Link href="/contact" onClick={() => setIsMenuOpen(false)} className={`block py-6 px-8 text-primary-text no-underline border-none bg-none w-full text-left text-lg transition-all duration-300 hover:bg-primary-1 hover:text-primary ${pathname === '/contact' ? 'bg-primary text-white' : ''}`}>Contact Us</Link></li>
-            </ul>
-          </div>
-        )}
+        <>
+          {/* Overlay behind menu (doesn't cover header) */}
+          <div 
+            className={`fixed top-24 left-0 right-0 bottom-0 bg-black transition-opacity duration-300 z-40 md:hidden ${isMenuOpen ? 'opacity-50 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+            onClick={() => setIsMenuOpen(false)}
+            style={{ touchAction: 'none' }}
+          ></div>
+          
+          {/* Left-side slide menu with smooth transition */}
+          <div className={`fixed top-24 left-0 h-[calc(100vh-6rem)] w-full bg-white shadow-2xl z-50 md:hidden transform transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+            {/* Menu Content */}
+            <div className="flex flex-col h-full py-6">
+                                 <nav className="flex-1 px-8">
+                   <ul className="list-none m-0 p-0 space-y-2">
+                     <li>
+                       <Link 
+                         href="/" 
+                         onClick={() => setIsMenuOpen(false)} 
+                         className={`flex items-center py-5 px-4 text-primary-text no-underline border-none bg-none w-full text-left text-lg font-medium transition-all duration-300 rounded-lg hover:bg-primary-1 hover:text-primary ${pathname === '/' ? 'bg-primary text-white' : ''}`}
+                       >
+                         Home
+                       </Link>
+                     </li>
+                     
+                     <li>
+                       <Link 
+                         href="/about" 
+                         onClick={() => setIsMenuOpen(false)} 
+                         className={`flex items-center py-5 px-4 text-primary-text no-underline border-none bg-none w-full text-left text-lg font-medium transition-all duration-300 rounded-lg hover:bg-primary-1 hover:text-primary ${pathname === '/about' ? 'bg-primary text-white' : ''}`}
+                       >
+                         About Us
+                       </Link>
+                     </li>
+                     
+                     <li>
+                       <button 
+                         onClick={() => toggleDropdown('products-mobile')} 
+                         className={`flex justify-between items-center py-5 px-4 text-primary-text border-none bg-none w-full text-left text-lg font-medium transition-all duration-300 rounded-lg hover:bg-primary-1 hover:text-primary ${isProductsActive() ? 'bg-primary text-white' : ''}`}
+                       >
+                         Our Products
+                         <span className={`text-base transition-transform duration-300 ${activeDropdown === 'products-mobile' ? 'rotate-180' : ''}`}>▼</span>
+                       </button>
+                       {activeDropdown === 'products-mobile' && (
+                         <ul className="list-none m-0 p-0 bg-gray-1 rounded-lg mt-2">
+                           <li><Link href="/products/moisture-sensors" onClick={() => setIsMenuOpen(false)} className={`block py-4 px-6 text-primary-text no-underline text-base transition-all duration-300 hover:bg-primary-1 hover:text-primary rounded-lg ${pathname === '/products/moisture-sensors' ? 'bg-primary text-white font-semibold' : ''}`}>Real-Time Moisture Sensors</Link></li>
+                           <li><Link href="/products/dm510-controller" onClick={() => setIsMenuOpen(false)} className={`block py-4 px-6 text-primary-text no-underline text-base transition-all duration-300 hover:bg-primary-1 hover:text-primary rounded-lg ${pathname === '/products/dm510-controller' ? 'bg-primary text-white font-semibold' : ''}`}>Dryer Master 510 Controller</Link></li>
+                           <li><Link href="/products/dm510-embedded" onClick={() => setIsMenuOpen(false)} className={`block py-4 px-6 text-primary-text no-underline text-base transition-all duration-300 hover:bg-primary-1 hover:text-primary rounded-lg ${pathname === '/products/dm510-embedded' ? 'bg-primary text-white font-semibold' : ''}`}>DM510 Embedded Solution</Link></li>
+                           <li><Link href="/products/dm-mobile" onClick={() => setIsMenuOpen(false)} className={`block py-4 px-6 text-primary-text no-underline text-base transition-all duration-300 hover:bg-primary-1 hover:text-primary rounded-lg ${pathname === '/products/dm-mobile' ? 'bg-primary text-white font-semibold' : ''}`}>DM Mobile (Remote Access)</Link></li>
+                           <li><Link href="/products/moisture-monitor-pro" onClick={() => setIsMenuOpen(false)} className={`block py-4 px-6 text-primary-text no-underline text-base transition-all duration-300 hover:bg-primary-1 hover:text-primary rounded-lg ${pathname === '/products/moisture-monitor-pro' ? 'bg-primary text-white font-semibold' : ''}`}>Moisture Monitor Pro (MMP)</Link></li>
+                           <li><Link href="/products/dm100" onClick={() => setIsMenuOpen(false)} className={`block py-4 px-6 text-primary-text no-underline text-base transition-all duration-300 hover:bg-primary-1 hover:text-primary rounded-lg ${pathname === '/products/dm100' ? 'bg-primary text-white font-semibold' : ''}`}>Dryer Master DM100</Link></li>
+                         </ul>
+                       )}
+                     </li>
+                     
+                     <li>
+                       <button 
+                         onClick={() => toggleDropdown('customers-mobile')} 
+                         className={`flex justify-between items-center py-5 px-4 text-primary-text border-none bg-none w-full text-left text-lg font-medium transition-all duration-300 rounded-lg hover:bg-primary-1 hover:text-primary ${isCustomersActive() ? 'bg-primary text-white' : ''}`}
+                       >
+                         Our Customers
+                         <span className={`text-base transition-transform duration-300 ${activeDropdown === 'customers-mobile' ? 'rotate-180' : ''}`}>▼</span>
+                       </button>
+                       {activeDropdown === 'customers-mobile' && (
+                         <ul className="list-none m-0 p-0 bg-gray-1 rounded-lg mt-2">
+                           <li><Link href="/customers/experiences" onClick={() => setIsMenuOpen(false)} className={`block py-4 px-6 text-primary-text no-underline text-base transition-all duration-300 hover:bg-primary-1 hover:text-primary rounded-lg ${pathname === '/customers/experiences' ? 'bg-primary text-white font-semibold' : ''}`}>Customer Experiences</Link></li>
+                           <li><Link href="/customers/manufacturers" onClick={() => setIsMenuOpen(false)} className={`block py-4 px-6 text-primary-text no-underline text-base transition-all duration-300 hover:bg-primary-1 hover:text-primary rounded-lg ${pathname === '/customers/manufacturers' ? 'bg-primary text-white font-semibold' : ''}`}>Dryer Manufacturers</Link></li>
+                           <li><Link href="/customers/examples" onClick={() => setIsMenuOpen(false)} className={`block py-4 px-6 text-primary-text no-underline text-base transition-all duration-300 hover:bg-primary-1 hover:text-primary rounded-lg ${pathname === '/customers/examples' ? 'bg-primary text-white font-semibold' : ''}`}>Application Examples</Link></li>
+                         </ul>
+                       )}
+                     </li>
+                     
+                     <li>
+                       <button 
+                         onClick={() => toggleDropdown('support-mobile')} 
+                         className={`flex justify-between items-center py-5 px-4 text-primary-text border-none bg-none w-full text-left text-lg font-medium transition-all duration-300 rounded-lg hover:bg-primary-1 hover:text-primary ${isSupportActive() ? 'bg-primary text-white' : ''}`}
+                       >
+                         Support
+                         <span className={`text-base transition-transform duration-300 ${activeDropdown === 'support-mobile' ? 'rotate-180' : ''}`}>▼</span>
+                       </button>
+                       {activeDropdown === 'support-mobile' && (
+                         <ul className="list-none m-0 p-0 bg-gray-1 rounded-lg mt-2">
+                           <li><Link href="/support/manuals" onClick={() => setIsMenuOpen(false)} className={`block py-4 px-6 text-primary-text no-underline text-base transition-all duration-300 hover:bg-primary-1 hover:text-primary rounded-lg ${pathname === '/support/manuals' ? 'bg-primary text-white font-semibold' : ''}`}>Manuals</Link></li>
+                           <li><Link href="/support/videos" onClick={() => setIsMenuOpen(false)} className={`block py-4 px-6 text-primary-text no-underline text-base transition-all duration-300 hover:bg-primary-1 hover:text-primary rounded-lg ${pathname === '/support/videos' ? 'bg-primary text-white font-semibold' : ''}`}>Videos</Link></li>
+                           <li><Link href="/support/help" onClick={() => setIsMenuOpen(false)} className={`block py-4 px-6 text-primary-text no-underline text-base transition-all duration-300 hover:bg-primary-1 hover:text-primary rounded-lg ${pathname === '/support/help' ? 'bg-primary text-white font-semibold' : ''}`}>Support</Link></li>
+                           <li><Link href="/support/register" onClick={() => setIsMenuOpen(false)} className={`block py-4 px-6 text-primary-text no-underline text-base transition-all duration-300 hover:bg-primary-1 hover:text-primary rounded-lg ${pathname === '/support/register' ? 'bg-primary text-white font-semibold' : ''}`}>Register</Link></li>
+                         </ul>
+                       )}
+                     </li>
+                     
+                     <li>
+                       <Link 
+                         href="/dealers" 
+                         onClick={() => setIsMenuOpen(false)} 
+                         className={`flex items-center py-5 px-4 text-primary-text no-underline border-none bg-none w-full text-left text-lg font-medium transition-all duration-300 rounded-lg hover:bg-primary-1 hover:text-primary ${pathname === '/dealers' ? 'bg-primary text-white' : ''}`}
+                       >
+                         Find a Dealer Near You
+                       </Link>
+                     </li>
+                     
+                     <li>
+                       <Link 
+                         href="/contact" 
+                         onClick={() => setIsMenuOpen(false)} 
+                         className={`flex items-center py-5 px-4 text-primary-text no-underline border-none bg-none w-full text-left text-lg font-medium transition-all duration-300 rounded-lg hover:bg-primary-1 hover:text-primary ${pathname === '/contact' ? 'bg-primary text-white' : ''}`}
+                       >
+                         Contact Us
+                       </Link>
+                     </li>
+                   </ul>
+                 </nav>
+              </div>
+            </div>
+        </>
       </div>
     </header>
   );
