@@ -26,7 +26,7 @@ const manualsData: Manual[] = [
     description: "Complete operations manual for the DM510 Computerized Grain Drying Control System.",
     downloadUrl: "/manuals/dm510/operations-manual-2023.pdf",
     category: "DM510",
-    icon: <Book size={24} className="text-blue-600" />,
+    icon: <Book size={24} className="text-primary" />,
     size: "3.0 MB"
   },
   {
@@ -34,7 +34,7 @@ const manualsData: Manual[] = [
     description: "Step-by-step installation instructions for the DM510 system.",
     downloadUrl: "/manuals/dm510/installation-manual-2023.pdf",
     category: "DM510",
-    icon: <Settings size={24} className="text-blue-600" />,
+    icon: <Settings size={24} className="text-primary" />,
     size: "3.1 MB"
   },
   {
@@ -42,7 +42,7 @@ const manualsData: Manual[] = [
     description: "Comprehensive commissioning procedures for optimal DM510 setup.",
     downloadUrl: "/manuals/dm510/commissioning-guide-2023.pdf",
     category: "DM510", 
-    icon: <Settings size={24} className="text-blue-600" />,
+    icon: <Settings size={24} className="text-primary" />,
     size: "1.3 MB"
   },
   {
@@ -50,7 +50,7 @@ const manualsData: Manual[] = [
     description: "Quick reference guide for DM510 operation and troubleshooting.",
     downloadUrl: "/manuals/dm510/quick-guide.pdf",
     category: "DM510",
-    icon: <FileText size={24} className="text-blue-600" />,
+    icon: <FileText size={24} className="text-primary" />,
     size: "159 KB"
   },
   {
@@ -58,7 +58,7 @@ const manualsData: Manual[] = [
     description: "Additional important information and best practices for DM510 users.",
     downloadUrl: "/manuals/dm510/what-you-should-know-2019.pdf",
     category: "DM510",
-    icon: <Book size={24} className="text-blue-600" />,
+    icon: <Book size={24} className="text-primary" />,
     size: "124 KB"
   },
   
@@ -68,7 +68,7 @@ const manualsData: Manual[] = [
     description: "Complete manual for the DM100 grain drying control system.",
     downloadUrl: "/manuals/dm100/dm100-manual-2020.pdf",
     category: "DM100",
-    icon: <Monitor size={24} className="text-purple-600" />,
+    icon: <Monitor size={24} className="text-secondary" />,
     size: "3.4 MB"
   },
   {
@@ -76,7 +76,7 @@ const manualsData: Manual[] = [
     description: "User manual for the Moisture Monitor Pro (MMP) system.",
     downloadUrl: "/manuals/moisture-monitor-pro/moisture-monitor-pro-3.5.pdf",
     category: "Moisture Monitor Pro",
-    icon: <Monitor size={24} className="text-orange-600" />,
+    icon: <Monitor size={24} className="text-amber-600" />,
     size: "2.8 MB"
   },
   
@@ -86,7 +86,7 @@ const manualsData: Manual[] = [
     description: "Technical specifications and installation guide for moisture sensors.",
     downloadUrl: "/manuals/sensors/real-time-moisture-sensor.pdf",
     category: "Sensors",
-    icon: <Target size={24} className="text-teal-600" />,
+    icon: <Target size={24} className="text-secondary" />,
     size: "2.5 MB"
   },
   {
@@ -94,7 +94,7 @@ const manualsData: Manual[] = [
     description: "Installation and operation guide for rotary feed chutes.",
     downloadUrl: "/manuals/sensors/rotary-feed-chutes-2019.pdf",
     category: "Sensors",
-    icon: <Target size={24} className="text-teal-600" />,
+    icon: <Target size={24} className="text-secondary" />,
     size: "3.0 MB"
   },
 ];
