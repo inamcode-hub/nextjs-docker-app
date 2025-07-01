@@ -24,10 +24,22 @@ export function middleware(request: NextRequest) {
     '/contact-us': '/contact',
     '/find-dealer': '/dealers',
     '/find-a-dealer': '/dealers',
+    
   };
 
   if (redirects[pathname]) {
     return NextResponse.redirect(new URL(redirects[pathname], request.url), 301);
+  }
+
+  // Handle /customers/examples/* redirects to /customers/applications/*
+  if (pathname.startsWith('/customers/examples/')) {
+    const newPath = pathname.replace('/customers/examples/', '/customers/applications/');
+    return NextResponse.redirect(new URL(newPath, request.url), 301);
+  }
+
+  // Handle /customers/examples redirects to /customers/applications
+  if (pathname === '/customers/examples') {
+    return NextResponse.redirect(new URL('/customers/applications', request.url), 301);
   }
 
   // Handle trailing slashes consistently

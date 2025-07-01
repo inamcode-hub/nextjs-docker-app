@@ -223,7 +223,7 @@ const Header = () => {
                       <Building2 size={16} />
                       Dryer Manufacturers
                     </Link>
-                    <Link href="/customers/examples" className={`flex items-center gap-3 px-4 py-2 text-sm transition-colors duration-150 ${pathname === '/customers/examples' ? 'bg-secondary text-white' : 'text-gray-700 hover:bg-secondary-1 hover:text-secondary'}`}>
+                    <Link href="/customers/applications" className={`flex items-center gap-3 px-4 py-2 text-sm transition-colors duration-150 ${pathname === '/customers/applications' ? 'bg-secondary text-white' : 'text-gray-700 hover:bg-secondary-1 hover:text-secondary'}`}>
                       <Clipboard size={16} />
                       Application Examples
                     </Link>
@@ -451,7 +451,7 @@ const Header = () => {
                     <Building2 size={16} />
                     Dryer Manufacturers
                   </Link>
-                  <Link href="/customers/examples" onClick={closeMenu} className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-all duration-200 ${pathname === '/customers/examples' ? 'bg-secondary text-white shadow-sm' : 'text-gray-600 hover:text-secondary hover:bg-secondary-1'}`}>
+                  <Link href="/customers/applications" onClick={closeMenu} className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-all duration-200 ${pathname === '/customers/applications' ? 'bg-secondary text-white shadow-sm' : 'text-gray-600 hover:text-secondary hover:bg-secondary-1'}`}>
                     <Clipboard size={16} />
                     Application Examples
                   </Link>

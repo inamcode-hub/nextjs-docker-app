@@ -180,6 +180,12 @@ const Footer = () => {
                 </Link>
               </li>
               <li className="mb-3">
+                <Link href="/customers/applications" className="flex items-center gap-3 text-gray-300 no-underline text-sm py-2 px-3 transition-all duration-200 rounded-md border border-transparent hover:text-white hover:bg-secondary hover:shadow-sm">
+                  <Target size={16} />
+                  Application Examples
+                </Link>
+              </li>
+              <li className="mb-3">
                 <Link href="/dealers" className="flex items-center gap-3 text-gray-300 no-underline text-sm py-2 px-3 transition-all duration-200 rounded-md border border-transparent hover:text-white hover:bg-secondary hover:shadow-sm">
                   <Map size={16} />
                   Find a Dealer

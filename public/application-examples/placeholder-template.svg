@@ -1,0 +1,67 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+  <!-- Gradient Background -->
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8fafc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e2e8f0;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1d4ed8;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  
+  <!-- Decorative Elements -->
+  <circle cx="1600" cy="200" r="120" fill="#e2e8f0" opacity="0.5"/>
+  <circle cx="300" cy="800" r="80" fill="#cbd5e1" opacity="0.3"/>
+  
+  <!-- Main Content Area -->
+  <rect x="200" y="200" width="1520" height="680" rx="20" fill="white" stroke="#e2e8f0" stroke-width="2"/>
+  
+  <!-- Header Bar -->
+  <rect x="200" y="200" width="1520" height="120" rx="20" fill="url(#accent)"/>
+  
+  <!-- Icon Placeholder -->
+  <circle cx="300" cy="260" r="30" fill="white" opacity="0.9"/>
+  
+  <!-- Title Area -->
+  <rect x="360" y="240" width="400" height="20" rx="10" fill="white" opacity="0.9"/>
+  <rect x="360" y="270" width="600" height="15" rx="7" fill="white" opacity="0.7"/>
+  
+  <!-- Content Blocks -->
+  <rect x="280" y="380" width="300" height="200" rx="10" fill="#f1f5f9"/>
+  <rect x="620" y="380" width="300" height="200" rx="10" fill="#f1f5f9"/>
+  <rect x="960" y="380" width="300" height="200" rx="10" fill="#f1f5f9"/>
+  <rect x="1300" y="380" width="300" height="200" rx="10" fill="#f1f5f9"/>
+  
+  <!-- Feature Lines -->
+  <rect x="300" y="420" width="180" height="8" rx="4" fill="#cbd5e1"/>
+  <rect x="300" y="440" width="200" height="8" rx="4" fill="#cbd5e1"/>
+  <rect x="300" y="460" width="160" height="8" rx="4" fill="#cbd5e1"/>
+  
+  <!-- Charts/Graphs Representation -->
+  <rect x="280" y="640" width="680" height="180" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+  <polyline points="320,750 380,720 440,680 500,700 560,650 620,630 680,610 740,590 800,570 860,550 920,530" 
+            fill="none" stroke="url(#accent)" stroke-width="3"/>
+  
+  <!-- Data Points -->
+  <circle cx="380" cy="720" r="4" fill="#3b82f6"/>
+  <circle cx="500" cy="700" r="4" fill="#3b82f6"/>
+  <circle cx="620" cy="630" r="4" fill="#3b82f6"/>
+  <circle cx="740" cy="590" r="4" fill="#3b82f6"/>
+  <circle cx="860" cy="550" r="4" fill="#3b82f6"/>
+  
+  <!-- Bottom Info Panel -->
+  <rect x="1000" y="640" width="620" height="180" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+  <rect x="1040" y="680" width="250" height="12" rx="6" fill="#cbd5e1"/>
+  <rect x="1040" y="700" width="300" height="12" rx="6" fill="#cbd5e1"/>
+  <rect x="1040" y="720" width="200" height="12" rx="6" fill="#cbd5e1"/>
+  
+  <!-- Status Indicators -->
+  <circle cx="1480" cy="700" r="8" fill="#10b981"/>
+  <circle cx="1520" cy="700" r="8" fill="#3b82f6"/>
+  <circle cx="1560" cy="700" r="8" fill="#f59e0b"/>
+</svg>
