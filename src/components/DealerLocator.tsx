@@ -385,26 +385,26 @@ const DealerLocator = () => {
                 }}
               >
                 {/* Card Header */}
-                <div className="bg-gray-50/30 border-b border-gray-100 p-6">
+                <div className="bg-gradient-to-r from-primary-1 to-secondary-1 border-b border-primary/10 p-6">
                   <div className="flex justify-between items-center">
                     <div className="flex items-center gap-3">
-                      <div className="p-2 bg-white rounded-lg shadow-sm border border-gray-200/50 flex-shrink-0">
+                      <div className="p-3 bg-white rounded-xl shadow-md border border-gray-200/50 flex-shrink-0">
                         <ReactCountryFlag 
                           countryCode={dealer.countryCode} 
                           svg 
-                          style={{ width: '1.2em', height: '1.2em' }}
+                          style={{ width: '1.5em', height: '1.5em' }}
                           title={dealer.country}
                         />
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-xl font-semibold text-gray-800 leading-tight group-hover:text-primary transition-colors duration-300">
+                        <h3 className="text-xl font-bold text-primary leading-tight group-hover:text-primary-dark transition-colors duration-300">
                           {dealer.name}
                         </h3>
                       </div>
                     </div>
-                    <div className="flex items-center gap-2 bg-secondary/10 border border-secondary/20 text-secondary px-3 py-1.5 rounded-lg">
-                      <div className="w-1.5 h-1.5 bg-secondary rounded-full"></div>
-                      <span className="text-xs font-semibold uppercase tracking-wide">Authorized</span>
+                    <div className="flex items-center gap-2 bg-gradient-to-r from-secondary to-secondary-dark text-white px-3 py-2 rounded-full shadow-md">
+                      <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                      <span className="text-xs font-bold uppercase tracking-wide">Authorized</span>
                     </div>
                   </div>
                 </div>
@@ -412,14 +412,14 @@ const DealerLocator = () => {
                 {/* Card Content */}
                 <div className="p-6">
                   {/* Address */}
-                  <div className="flex items-start gap-3 mb-6 p-3 bg-gray-50 rounded-lg border border-gray-100">
-                    <div className="w-8 h-8 bg-gray-200 rounded-lg flex items-center justify-center">
-                      <MapPin size={14} className="text-gray-600" />
+                  <div className="flex items-start gap-3 mb-4 p-3 bg-gray-50 rounded-lg border border-gray-100">
+                    <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
+                      <MapPin size={14} className="text-primary" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="text-xs text-gray-500 font-medium uppercase tracking-wide mb-1">Address</div>
                       <div className="text-sm text-gray-700 leading-relaxed">
-                        {dealer.address && <div className="mb-1 font-medium">{dealer.address}</div>}
+                        {dealer.address && <div className="mb-1">{dealer.address}</div>}
                         <div className="mb-1">{dealer.city}, {dealer.state} {dealer.postalCode}</div>
                         <div className="text-gray-500 text-xs">{dealer.country}</div>
                       </div>
@@ -428,15 +428,15 @@ const DealerLocator = () => {
 
                   {/* Contact Information */}
                   <div className="space-y-3 mb-6">
-                    <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg border border-gray-100 transition-all duration-300 hover:bg-gray-100">
-                      <div className="w-8 h-8 bg-gray-200 rounded-lg flex items-center justify-center">
-                        <Phone size={14} className="text-gray-600" />
+                    <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg border border-gray-100 hover:bg-gray-100 transition-colors duration-200">
+                      <div className="w-8 h-8 bg-secondary/10 rounded-lg flex items-center justify-center">
+                        <Phone size={14} className="text-secondary" />
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="text-xs text-gray-500 font-medium uppercase tracking-wide mb-1">Phone</div>
                         <a 
                           href={`tel:${dealer.phone}`} 
-                          className="text-gray-700 font-semibold text-sm no-underline hover:text-primary hover:underline transition-all duration-300 block truncate"
+                          className="text-gray-700 font-semibold text-sm no-underline hover:text-secondary hover:underline transition-colors duration-200 block truncate"
                         >
                           {dealer.phone}
                         </a>
@@ -444,15 +444,15 @@ const DealerLocator = () => {
                     </div>
                     
                     {dealer.email && (
-                      <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg border border-gray-100 transition-all duration-300 hover:bg-gray-100">
-                        <div className="w-8 h-8 bg-gray-200 rounded-lg flex items-center justify-center">
-                          <Mail size={14} className="text-gray-600" />
+                      <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg border border-gray-100 hover:bg-gray-100 transition-colors duration-200">
+                        <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
+                          <Mail size={14} className="text-primary" />
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="text-xs text-gray-500 font-medium uppercase tracking-wide mb-1">Email</div>
                           <a 
                             href={`mailto:${dealer.email}`} 
-                            className="text-gray-700 font-semibold text-sm no-underline hover:text-primary hover:underline transition-all duration-300 block truncate"
+                            className="text-gray-700 font-semibold text-sm no-underline hover:text-primary hover:underline transition-colors duration-200 block truncate"
                           >
                             {dealer.email}
                           </a>
@@ -461,9 +461,9 @@ const DealerLocator = () => {
                     )}
                     
                     {dealer.website && (
-                      <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg border border-gray-100 transition-all duration-300 hover:bg-gray-100">
-                        <div className="w-8 h-8 bg-gray-200 rounded-lg flex items-center justify-center">
-                          <Globe size={14} className="text-gray-600" />
+                      <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg border border-gray-100 hover:bg-gray-100 transition-colors duration-200">
+                        <div className="w-8 h-8 bg-amber-500/10 rounded-lg flex items-center justify-center">
+                          <Globe size={14} className="text-amber-600" />
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="text-xs text-gray-500 font-medium uppercase tracking-wide mb-1">Website</div>
@@ -471,7 +471,7 @@ const DealerLocator = () => {
                             href={`https://${dealer.website}`} 
                             target="_blank" 
                             rel="noopener noreferrer"
-                            className="text-gray-700 font-semibold text-sm no-underline hover:text-primary hover:underline transition-all duration-300 block truncate"
+                            className="text-gray-700 font-semibold text-sm no-underline hover:text-amber-600 hover:underline transition-colors duration-200 block truncate"
                           >
                             {dealer.website}
                           </a>
