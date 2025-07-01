@@ -116,27 +116,29 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-0.5 xl:space-x-1 2xl:space-x-2">
-            {/* Main nav items with primary hover */}
+            {/* Main nav items with enhanced hover */}
             <Link 
               href="/" 
-              className={`flex items-center gap-0.5 lg:gap-1 px-1.5 lg:px-2 xl:px-3 py-2 rounded-md text-xs xl:text-sm font-medium transition-all duration-200 ${
+              className={`relative flex items-center gap-0.5 lg:gap-1 px-1.5 lg:px-2 xl:px-3 py-2 rounded-xl text-xs xl:text-sm font-semibold transition-all duration-300 ${
                 pathname === '/' 
-                  ? 'bg-primary text-white shadow-md' 
-                  : 'text-gray-700 hover:bg-primary hover:text-white hover:shadow-sm'
+                  ? 'bg-gradient-to-r from-primary to-primary-dark text-white shadow-lg shadow-primary/25 scale-105' 
+                  : 'text-gray-700 hover:bg-gradient-to-r hover:from-primary hover:to-primary-dark hover:text-white hover:shadow-lg hover:shadow-primary/20 hover:scale-105'
               }`}
             >
               <span className="whitespace-nowrap">Home</span>
+              {pathname === '/' && <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-white rounded-full"></div>}
             </Link>
 
             <Link 
               href="/about" 
-              className={`flex items-center gap-0.5 lg:gap-1 px-1.5 lg:px-2 xl:px-3 py-2 rounded-md text-xs xl:text-sm font-medium transition-all duration-200 ${
+              className={`relative flex items-center gap-0.5 lg:gap-1 px-1.5 lg:px-2 xl:px-3 py-2 rounded-xl text-xs xl:text-sm font-semibold transition-all duration-300 ${
                 pathname === '/about' 
-                  ? 'bg-primary text-white shadow-md' 
-                  : 'text-gray-700 hover:bg-primary hover:text-white hover:shadow-sm'
+                  ? 'bg-gradient-to-r from-primary to-primary-dark text-white shadow-lg shadow-primary/25 scale-105' 
+                  : 'text-gray-700 hover:bg-gradient-to-r hover:from-primary hover:to-primary-dark hover:text-white hover:shadow-lg hover:shadow-primary/20 hover:scale-105'
               }`}
             >
               <span className="whitespace-nowrap">About Us</span>
+              {pathname === '/about' && <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-white rounded-full"></div>}
             </Link>
 
             {/* Products Dropdown */}
@@ -145,19 +147,20 @@ const Header = () => {
               onMouseEnter={() => handleButtonMouseEnter('products')}
               onMouseLeave={handleButtonMouseLeave}
             >
-              <button className={`flex items-center gap-0.5 lg:gap-1 px-1.5 lg:px-2 xl:px-3 py-2 rounded-md text-xs xl:text-sm font-medium transition-all duration-200 ${
+              <button className={`relative flex items-center gap-0.5 lg:gap-1 px-1.5 lg:px-2 xl:px-3 py-2 rounded-xl text-xs xl:text-sm font-semibold transition-all duration-300 ${
                 isProductsActive() 
-                  ? 'bg-primary text-white shadow-md' 
-                  : 'text-gray-700 hover:bg-primary hover:text-white hover:shadow-sm'
+                  ? 'bg-gradient-to-r from-primary to-primary-dark text-white shadow-lg shadow-primary/25 scale-105' 
+                  : 'text-gray-700 hover:bg-gradient-to-r hover:from-primary hover:to-primary-dark hover:text-white hover:shadow-lg hover:shadow-primary/20 hover:scale-105'
               }`}>
                 <span className="whitespace-nowrap">Products</span>
-                <svg className="ml-0.5 h-3 w-3 xl:h-4 xl:w-4" fill="currentColor" viewBox="0 0 20 20">
+                <svg className={`ml-0.5 h-3 w-3 xl:h-4 xl:w-4 transition-transform duration-300 ${hoverDropdown === 'products' ? 'rotate-180' : ''}`} fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
                 </svg>
+                {isProductsActive() && <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-white rounded-full"></div>}
               </button>
               {hoverDropdown === 'products' && (
                 <div 
-                  className="absolute left-0 mt-1 w-64 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 z-50"
+                  className="absolute left-0 mt-2 w-72 bg-white rounded-2xl shadow-2xl ring-1 ring-primary/10 z-50 border border-gray-100 animate-in slide-in-from-top-5 duration-200"
                   onMouseEnter={() => handleDropdownMouseEnter('products')}
                   onMouseLeave={handleDropdownMouseLeave}
                 >
@@ -198,19 +201,20 @@ const Header = () => {
               onMouseEnter={() => handleButtonMouseEnter('customers')}
               onMouseLeave={handleButtonMouseLeave}
             >
-              <button className={`flex items-center gap-0.5 lg:gap-1 px-1.5 lg:px-2 xl:px-3 py-2 rounded-md text-xs xl:text-sm font-medium transition-all duration-200 ${
+              <button className={`relative flex items-center gap-0.5 lg:gap-1 px-1.5 lg:px-2 xl:px-3 py-2 rounded-xl text-xs xl:text-sm font-semibold transition-all duration-300 ${
                 isCustomersActive() 
-                  ? 'bg-primary text-white shadow-md' 
-                  : 'text-gray-700 hover:bg-primary hover:text-white hover:shadow-sm'
+                  ? 'bg-gradient-to-r from-primary to-primary-dark text-white shadow-lg shadow-primary/25 scale-105' 
+                  : 'text-gray-700 hover:bg-gradient-to-r hover:from-primary hover:to-primary-dark hover:text-white hover:shadow-lg hover:shadow-primary/20 hover:scale-105'
               }`}>
                 <span className="whitespace-nowrap">Customers</span>
-                <svg className="ml-0.5 h-3 w-3 xl:h-4 xl:w-4" fill="currentColor" viewBox="0 0 20 20">
+                <svg className={`ml-0.5 h-3 w-3 xl:h-4 xl:w-4 transition-transform duration-300 ${hoverDropdown === 'customers' ? 'rotate-180' : ''}`} fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
                 </svg>
+                {isCustomersActive() && <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-white rounded-full"></div>}
               </button>
               {hoverDropdown === 'customers' && (
                 <div 
-                  className="absolute left-0 mt-1 w-56 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 z-50"
+                  className="absolute left-0 mt-2 w-72 bg-white rounded-2xl shadow-2xl ring-1 ring-primary/10 z-50 border border-gray-100 animate-in slide-in-from-top-5 duration-200"
                   onMouseEnter={() => handleDropdownMouseEnter('customers')}
                   onMouseLeave={handleDropdownMouseLeave}
                 >
@@ -238,19 +242,20 @@ const Header = () => {
               onMouseEnter={() => handleButtonMouseEnter('support')}
               onMouseLeave={handleButtonMouseLeave}
             >
-              <button className={`flex items-center gap-0.5 lg:gap-1 px-1.5 lg:px-2 xl:px-3 py-2 rounded-md text-xs xl:text-sm font-medium transition-all duration-200 ${
+              <button className={`relative flex items-center gap-0.5 lg:gap-1 px-1.5 lg:px-2 xl:px-3 py-2 rounded-xl text-xs xl:text-sm font-semibold transition-all duration-300 ${
                 isSupportActive() 
-                  ? 'bg-primary text-white shadow-md' 
-                  : 'text-gray-700 hover:bg-primary hover:text-white hover:shadow-sm'
+                  ? 'bg-gradient-to-r from-primary to-primary-dark text-white shadow-lg shadow-primary/25 scale-105' 
+                  : 'text-gray-700 hover:bg-gradient-to-r hover:from-primary hover:to-primary-dark hover:text-white hover:shadow-lg hover:shadow-primary/20 hover:scale-105'
               }`}>
                 <span className="whitespace-nowrap">Support</span>
-                <svg className="ml-0.5 h-3 w-3 xl:h-4 xl:w-4" fill="currentColor" viewBox="0 0 20 20">
+                <svg className={`ml-0.5 h-3 w-3 xl:h-4 xl:w-4 transition-transform duration-300 ${hoverDropdown === 'support' ? 'rotate-180' : ''}`} fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
                 </svg>
+                {isSupportActive() && <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-white rounded-full"></div>}
               </button>
               {hoverDropdown === 'support' && (
                 <div 
-                  className="absolute left-0 mt-1 w-48 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 z-50"
+                  className="absolute left-0 mt-2 w-56 bg-white rounded-2xl shadow-2xl ring-1 ring-primary/10 z-50 border border-gray-100 animate-in slide-in-from-top-5 duration-200"
                   onMouseEnter={() => handleDropdownMouseEnter('support')}
                   onMouseLeave={handleDropdownMouseLeave}
                 >
@@ -278,18 +283,19 @@ const Header = () => {
 
             <Link 
               href="/dealers" 
-              className={`flex items-center gap-0.5 lg:gap-1 px-1.5 lg:px-2 xl:px-3 py-2 rounded-md text-xs xl:text-sm font-medium transition-all duration-200 ${
+              className={`relative flex items-center gap-0.5 lg:gap-1 px-1.5 lg:px-2 xl:px-3 py-2 rounded-xl text-xs xl:text-sm font-semibold transition-all duration-300 ${
                 pathname === '/dealers' 
-                  ? 'bg-primary text-white shadow-md' 
-                  : 'text-gray-700 hover:bg-primary hover:text-white hover:shadow-sm'
+                  ? 'bg-gradient-to-r from-primary to-primary-dark text-white shadow-lg shadow-primary/25 scale-105' 
+                  : 'text-gray-700 hover:bg-gradient-to-r hover:from-primary hover:to-primary-dark hover:text-white hover:shadow-lg hover:shadow-primary/20 hover:scale-105'
               }`}
             >
               <span className="whitespace-nowrap">Find a Dealer</span>
+              {pathname === '/dealers' && <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-white rounded-full"></div>}
             </Link>
 
             <Link 
               href="/contact" 
-              className="ml-1 lg:ml-2 xl:ml-4 flex items-center gap-0.5 lg:gap-1 bg-secondary text-white px-2 lg:px-3 xl:px-4 py-2 rounded-md text-xs xl:text-sm font-medium hover:bg-secondary-dark transition-colors duration-200 shadow-md"
+              className="ml-1 lg:ml-2 xl:ml-4 flex items-center gap-0.5 lg:gap-1 bg-gradient-to-r from-secondary to-secondary-dark text-white px-2 lg:px-3 xl:px-4 py-2 rounded-xl text-xs xl:text-sm font-semibold hover:from-secondary-dark hover:to-secondary hover:shadow-xl hover:shadow-secondary/25 hover:scale-105 transition-all duration-300 shadow-lg shadow-secondary/20"
             >
               <span className="whitespace-nowrap">Contact Us</span>
             </Link>
