@@ -71,10 +71,10 @@ export default function About() {
                 Our Location
               </h2>
               <p className="text-gray-700 text-lg leading-relaxed mb-4">
-                Dryer Master is based in <strong>Kitchener-Waterloo, Ontario</strong> - right where Canada's corn belt meets Canada's Technology Hub.
+                Dryer Master is based in <strong>Kitchener-Waterloo, Ontario</strong> - right where Canada&apos;s corn belt meets Canada&apos;s Technology Hub.
               </p>
               <p className="text-gray-700 leading-relaxed">
-                Our head office is just minutes away from both Canada's largest year-round Farmer's Market and one of Canada's top engineering universities, putting us at the heart of agricultural innovation.
+                Our head office is just minutes away from both Canada&apos;s largest year-round Farmer&apos;s Market and one of Canada&apos;s top engineering universities, putting us at the heart of agricultural innovation.
               </p>
             </div>
             <div className="flex-shrink-0">
@@ -219,7 +219,7 @@ export default function About() {
         <div className="bg-gradient-to-br from-primary-1 to-secondary-1 rounded-2xl p-8 text-center">
           <h2 className="text-2xl font-bold text-primary mb-4">Ready to Learn More?</h2>
           <p className="text-gray-700 mb-6 max-w-2xl mx-auto">
-            Contact us to discover how Dryer Master's innovative solutions can improve your grain drying operations.
+            Contact us to discover how Dryer Master&apos;s innovative solutions can improve your grain drying operations.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a

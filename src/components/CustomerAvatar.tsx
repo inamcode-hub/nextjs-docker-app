@@ -1,4 +1,3 @@
-import { User } from 'lucide-react';
 
 interface CustomerAvatarProps {
   name: string;

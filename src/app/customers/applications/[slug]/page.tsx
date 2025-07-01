@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { GlobalHeroCard, GlobalHeroCardBadge, GlobalHeroCardTitle, GlobalHeroCardDescription } from '@/components/GlobalHeroCard';
-import { CheckCircle, Target, Zap, ArrowLeft, ExternalLink, Settings, Award } from 'lucide-react';
+import { CheckCircle, Target, Zap, ArrowLeft, Settings } from 'lucide-react';
 import { applicationExamples } from '@/lib/applicationExamplesData';
 import Image from 'next/image';
 import Link from 'next/link';

@@ -30,7 +30,9 @@ export const manufacturers: Manufacturer[] = [
     location: "Crystal Lake, Illinois",
     featured: true,
     category: 'commercial',
-    categoryIcon: Factory
+    categoryIcon: Factory,
+    dryerTypes: ["Legacy Series", "ECO Series", "Tower Dryers"],
+    region: "Global"
   },
   {
     id: 2,
@@ -43,7 +45,9 @@ export const manufacturers: Manufacturer[] = [
     location: "Omaha, Nebraska",
     featured: true,
     category: 'commercial',
-    categoryIcon: Factory
+    categoryIcon: Factory,
+    dryerTypes: ["Mixed Flow Dryers", "Commercial Dryers"],
+    region: "North America"
   },
   {
     id: 3,
@@ -56,7 +60,9 @@ export const manufacturers: Manufacturer[] = [
     location: "United States",
     featured: true,
     category: 'mixed',
-    categoryIcon: Wheat
+    categoryIcon: Wheat,
+    dryerTypes: ["Mixed-Flow Dryers", "Continuous Dryers"],
+    region: "North America"
   },
   {
     id: 4,

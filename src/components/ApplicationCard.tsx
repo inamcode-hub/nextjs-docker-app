@@ -1,4 +1,4 @@
-import { CheckCircle, ArrowRight, Target, Zap } from 'lucide-react';
+import { CheckCircle, ArrowRight, Target, Zap, Wheat, Factory, Droplets, Coffee } from 'lucide-react';
 import { ApplicationExample } from '@/lib/applicationExamplesData';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -7,8 +7,17 @@ interface ApplicationCardProps {
   application: ApplicationExample;
 }
 
+function getCategoryIcon(category: string) {
+  const iconMap = {
+    'grain-drying': <Wheat size={14} />,
+    'food-processing': <Coffee size={14} />,
+    'industrial': <Factory size={14} />,
+    'monitoring': <Droplets size={14} />
+  };
+  return iconMap[category as keyof typeof iconMap] || <Target size={14} />;
+}
+
 export default function ApplicationCard({ application }: ApplicationCardProps) {
-  const IconComponent = application.icon;
   
   const categoryColors = {
     'grain-drying': 'from-amber-50 to-amber-100 border-amber-200 text-amber-700',
@@ -36,7 +45,7 @@ export default function ApplicationCard({ application }: ApplicationCardProps) {
           {/* Category Badge */}
           <div className="absolute top-4 left-4">
             <span className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold border bg-gradient-to-r ${categoryBadge}`}>
-              <IconComponent size={14} />
+              {getCategoryIcon(application.category)}
               {application.category.replace('-', ' ')}
             </span>
           </div>

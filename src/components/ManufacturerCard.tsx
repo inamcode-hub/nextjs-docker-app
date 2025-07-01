@@ -1,4 +1,4 @@
-import { ExternalLink, MapPin, Calendar, Award, CheckCircle, Globe } from 'lucide-react';
+import { ExternalLink, MapPin, Calendar, Award, CheckCircle } from 'lucide-react';
 import { Manufacturer } from '@/lib/manufacturersData';
 import Image from 'next/image';
 
@@ -8,12 +8,9 @@ interface ManufacturerCardProps {
 }
 
 export default function ManufacturerCard({ manufacturer, featured = false }: ManufacturerCardProps) {
-  const CategoryIcon = manufacturer.categoryIcon;
-  
   // Card size variations
   const cardSize = featured ? 'lg:col-span-2' : '';
   const logoSize = featured ? 'h-20 w-auto' : 'h-16 w-auto';
-  const padding = '';
 
   // Category colors
   const categoryColors = {
@@ -30,7 +27,6 @@ export default function ManufacturerCard({ manufacturer, featured = false }: Man
     mixed: 'bg-orange-100 text-orange-700'
   };
 
-  const categoryGradient = categoryColors[manufacturer.category] || categoryColors.commercial;
   const categoryBadge = categoryBadgeColors[manufacturer.category] || categoryBadgeColors.commercial;
 
   return (

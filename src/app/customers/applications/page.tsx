@@ -1,16 +1,34 @@
 'use client';
 
 import { useState } from 'react';
-import { Metadata } from 'next';
 import { GlobalHeroCard, GlobalHeroCardBadge, GlobalHeroCardTitle, GlobalHeroCardDescription } from '@/components/GlobalHeroCard';
 import GlobalStatsSection from '@/components/GlobalStatsSection';
-import { Settings, Factory, Award, Coffee, Wheat, Droplets, Filter, X } from 'lucide-react';
+import { Settings, Factory, Coffee, Wheat, Droplets, Filter, X } from 'lucide-react';
 import ApplicationCard from '@/components/ApplicationCard';
-import { applicationExamples, applicationStats, pageContent, ApplicationExample } from '@/lib/applicationExamplesData';
+import { applicationExamples, pageContent, ApplicationExample } from '@/lib/applicationExamplesData';
+
+function getCategoryIcon(categoryKey: string, size: number = 16) {
+  const iconMap = {
+    'all': <Settings size={size} />,
+    'grain-drying': <Wheat size={size} />,
+    'food-processing': <Coffee size={size} />,
+    'industrial': <Factory size={size} />,
+    'monitoring': <Droplets size={size} />
+  };
+  return iconMap[categoryKey as keyof typeof iconMap] || <Settings size={size} />;
+}
 
 export default function ApplicationsPage() {
   const [filteredApplications, setFilteredApplications] = useState<ApplicationExample[]>(applicationExamples);
   const [activeCategory, setActiveCategory] = useState<string>('all');
+
+  // Local stats with JSX elements instead of component references
+  const localStats = [
+    { label: "Application Types", value: "9+", icon: <Settings className="w-6 h-6 text-white" /> },
+    { label: "Industries Served", value: "4+", icon: <Factory className="w-6 h-6 text-white" /> },
+    { label: "Years of Experience", value: "25+", icon: <Droplets className="w-6 h-6 text-white" /> },
+    { label: "Custom Solutions", value: "100+", icon: <Wheat className="w-6 h-6 text-white" /> }
+  ];
 
   const handleCategoryFilter = (category: string) => {
     setActiveCategory(category);
@@ -30,7 +48,7 @@ export default function ApplicationsPage() {
             {pageContent.hero.badge}
           </GlobalHeroCardBadge>
           <GlobalHeroCardTitle>
-            <h1>{pageContent.hero.title}</h1>
+            {pageContent.hero.title}
           </GlobalHeroCardTitle>
           <GlobalHeroCardDescription>
             {pageContent.hero.description}
@@ -39,7 +57,7 @@ export default function ApplicationsPage() {
       </header>
 
       {/* Stats Section */}
-      <GlobalStatsSection stats={applicationStats} />
+      <GlobalStatsSection stats={localStats} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
 
@@ -70,7 +88,6 @@ export default function ApplicationsPage() {
           </div>
           <div className="flex flex-wrap gap-3">
             {pageContent.sections.categories.map((category) => {
-              const IconComponent = category.icon;
               const isActive = activeCategory === category.key;
               const count = category.key === 'all' 
                 ? applicationExamples.length 
@@ -86,7 +103,7 @@ export default function ApplicationsPage() {
                       : 'bg-white border-gray-200 text-gray-700 hover:border-primary hover:bg-primary-50'
                   }`}
                 >
-                  <IconComponent size={16} />
+                  {getCategoryIcon(category.key, 16)}
                   <span className="font-medium">{category.label}</span>
                   <span className={`text-sm px-2 py-1 rounded-full ${
                     isActive

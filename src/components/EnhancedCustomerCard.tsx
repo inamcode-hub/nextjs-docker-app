@@ -7,7 +7,7 @@ interface EnhancedCustomerCardProps {
   testimonial: CustomerTestimonial;
 }
 
-function StarRating({ rating }: { rating: number }) {
+function StarRating() {
   return (
     <div className="flex items-center gap-1">
       {[1, 2, 3, 4, 5].map((star) => (
@@ -58,7 +58,7 @@ export default function EnhancedCustomerCard({ testimonial }: EnhancedCustomerCa
               </div>
             </div>
           </div>
-          <StarRating rating={5} />
+          <StarRating />
         </div>
 
         {/* Customer Details Grid */}

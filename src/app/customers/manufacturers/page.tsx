@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { GlobalHeroCard, GlobalHeroCardBadge, GlobalHeroCardTitle, GlobalHeroCardDescription } from '@/components/GlobalHeroCard';
 import ServerStatsSection from '@/components/ServerStatsSection';
-import { Factory, Award } from 'lucide-react';
+import { Factory } from 'lucide-react';
 import ManufacturerCard from '@/components/ManufacturerCard';
 import { manufacturers, manufacturerStats, pageContent } from '@/lib/manufacturersData';
 
