@@ -402,7 +402,7 @@ const DealerLocator = () => {
                         </h3>
                       </div>
                     </div>
-                    <div className="flex items-center gap-2 bg-gradient-to-r from-secondary to-secondary-dark text-white px-3 py-2 rounded-full shadow-md">
+                    <div className="flex items-center gap-2 bg-gradient-to-r from-primary to-primary-dark text-white px-3 py-2 rounded-full shadow-lg">
                       <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
                       <span className="text-xs font-bold uppercase tracking-wide">Authorized</span>
                     </div>
@@ -488,61 +488,41 @@ const DealerLocator = () => {
       </div>
 
       {/* Become a Dealer CTA */}
-      <div className="mt-24 mb-16">
-        <div className="relative bg-gradient-to-br from-secondary via-secondary-dark to-primary rounded-3xl overflow-hidden shadow-2xl">
-          {/* Background Pattern */}
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1),transparent_50%)]" />
+      <div className="mt-16 mb-16">
+        <div className="bg-gradient-to-br from-primary-1 to-secondary-1 rounded-2xl p-8 text-center">
+          <h2 className="text-2xl font-bold text-primary mb-4">Become an Authorized Dealer</h2>
+          <p className="text-gray-700 mb-6 max-w-2xl mx-auto">
+            Join our growing network of trusted dealers and expand your business with DryerMaster's innovative agricultural solutions. Access exclusive products, training, and support.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4 mb-6">
+            <div className="flex items-center gap-2 bg-gradient-to-r from-primary to-primary-dark text-white px-4 py-2 rounded-full text-sm font-semibold">
+              <Clock size={14} />
+              <span>Quick Application</span>
+            </div>
+            <div className="flex items-center gap-2 bg-gradient-to-r from-secondary to-secondary-dark text-white px-4 py-2 rounded-full text-sm font-semibold">
+              <Star size={14} />
+              <span>Exclusive Territory</span>
+            </div>
+            <div className="flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+              <Users size={14} />
+              <span>Ongoing Support</span>
+            </div>
           </div>
-          
-          <div className="relative z-10 flex flex-col lg:flex-row items-center gap-12 p-12 text-white">
-            <div className="flex-shrink-0">
-              <div className="w-20 h-20 bg-white/15 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20">
-                <Users size={32} className="text-white" />
-              </div>
-            </div>
-            <div className="flex-1 text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-4">
-                <Star size={16} className="text-yellow-300" />
-                <span className="text-sm font-medium">Partner Opportunity</span>
-              </div>
-              <h3 className="text-3xl lg:text-4xl font-bold mb-4 text-white leading-tight">
-                Become an Authorized Dealer
-              </h3>
-              <p className="text-lg leading-relaxed opacity-90 mb-6 max-w-2xl">
-                Join our growing network of trusted dealers and expand your business with DryerMaster&apos;s innovative agricultural solutions. Access exclusive products, training, and support.
-              </p>
-              <div className="flex flex-wrap gap-4 text-sm">
-                <div className="flex items-center gap-2 bg-white/10 rounded-full px-4 py-2">
-                  <Clock size={14} />
-                  <span>Quick Application</span>
-                </div>
-                <div className="flex items-center gap-2 bg-white/10 rounded-full px-4 py-2">
-                  <Star size={14} />
-                  <span>Exclusive Territory</span>
-                </div>
-                <div className="flex items-center gap-2 bg-white/10 rounded-full px-4 py-2">
-                  <Users size={14} />
-                  <span>Ongoing Support</span>
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-4 flex-shrink-0">
-              <a 
-                href="/contact" 
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold no-underline bg-white text-secondary rounded-xl cursor-pointer transition-all duration-300 hover:bg-gray-100 hover:scale-105 hover:shadow-lg"
-              >
-                <Phone size={16} />
-                Apply Now
-              </a>
-              <a 
-                href="/about" 
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold no-underline border-2 border-white text-white bg-transparent rounded-xl cursor-pointer transition-all duration-300 hover:bg-white hover:text-secondary"
-              >
-                <Globe size={16} />
-                Learn More
-              </a>
-            </div>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="/contact"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-primary-dark text-white rounded-xl font-semibold hover:shadow-xl hover:scale-105 transition-all duration-300"
+            >
+              <Phone size={16} />
+              Apply Now
+            </a>
+            <a
+              href="/about"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-secondary to-secondary-dark text-white rounded-xl font-semibold hover:shadow-xl hover:scale-105 transition-all duration-300"
+            >
+              <Globe size={16} />
+              Learn More
+            </a>
           </div>
         </div>
       </div>
