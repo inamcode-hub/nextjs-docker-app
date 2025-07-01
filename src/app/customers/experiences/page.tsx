@@ -1,4 +1,5 @@
 import { GlobalHeroCard, GlobalHeroCardBadge, GlobalHeroCardTitle, GlobalHeroCardDescription } from '@/components/GlobalHeroCard';
+import ServerStatsSection from '@/components/ServerStatsSection';
 import { Users } from 'lucide-react';
 import EnhancedCustomerCard from '@/components/EnhancedCustomerCard';
 import { customerTestimonials, stats, pageContent } from '@/lib/customerExperiencesData';
@@ -26,22 +27,10 @@ export default function CustomerExperiences() {
         </GlobalHeroCard>
       </div>
 
+      {/* Stats Section */}
+      <ServerStatsSection stats={stats} />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-        {/* Stats Section */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-          {stats.map((stat, index) => {
-            const IconComponent = stat.icon;
-            return (
-              <div key={index} className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 text-center">
-                <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary-dark rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <IconComponent className="w-6 h-6 text-white" />
-                </div>
-                <div className="text-2xl font-bold text-gray-900 mb-1">{stat.value}</div>
-                <div className="text-sm text-gray-600">{stat.label}</div>
-              </div>
-            );
-          })}
-        </div>
 
         {/* Enhanced Customer Cards */}
         <div className="space-y-8">

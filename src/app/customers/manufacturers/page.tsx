@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { GlobalHeroCard, GlobalHeroCardBadge, GlobalHeroCardTitle, GlobalHeroCardDescription } from '@/components/GlobalHeroCard';
+import ServerStatsSection from '@/components/ServerStatsSection';
 import { Factory, Award } from 'lucide-react';
 import ManufacturerCard from '@/components/ManufacturerCard';
 import { manufacturers, manufacturerStats, pageContent } from '@/lib/manufacturersData';
@@ -117,22 +118,10 @@ export default function ManufacturersPage() {
           </GlobalHeroCard>
         </header>
 
+        {/* Stats Section */}
+        <ServerStatsSection stats={manufacturerStats} />
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-          {/* Stats Section */}
-          <section className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16" aria-label="Partner Statistics">
-            {manufacturerStats.map((stat, index) => {
-              const IconComponent = stat.icon;
-              return (
-                <article key={index} className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 text-center">
-                  <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary-dark rounded-xl flex items-center justify-center mx-auto mb-4" aria-hidden="true">
-                    <IconComponent className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="text-2xl font-bold text-gray-900 mb-1">{stat.value}</div>
-                  <div className="text-sm text-gray-600">{stat.label}</div>
-                </article>
-              );
-            })}
-          </section>
 
           {/* All Manufacturers */}
           <section className="mb-16">

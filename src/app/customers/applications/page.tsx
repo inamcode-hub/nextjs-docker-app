@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Metadata } from 'next';
 import { GlobalHeroCard, GlobalHeroCardBadge, GlobalHeroCardTitle, GlobalHeroCardDescription } from '@/components/GlobalHeroCard';
+import GlobalStatsSection from '@/components/GlobalStatsSection';
 import { Settings, Factory, Award, Coffee, Wheat, Droplets, Filter, X } from 'lucide-react';
 import ApplicationCard from '@/components/ApplicationCard';
 import { applicationExamples, applicationStats, pageContent, ApplicationExample } from '@/lib/applicationExamplesData';
@@ -37,22 +38,10 @@ export default function ApplicationsPage() {
         </GlobalHeroCard>
       </header>
 
+      {/* Stats Section */}
+      <GlobalStatsSection stats={applicationStats} />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-        {/* Stats Section */}
-        <section className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16" aria-label="Application Statistics">
-          {applicationStats.map((stat, index) => {
-            const IconComponent = stat.icon;
-            return (
-              <article key={index} className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 text-center">
-                <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary-dark rounded-xl flex items-center justify-center mx-auto mb-4" aria-hidden="true">
-                  <IconComponent className="w-6 h-6 text-white" />
-                </div>
-                <div className="text-2xl font-bold text-gray-900 mb-1">{stat.value}</div>
-                <div className="text-sm text-gray-600">{stat.label}</div>
-              </article>
-            );
-          })}
-        </section>
 
         {/* Introduction Section */}
         <section className="text-center mb-12">
