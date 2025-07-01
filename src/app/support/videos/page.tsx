@@ -145,52 +145,41 @@ export default function Videos() {
         </div>
 
         {/* Help Section */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24">
-          <div className="bg-gradient-to-br from-secondary to-secondary-dark rounded-3xl overflow-hidden shadow-xl">
-            <div className="flex flex-col lg:flex-row items-center gap-12 p-12 text-white">
-              <div className="flex-shrink-0">
-                <div className="w-20 h-20 bg-white/15 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20">
-                  <Video size={32} className="text-white" />
-                </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
+          <div className="bg-gradient-to-br from-primary-1 to-secondary-1 rounded-2xl p-8 text-center">
+            <h2 className="text-2xl font-bold text-primary mb-4">Need Additional Training?</h2>
+            <p className="text-gray-700 mb-6 max-w-2xl mx-auto">
+              Our team provides personalized training sessions and can create custom videos for your specific needs. Contact us for one-on-one support.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4 mb-6">
+              <div className="flex items-center gap-2 bg-gradient-to-r from-primary to-primary-dark text-white px-4 py-2 rounded-full text-sm font-semibold">
+                <Play size={14} />
+                <span>Custom Training</span>
               </div>
-              <div className="flex-1 text-center lg:text-left">
-                <h3 className="text-3xl lg:text-4xl font-bold mb-4 text-white leading-tight">
-                  Need Additional Training?
-                </h3>
-                <p className="text-lg leading-relaxed opacity-90 mb-6 max-w-2xl">
-                  Our team provides personalized training sessions and can create custom videos for your specific needs. Contact us for one-on-one support.
-                </p>
-                <div className="flex flex-wrap gap-4 text-sm">
-                  <div className="flex items-center gap-2 bg-white/10 rounded-full px-4 py-2">
-                    <Play size={14} />
-                    <span>Custom Training</span>
-                  </div>
-                  <div className="flex items-center gap-2 bg-white/10 rounded-full px-4 py-2">
-                    <Users size={14} />
-                    <span>One-on-One Support</span>
-                  </div>
-                  <div className="flex items-center gap-2 bg-white/10 rounded-full px-4 py-2">
-                    <GraduationCap size={14} />
-                    <span>Certification Programs</span>
-                  </div>
-                </div>
+              <div className="flex items-center gap-2 bg-gradient-to-r from-secondary to-secondary-dark text-white px-4 py-2 rounded-full text-sm font-semibold">
+                <Users size={14} />
+                <span>One-on-One Support</span>
               </div>
-              <div className="flex flex-col sm:flex-row gap-4 flex-shrink-0">
-                <a 
-                  href="/contact" 
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold bg-white text-secondary rounded-xl hover:bg-gray-100 hover:scale-105 transition-all duration-300"
-                >
-                  <Video size={16} />
-                  Request Training
-                </a>
-                <a 
-                  href="/support" 
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold border-2 border-white text-white bg-transparent rounded-xl hover:bg-white hover:text-secondary transition-all duration-300"
-                >
-                  <Users size={16} />
-                  Get Support
-                </a>
+              <div className="flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                <GraduationCap size={14} />
+                <span>Certification Programs</span>
               </div>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="/contact"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-primary-dark text-white rounded-xl font-semibold hover:shadow-xl hover:scale-105 transition-all duration-300"
+              >
+                <Video size={16} />
+                Request Training
+              </a>
+              <a
+                href="/support"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-secondary to-secondary-dark text-white rounded-xl font-semibold hover:shadow-xl hover:scale-105 transition-all duration-300"
+              >
+                <Users size={16} />
+                Get Support
+              </a>
             </div>
           </div>
         </div>
