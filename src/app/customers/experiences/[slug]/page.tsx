@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import { GlobalHeroCard, GlobalHeroCardBadge, GlobalHeroCardTitle, GlobalHeroCardDescription } from '@/components/GlobalHeroCard';
-import { customerTestimonials } from '@/lib/customerExperiencesData';
+import { customerTestimonials, calculateYearsOfExperience } from '@/lib/customerExperiencesData';
 import { ArrowLeft, MapPin, Calendar, Wheat, Star, Settings, Smartphone, CheckCircle } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -231,19 +231,22 @@ export default async function CustomerDetailPage({ params }: CustomerDetailPageP
             )}
 
             {/* Years of Experience */}
-            {customer.yearsPecialist && (
-              <div className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-2xl p-6 border border-primary-200">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
-                    <CheckCircle className="w-5 h-5 text-white" />
+            {(() => {
+              const yearsOfExperience = calculateYearsOfExperience(customer.since);
+              return yearsOfExperience >= 5 && (
+                <div className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-2xl p-6 border border-primary-200">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                      <CheckCircle className="w-5 h-5 text-white" />
+                    </div>
+                    <h3 className="font-bold text-primary-800">Experienced User</h3>
                   </div>
-                  <h3 className="font-bold text-primary-800">Experienced User</h3>
+                  <p className="text-sm text-primary-700">
+                    {yearsOfExperience} years of experience with Dryer Master systems.
+                  </p>
                 </div>
-                <p className="text-sm text-primary-700">
-                  {customer.yearsPecialist}+ years of experience with Dryer Master systems.
-                </p>
-              </div>
-            )}
+              );
+            })()}
           </div>
         </div>
 

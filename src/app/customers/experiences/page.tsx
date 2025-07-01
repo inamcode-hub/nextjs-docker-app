@@ -1,9 +1,13 @@
 import { GlobalHeroCard, GlobalHeroCardBadge, GlobalHeroCardTitle, GlobalHeroCardDescription } from '@/components/GlobalHeroCard';
 import { Users } from 'lucide-react';
-import CustomerTestimonialCard from '@/components/CustomerTestimonialCard';
+import EnhancedCustomerCard from '@/components/EnhancedCustomerCard';
 import { customerTestimonials, stats, pageContent } from '@/lib/customerExperiencesData';
 
 export default function CustomerExperiences() {
+  // Sort customers by "since" date (oldest first)
+  const sortedCustomers = [...customerTestimonials].sort((a, b) => {
+    return parseInt(a.since) - parseInt(b.since);
+  });
 
   return (
     <div className="min-h-screen py-8">
@@ -39,7 +43,7 @@ export default function CustomerExperiences() {
           })}
         </div>
 
-        {/* Testimonials Grid */}
+        {/* Enhanced Customer Cards */}
         <div className="space-y-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">{pageContent.sections.testimonials.title}</h2>
@@ -48,9 +52,9 @@ export default function CustomerExperiences() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {customerTestimonials.map((testimonial) => (
-              <CustomerTestimonialCard 
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {sortedCustomers.map((testimonial) => (
+              <EnhancedCustomerCard 
                 key={testimonial.id} 
                 testimonial={testimonial} 
               />

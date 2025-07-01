@@ -328,7 +328,6 @@ export const customerTestimonials: CustomerTestimonial[] = [
     calibrationFrequency: "1-2 hours",
     usesMobile: false,
     keyBenefit: "Exceptional technical support",
-    yearsPecialist: 20,
     slug: "joe-ohio",
     detailedQA: {
       questions: [
@@ -524,7 +523,7 @@ export const customerTestimonials: CustomerTestimonial[] = [
     calibrationFrequency: "30-45 minutes",
     usesMobile: true,
     keyBenefit: "Real-time monitoring",
-    yearsPecialist: 25,
+    yearsPecialist: 28,
     slug: "brian-indiana",
     detailedQA: {
       questions: [
@@ -722,7 +721,7 @@ export const customerTestimonials: CustomerTestimonial[] = [
     calibrationFrequency: "3 hours",
     usesMobile: false,
     keyBenefit: "Outstanding support",
-    yearsPecialist: 25,
+    yearsPecialist: 28,
     slug: "pete-michigan",
     detailedQA: {
       questions: [
@@ -901,6 +900,13 @@ export const customerTestimonials: CustomerTestimonial[] = [
     }
   }
 ];
+
+// Helper function to calculate years of experience dynamically
+export function calculateYearsOfExperience(customerSince: string): number {
+  const currentYear = new Date().getFullYear();
+  const sinceYear = parseInt(customerSince);
+  return currentYear - sinceYear;
+}
 
 export const stats: StatItem[] = [
   { label: "Years of Experience", value: "40+", icon: Award },
