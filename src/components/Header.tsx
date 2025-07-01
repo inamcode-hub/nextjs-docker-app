@@ -116,12 +116,13 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-0.5 xl:space-x-1 2xl:space-x-2">
+            {/* Main nav items with primary hover */}
             <Link 
               href="/" 
               className={`flex items-center gap-0.5 lg:gap-1 px-1.5 lg:px-2 xl:px-3 py-2 rounded-md text-xs xl:text-sm font-medium transition-all duration-200 ${
                 pathname === '/' 
-                  ? 'bg-primary text-white shadow-md border-2 border-primary-dark' 
-                  : 'text-gray-700 hover:text-primary hover:bg-primary-5 hover:shadow-sm'
+                  ? 'bg-primary text-white shadow-md' 
+                  : 'text-gray-700 hover:bg-primary hover:text-white hover:shadow-sm'
               }`}
             >
               <span className="whitespace-nowrap">Home</span>
@@ -131,8 +132,8 @@ const Header = () => {
               href="/about" 
               className={`flex items-center gap-0.5 lg:gap-1 px-1.5 lg:px-2 xl:px-3 py-2 rounded-md text-xs xl:text-sm font-medium transition-all duration-200 ${
                 pathname === '/about' 
-                  ? 'bg-primary text-white shadow-md border-2 border-primary-dark' 
-                  : 'text-gray-700 hover:text-primary hover:bg-primary-5 hover:shadow-sm'
+                  ? 'bg-primary text-white shadow-md' 
+                  : 'text-gray-700 hover:bg-primary hover:text-white hover:shadow-sm'
               }`}
             >
               <span className="whitespace-nowrap">About Us</span>
@@ -146,15 +147,14 @@ const Header = () => {
             >
               <button className={`flex items-center gap-0.5 lg:gap-1 px-1.5 lg:px-2 xl:px-3 py-2 rounded-md text-xs xl:text-sm font-medium transition-all duration-200 ${
                 isProductsActive() 
-                  ? 'bg-primary text-white shadow-md border-2 border-primary-dark' 
-                  : 'text-gray-700 hover:text-primary hover:bg-primary-5 hover:shadow-sm'
+                  ? 'bg-primary text-white shadow-md' 
+                  : 'text-gray-700 hover:bg-primary hover:text-white hover:shadow-sm'
               }`}>
                 <span className="whitespace-nowrap">Products</span>
                 <svg className="ml-0.5 h-3 w-3 xl:h-4 xl:w-4" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
                 </svg>
               </button>
-              
               {hoverDropdown === 'products' && (
                 <div 
                   className="absolute left-0 mt-1 w-64 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 z-50"
@@ -162,6 +162,7 @@ const Header = () => {
                   onMouseLeave={handleDropdownMouseLeave}
                 >
                   <div className="py-1">
+                    {/* Sub-menu items: remove hover:text-primary and hover:bg-primary-5, use only secondary color for hover */}
                     <Link href="/products/moisture-sensors" className={`flex items-center gap-3 px-4 py-2 text-sm transition-colors duration-150 ${pathname === '/products/moisture-sensors' ? 'bg-secondary text-white' : 'text-gray-700 hover:bg-secondary-1 hover:text-secondary'}`}>
                       <Target size={16} />
                       Real-Time Moisture Sensors
@@ -199,15 +200,14 @@ const Header = () => {
             >
               <button className={`flex items-center gap-0.5 lg:gap-1 px-1.5 lg:px-2 xl:px-3 py-2 rounded-md text-xs xl:text-sm font-medium transition-all duration-200 ${
                 isCustomersActive() 
-                  ? 'bg-primary text-white shadow-md border-2 border-primary-dark' 
-                  : 'text-gray-700 hover:text-primary hover:bg-primary-5 hover:shadow-sm'
+                  ? 'bg-primary text-white shadow-md' 
+                  : 'text-gray-700 hover:bg-primary hover:text-white hover:shadow-sm'
               }`}>
                 <span className="whitespace-nowrap">Customers</span>
                 <svg className="ml-0.5 h-3 w-3 xl:h-4 xl:w-4" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
                 </svg>
               </button>
-              
               {hoverDropdown === 'customers' && (
                 <div 
                   className="absolute left-0 mt-1 w-56 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 z-50"
@@ -240,15 +240,14 @@ const Header = () => {
             >
               <button className={`flex items-center gap-0.5 lg:gap-1 px-1.5 lg:px-2 xl:px-3 py-2 rounded-md text-xs xl:text-sm font-medium transition-all duration-200 ${
                 isSupportActive() 
-                  ? 'bg-primary text-white shadow-md border-2 border-primary-dark' 
-                  : 'text-gray-700 hover:text-primary hover:bg-primary-5 hover:shadow-sm'
+                  ? 'bg-primary text-white shadow-md' 
+                  : 'text-gray-700 hover:bg-primary hover:text-white hover:shadow-sm'
               }`}>
                 <span className="whitespace-nowrap">Support</span>
                 <svg className="ml-0.5 h-3 w-3 xl:h-4 xl:w-4" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
                 </svg>
               </button>
-              
               {hoverDropdown === 'support' && (
                 <div 
                   className="absolute left-0 mt-1 w-48 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 z-50"
@@ -281,8 +280,8 @@ const Header = () => {
               href="/dealers" 
               className={`flex items-center gap-0.5 lg:gap-1 px-1.5 lg:px-2 xl:px-3 py-2 rounded-md text-xs xl:text-sm font-medium transition-all duration-200 ${
                 pathname === '/dealers' 
-                  ? 'bg-primary text-white shadow-md border-2 border-primary-dark' 
-                  : 'text-gray-700 hover:text-primary hover:bg-primary-5 hover:shadow-sm'
+                  ? 'bg-primary text-white shadow-md' 
+                  : 'text-gray-700 hover:bg-primary hover:text-white hover:shadow-sm'
               }`}
             >
               <span className="whitespace-nowrap">Find a Dealer</span>
@@ -506,7 +505,7 @@ const Header = () => {
               className={`flex items-center gap-3 px-4 py-3 rounded-xl text-base font-medium transition-all duration-200 ${
                 pathname === '/dealers' 
                   ? 'bg-primary text-white shadow-md' 
-                  : 'text-gray-700 hover:bg-primary-1 hover:text-primary'
+                  : 'text-gray-700 hover:bg-primary hover:text-white hover:shadow-sm'
               }`}
             >
               <Map size={20} />
