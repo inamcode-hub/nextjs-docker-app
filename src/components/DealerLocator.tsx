@@ -402,7 +402,7 @@ const DealerLocator = () => {
                         </h3>
                       </div>
                     </div>
-                    <div className="flex items-center gap-2 bg-gradient-to-r from-primary to-primary-dark text-white px-3 py-2 rounded-full shadow-lg">
+                    <div className="flex items-center gap-2 bg-gradient-to-r from-secondary to-secondary-dark text-white px-3 py-2 rounded-full shadow-lg">
                       <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
                       <span className="text-xs font-bold uppercase tracking-wide">Authorized</span>
                     </div>
