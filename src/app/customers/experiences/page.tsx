@@ -1,14 +1,9 @@
-'use client';
-
-import { useState } from 'react';
 import { GlobalHeroCard, GlobalHeroCardBadge, GlobalHeroCardTitle, GlobalHeroCardDescription } from '@/components/GlobalHeroCard';
-import { Users, ChevronDown } from 'lucide-react';
+import { Users } from 'lucide-react';
 import CustomerTestimonialCard from '@/components/CustomerTestimonialCard';
 import { customerTestimonials, stats, pageContent } from '@/lib/customerExperiencesData';
 
 export default function CustomerExperiences() {
-  const [showAll, setShowAll] = useState(false);
-  const testimonialsToShow = showAll ? customerTestimonials : customerTestimonials.slice(0, 12);
 
   return (
     <div className="min-h-screen py-8">
@@ -54,26 +49,13 @@ export default function CustomerExperiences() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {testimonialsToShow.map((testimonial) => (
+            {customerTestimonials.map((testimonial) => (
               <CustomerTestimonialCard 
                 key={testimonial.id} 
                 testimonial={testimonial} 
               />
             ))}
           </div>
-
-          {/* Show More Button */}
-          {customerTestimonials.length > 12 && !showAll && (
-            <div className="mt-12 text-center">
-              <button
-                onClick={() => setShowAll(true)}
-                className="inline-flex items-center gap-2 px-8 py-4 bg-white text-primary border-2 border-primary rounded-xl font-semibold hover:bg-primary hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl"
-              >
-                <span>View All {customerTestimonials.length} Customer Stories</span>
-                <ChevronDown size={20} />
-              </button>
-            </div>
-          )}
         </div>
 
         {/* Call to Action */}

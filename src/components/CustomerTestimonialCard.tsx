@@ -7,20 +7,25 @@ interface CustomerTestimonialCardProps {
   testimonial: CustomerTestimonial;
 }
 
-// Generate a realistic review date based on when they became a customer
-function getReviewDate(customerSince: string): string {
+// Generate a deterministic review date based on when they became a customer
+function getReviewDate(customerSince: string, customerName: string): string {
   const currentYear = 2024;
   const sinceYear = parseInt(customerSince);
   
-  // Generate a date within the last 2 years, but not before they became a customer
-  const earliestReviewYear = Math.max(sinceYear + 1, currentYear - 2);
-  const reviewYear = Math.min(earliestReviewYear + Math.floor(Math.random() * 2), currentYear);
+  // Use customer name to generate consistent "random" values
+  const nameHash = customerName.split('').reduce((hash, char) => hash + char.charCodeAt(0), 0);
+  
+  // Spread reviews across more years for realistic distribution
+  const yearsSinceStart = currentYear - sinceYear;
+  const maxReviewYears = Math.min(yearsSinceStart, 6); // Reviews can span up to 6 years
+  const reviewYearOffset = nameHash % Math.max(maxReviewYears, 1);
+  const reviewYear = Math.max(sinceYear + 2, currentYear - reviewYearOffset);
   
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 
                   'July', 'August', 'September', 'October', 'November', 'December'];
-  const randomMonth = months[Math.floor(Math.random() * months.length)];
+  const monthIndex = nameHash % months.length;
   
-  return `${randomMonth} ${reviewYear}`;
+  return `${months[monthIndex]} ${reviewYear}`;
 }
 
 export default function CustomerTestimonialCard({ testimonial }: CustomerTestimonialCardProps) {
@@ -103,7 +108,7 @@ export default function CustomerTestimonialCard({ testimonial }: CustomerTestimo
         <div className="flex items-center justify-between pt-4 border-t border-gray-100">
           <div className="flex items-center gap-2 text-sm text-gray-500">
             <Clock size={14} />
-            <span>Reviewed {getReviewDate(testimonial.since)}</span>
+            <span>Reviewed {getReviewDate(testimonial.since, testimonial.name)}</span>
           </div>
           <div className="flex items-center gap-2 text-primary group-hover:text-primary-dark transition-colors duration-200">
             <span className="text-sm font-medium">Read Full Story</span>

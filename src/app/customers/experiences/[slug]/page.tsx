@@ -8,13 +8,14 @@ import CustomerImageGallery from '@/components/CustomerImageGallery';
 import CustomerAvatar from '@/components/CustomerAvatar';
 
 interface CustomerDetailPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
-export default function CustomerDetailPage({ params }: CustomerDetailPageProps) {
-  const customer = customerTestimonials.find(c => c.slug === params.slug);
+export default async function CustomerDetailPage({ params }: CustomerDetailPageProps) {
+  const { slug } = await params;
+  const customer = customerTestimonials.find(c => c.slug === slug);
 
   if (!customer) {
     notFound();
@@ -246,56 +247,147 @@ export default function CustomerDetailPage({ params }: CustomerDetailPageProps) 
           </div>
         </div>
 
-        {/* Related Customers - Scrollable */}
+        {/* Customer Navigation - Current in Middle */}
         <div className="mt-16">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">
-            Other Customer Stories
+          <h2 className="text-2xl font-bold text-gray-900 mb-4 text-center">
+            Browse Customer Stories
           </h2>
-          <div className="relative">
-            {/* Scrollable container */}
+          <div className="relative pt-4">
+            {/* Customer Navigation Container */}
             <div className="overflow-x-auto scrollbar-hide">
-              <div className="flex gap-6 pb-4" style={{width: 'max-content'}}>
-                {customerTestimonials
-                  .filter(c => c.id !== customer.id)
-                  .map((relatedCustomer) => (
-                    <Link
-                      key={relatedCustomer.id}
-                      href={`/customers/experiences/${relatedCustomer.slug}`}
-                      className="bg-white rounded-xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group flex-shrink-0 w-80"
-                    >
-                      <div className="flex items-start gap-3 mb-3">
-                        <CustomerAvatar 
-                          name={relatedCustomer.name} 
-                          className="w-12 h-12 text-sm flex-shrink-0"
-                        />
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center gap-2 mb-1">
-                            <span className="font-semibold text-gray-900">{relatedCustomer.name}</span>
+              <div className="flex gap-3 py-6 px-4" style={{justifyContent: 'center', minWidth: '100%'}}>
+                {(() => {
+                  const currentIndex = customerTestimonials.findIndex(c => c.id === customer.id);
+                  const totalCustomers = customerTestimonials.length;
+                  
+                  // Create array with current customer in the middle
+                  const displayCustomers = [];
+                  const displayCount = Math.min(5, totalCustomers); // Show up to 5 customers
+                  const sideCount = Math.floor((displayCount - 1) / 2); // How many on each side
+                  
+                  for (let i = -sideCount; i <= sideCount; i++) {
+                    let index = (currentIndex + i + totalCustomers) % totalCustomers;
+                    displayCustomers.push(customerTestimonials[index]);
+                  }
+                  
+                  return displayCustomers.map((displayCustomer, displayIndex) => {
+                    const isCurrentCustomer = displayCustomer.id === customer.id;
+                    const isCenterPosition = displayIndex === Math.floor(displayCount / 2);
+                    
+                    return (
+                      <div
+                        key={displayCustomer.id}
+                        className={`transition-all duration-300 flex-shrink-0 ${
+                          isCurrentCustomer 
+                            ? 'w-56 sm:w-64 scale-105' 
+                            : 'w-48 sm:w-56 opacity-75 hover:opacity-100'
+                        }`}
+                      >
+                        {isCurrentCustomer ? (
+                          // Current customer - no link, highlighted
+                          <div className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-xl p-4 border-2 border-primary shadow-lg">
+                            <div className="flex items-start gap-3 mb-3">
+                              <CustomerAvatar 
+                                name={displayCustomer.name} 
+                                className="w-10 h-10 text-xs flex-shrink-0"
+                              />
+                              <div className="flex-1 min-w-0">
+                                <div className="flex items-center gap-1 mb-1">
+                                  <span className="font-bold text-primary-900 text-sm truncate">{displayCustomer.name}</span>
+                                  <span className="text-xs bg-primary text-white px-1 py-0.5 rounded-full whitespace-nowrap">Current</span>
+                                </div>
+                                <div className="flex items-center gap-1 text-primary-700 mb-2">
+                                  <MapPin size={12} className="flex-shrink-0" />
+                                  <span className="text-xs truncate">{displayCustomer.location}</span>
+                                </div>
+                              </div>
+                            </div>
+                            <p className="text-xs text-primary-800 line-clamp-2 mb-3 leading-relaxed font-medium">
+                              "{displayCustomer.quote}"
+                            </p>
+                            <div className="flex items-center justify-between">
+                              <div className="text-xs text-primary-600">
+                                <div className="text-xs">Since {displayCustomer.since}</div>
+                                <div className="text-primary-800 font-medium text-xs truncate">{displayCustomer.keyBenefit}</div>
+                              </div>
+                            </div>
                           </div>
-                          <div className="flex items-center gap-2 text-gray-500 mb-2">
-                            <MapPin size={14} className="text-primary flex-shrink-0" />
-                            <span className="text-sm truncate">{relatedCustomer.location}</span>
-                          </div>
-                        </div>
+                        ) : (
+                          // Other customers - with link
+                          <Link
+                            href={`/customers/experiences/${displayCustomer.slug}`}
+                            className="block bg-white rounded-xl p-4 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group h-full"
+                          >
+                            <div className="flex items-start gap-2 mb-2">
+                              <CustomerAvatar 
+                                name={displayCustomer.name} 
+                                className="w-10 h-10 text-xs flex-shrink-0"
+                              />
+                              <div className="flex-1 min-w-0">
+                                <div className="flex items-center gap-1 mb-1">
+                                  <span className="font-semibold text-gray-900 text-sm truncate">{displayCustomer.name}</span>
+                                </div>
+                                <div className="flex items-center gap-1 text-gray-500 mb-1">
+                                  <MapPin size={12} className="text-primary flex-shrink-0" />
+                                  <span className="text-xs truncate">{displayCustomer.location}</span>
+                                </div>
+                              </div>
+                            </div>
+                            <p className="text-xs text-gray-600 line-clamp-2 mb-3 leading-relaxed">
+                              "{displayCustomer.quote}"
+                            </p>
+                            <div className="flex items-center justify-between">
+                              <div className="text-xs text-gray-500">
+                                <div className="text-xs">Since {displayCustomer.since}</div>
+                                <div className="text-primary font-medium text-xs truncate">{displayCustomer.keyBenefit}</div>
+                              </div>
+                              <span className="text-primary text-xs group-hover:translate-x-1 transition-transform duration-200">→</span>
+                            </div>
+                          </Link>
+                        )}
                       </div>
-                      <p className="text-sm text-gray-600 line-clamp-3 mb-4 leading-relaxed">
-                        "{relatedCustomer.quote}"
-                      </p>
-                      <div className="flex items-center justify-between">
-                        <div className="text-xs text-gray-500">
-                          <div>Since {relatedCustomer.since}</div>
-                          <div className="text-primary font-medium">{relatedCustomer.keyBenefit}</div>
-                        </div>
-                        <span className="text-primary text-sm group-hover:translate-x-1 transition-transform duration-200">→</span>
-                      </div>
-                    </Link>
-                  ))}
+                    );
+                  });
+                })()}
               </div>
             </div>
             
-            {/* Scroll indicator */}
-            <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 text-xs text-gray-400">
-              ← Scroll to see all customer stories →
+            {/* Navigation Buttons */}
+            <div className="flex justify-center gap-4 mt-6">
+              {(() => {
+                const currentIndex = customerTestimonials.findIndex(c => c.id === customer.id);
+                const totalCustomers = customerTestimonials.length;
+                const prevIndex = (currentIndex - 1 + totalCustomers) % totalCustomers;
+                const nextIndex = (currentIndex + 1) % totalCustomers;
+                const prevCustomer = customerTestimonials[prevIndex];
+                const nextCustomer = customerTestimonials[nextIndex];
+                
+                return (
+                  <>
+                    <Link
+                      href={`/customers/experiences/${prevCustomer.slug}`}
+                      className="flex items-center gap-2 px-6 py-3 bg-white text-primary border-2 border-primary rounded-xl font-semibold hover:bg-primary hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl"
+                    >
+                      <ArrowLeft size={16} />
+                      <span>Previous: {prevCustomer.name}</span>
+                    </Link>
+                    <Link
+                      href={`/customers/experiences/${nextCustomer.slug}`}
+                      className="flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-xl font-semibold hover:bg-primary-dark transition-all duration-300 shadow-lg hover:shadow-xl"
+                    >
+                      <span>Next: {nextCustomer.name}</span>
+                      <ArrowLeft size={16} className="rotate-180" />
+                    </Link>
+                  </>
+                );
+              })()}
+            </div>
+            
+            {/* Navigation indicator */}
+            <div className="text-center mt-4">
+              <span className="text-xs text-gray-400">
+                Customer {customerTestimonials.findIndex(c => c.id === customer.id) + 1} of {customerTestimonials.length}
+              </span>
             </div>
           </div>
         </div>
