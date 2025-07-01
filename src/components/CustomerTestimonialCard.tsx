@@ -1,7 +1,7 @@
 import { Star, MapPin, Wheat, Quote, ArrowRight, Clock } from 'lucide-react';
 import { CustomerTestimonial } from '@/lib/customerExperiencesData';
 import Link from 'next/link';
-import Image from 'next/image';
+import CustomerAvatar from './CustomerAvatar';
 
 interface CustomerTestimonialCardProps {
   testimonial: CustomerTestimonial;
@@ -31,11 +31,17 @@ export default function CustomerTestimonialCard({ testimonial }: CustomerTestimo
       <div className="relative h-40 bg-gradient-to-br from-primary to-secondary">
         <div className="absolute inset-0 bg-black/10"></div>
         <div className="absolute inset-0 flex items-center justify-between px-6">
-          <div className="text-white">
-            <h3 className="text-2xl font-bold mb-1">{testimonial.name}</h3>
-            <div className="flex items-center gap-2">
-              <MapPin size={14} />
-              <span className="text-sm">{testimonial.location}</span>
+          <div className="flex items-center gap-4">
+            <CustomerAvatar 
+              name={testimonial.name} 
+              className="w-16 h-16 text-xl border-2 border-white/30"
+            />
+            <div className="text-white">
+              <h3 className="text-2xl font-bold mb-1">{testimonial.name}</h3>
+              <div className="flex items-center gap-2">
+                <MapPin size={14} />
+                <span className="text-sm">{testimonial.location}</span>
+              </div>
             </div>
           </div>
           <div className="bg-white/10 backdrop-blur-sm rounded-full p-3">

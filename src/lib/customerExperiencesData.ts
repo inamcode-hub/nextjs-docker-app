@@ -10,6 +10,7 @@ export interface CustomerTestimonial {
   equipment: string;
   quote: string;
   image: string;
+  installationImages?: string[]; // Array of installation/dryer images
   dryer?: string;
   dryerModel?: string;
   calibrationFrequency?: string;
@@ -44,6 +45,11 @@ export const customerTestimonials: CustomerTestimonial[] = [
     equipment: "2 Zimmerman Dryers (VT2541, Farm Fans CMS-1000H)",
     quote: "TechSupp was excellent at preparing us for the switch over. The system has been reliable for over 30 years.",
     image: "/customer-experiences/greg-ontario.jpg",
+    installationImages: [
+      "/customer-experiences/greg-ontario-dryer-1.jpg",
+      "/customer-experiences/greg-ontario-dryer-2.jpg",
+      "/customer-experiences/greg-ontario-installation.jpg"
+    ],
     dryer: "Zimmerman",
     dryerModel: "VT2541, Farm Fans CMS-1000H",
     calibrationFrequency: "Twice daily",
@@ -83,6 +89,12 @@ export const customerTestimonials: CustomerTestimonial[] = [
     equipment: "DM510 on Grain Handler 4024",
     quote: "I can go do other work and not worry about the dryer adjustments. The automation is incredible.",
     image: "/customer-experiences/lowell-minnesota.jpg",
+    installationImages: [
+      "/customer-experiences/lowell-minnesota-dryer-1.jpg",
+      "/customer-experiences/lowell-minnesota-dryer-2.jpg",
+      "/customer-experiences/lowell-minnesota-installation.jpg",
+      "/customer-experiences/lowell-minnesota-control-panel.jpg"
+    ],
     dryer: "Grain Handler",
     dryerModel: "4024",
     calibrationFrequency: "Daily",
@@ -122,6 +134,11 @@ export const customerTestimonials: CustomerTestimonial[] = [
     equipment: "2 DM510s on FFI Dryers",
     quote: "Real time samples are helpful to our operation... to know moisture even when we're not there. Game changer for our operation.",
     image: "/customer-experiences/mike-michigan.jpg",
+    installationImages: [
+      "/customer-experiences/mike-michigan-dryer-1.jpg",
+      "/customer-experiences/mike-michigan-dryer-2.jpg",
+      "/customer-experiences/mike-michigan-installation.jpg"
+    ],
     dryer: "FFI",
     calibrationFrequency: "As needed",
     usesMobile: true,
@@ -159,6 +176,11 @@ export const customerTestimonials: CustomerTestimonial[] = [
     equipment: "DM510 with DM Mobile",
     quote: "DM Mobile gave me confidence to be away from the dryer. I can monitor everything from my phone.",
     image: "/customer-experiences/kenton-illinois.jpg",
+    installationImages: [
+      "/customer-experiences/kenton-illinois-dryer-1.jpg",
+      "/customer-experiences/kenton-illinois-installation.jpg",
+      "/customer-experiences/kenton-illinois-mobile-app.jpg"
+    ],
     dryer: "Grain Handler",
     calibrationFrequency: "Every 2 hours during harvest",
     usesMobile: true,
@@ -175,6 +197,12 @@ export const customerTestimonials: CustomerTestimonial[] = [
     equipment: "DM510 System",
     quote: "The moisture consistency is outstanding. We've seen significant improvements in grain quality and reduced energy costs.",
     image: "/customer-experiences/richard-southdakota.jpg",
+    installationImages: [
+      "/customer-experiences/richard-southdakota-dryer-1.jpg",
+      "/customer-experiences/richard-southdakota-dryer-2.jpg",
+      "/customer-experiences/richard-southdakota-installation.jpg",
+      "/customer-experiences/richard-southdakota-control-system.jpg"
+    ],
     dryer: "Diamond",
     calibrationFrequency: "1-3 hours during peak season",
     usesMobile: true,
@@ -191,6 +219,12 @@ export const customerTestimonials: CustomerTestimonial[] = [
     equipment: "DM510 Controller",
     quote: "The system pays for itself through energy savings and improved grain quality. Best investment we've made.",
     image: "/customer-experiences/mark-indiana.jpg",
+    installationImages: [
+      "/customer-experiences/mark-indiana-dryer-1.jpg",
+      "/customer-experiences/mark-indiana-dryer-2.jpg",
+      "/customer-experiences/mark-indiana-installation.jpg",
+      "/customer-experiences/mark-indiana-control-panel.jpg"
+    ],
     dryer: "Delux",
     calibrationFrequency: "2-4 hours",
     usesMobile: true,
@@ -207,6 +241,11 @@ export const customerTestimonials: CustomerTestimonial[] = [
     equipment: "DM510 with Moisture Sensors",
     quote: "Installation was smooth and the technical support has been exceptional. Highly recommend to other farmers.",
     image: "/customer-experiences/joe-ohio.jpg",
+    installationImages: [
+      "/customer-experiences/joe-ohio-dryer-1.jpg",
+      "/customer-experiences/joe-ohio-installation.jpg",
+      "/customer-experiences/joe-ohio-control-system.jpg"
+    ],
     dryer: "Zimmerman",
     calibrationFrequency: "1-2 hours",
     usesMobile: false,
@@ -223,6 +262,11 @@ export const customerTestimonials: CustomerTestimonial[] = [
     equipment: "DM510 Controller",
     quote: "The precision control has improved our grain quality significantly. We're seeing better test weights and less cracked corn.",
     image: "/customer-experiences/jared-illinois.jpg",
+    installationImages: [
+      "/customer-experiences/jared-illinois-dryer-1.jpg",
+      "/customer-experiences/jared-illinois-dryer-2.jpg",
+      "/customer-experiences/jared-illinois-installation.jpg"
+    ],
     dryer: "Grain Handler",
     calibrationFrequency: "2 hours",
     usesMobile: true,
@@ -239,6 +283,11 @@ export const customerTestimonials: CustomerTestimonial[] = [
     equipment: "DM510 System",
     quote: "The automated adjustments have eliminated the guesswork. We can focus on other operations while the dryer runs efficiently.",
     image: "/customer-experiences/chris-illinois.jpg",
+    installationImages: [
+      "/customer-experiences/chris-illinois-dryer-1.jpg",
+      "/customer-experiences/chris-illinois-installation.jpg",
+      "/customer-experiences/chris-illinois-control-panel.jpg"
+    ],
     dryer: "Grain Handler",
     calibrationFrequency: "1-3 hours",
     usesMobile: true,
@@ -255,6 +304,12 @@ export const customerTestimonials: CustomerTestimonial[] = [
     equipment: "Multiple DM510 Systems",
     quote: "Scaling up our operation required reliable automation. Dryer Master delivered exactly what we needed.",
     image: "/customer-experiences/trevor-northdakota.jpg",
+    installationImages: [
+      "/customer-experiences/trevor-northdakota-dryer-1.jpg",
+      "/customer-experiences/trevor-northdakota-dryer-2.jpg",
+      "/customer-experiences/trevor-northdakota-installation.jpg",
+      "/customer-experiences/trevor-northdakota-control-system.jpg"
+    ],
     dryer: "Grain Handler",
     calibrationFrequency: "1-3 hours",
     usesMobile: true,
@@ -271,6 +326,11 @@ export const customerTestimonials: CustomerTestimonial[] = [
     equipment: "DM510 Controller",
     quote: "The real-time monitoring has transformed how we operate. We can maintain optimal moisture levels consistently.",
     image: "/customer-experiences/brian-indiana.jpg",
+    installationImages: [
+      "/customer-experiences/brian-indiana-dryer-1.jpg",
+      "/customer-experiences/brian-indiana-installation.jpg",
+      "/customer-experiences/brian-indiana-control-panel.jpg"
+    ],
     dryer: "Zimmerman",
     calibrationFrequency: "2 hours",
     usesMobile: true,
@@ -287,6 +347,11 @@ export const customerTestimonials: CustomerTestimonial[] = [
     equipment: "DM510 with DM Mobile",
     quote: "Being able to monitor the dryer remotely has given us peace of mind and improved our efficiency significantly.",
     image: "/customer-experiences/aaron-illinois.jpg",
+    installationImages: [
+      "/customer-experiences/aaron-illinois-dryer-1.jpg",
+      "/customer-experiences/aaron-illinois-dryer-2.jpg",
+      "/customer-experiences/aaron-illinois-installation.jpg"
+    ],
     dryer: "Grain Handler",
     calibrationFrequency: "1-2 hours",
     usesMobile: true,
@@ -303,6 +368,10 @@ export const customerTestimonials: CustomerTestimonial[] = [
     equipment: "DM510 Controller",
     quote: "The system's reliability during our first full season exceeded our expectations. No downtime during harvest.",
     image: "/customer-experiences/brian-pennsylvania.jpg",
+    installationImages: [
+      "/customer-experiences/brian-pennsylvania-dryer-1.jpg",
+      "/customer-experiences/brian-pennsylvania-installation.jpg"
+    ],
     dryer: "Grain Handler",
     calibrationFrequency: "2-3 hours",
     usesMobile: true,
@@ -319,6 +388,12 @@ export const customerTestimonials: CustomerTestimonial[] = [
     equipment: "DM510 System",
     quote: "The precision and reliability of the Dryer Master system has helped us improve our grain quality and reduce costs.",
     image: "/customer-experiences/ryan-ontario.jpg",
+    installationImages: [
+      "/customer-experiences/ryan-ontario-dryer-1.jpg",
+      "/customer-experiences/ryan-ontario-dryer-2.jpg",
+      "/customer-experiences/ryan-ontario-installation.jpg",
+      "/customer-experiences/ryan-ontario-control-system.jpg"
+    ],
     dryer: "Dorssers",
     calibrationFrequency: "2-3 hours",
     usesMobile: true,
@@ -335,6 +410,11 @@ export const customerTestimonials: CustomerTestimonial[] = [
     equipment: "DM510 Controller",
     quote: "The system is incredibly user-friendly and the support from Dryer Master has been outstanding from day one.",
     image: "/customer-experiences/pete-michigan.jpg",
+    installationImages: [
+      "/customer-experiences/pete-michigan-dryer-1.jpg",
+      "/customer-experiences/pete-michigan-installation.jpg",
+      "/customer-experiences/pete-michigan-control-panel.jpg"
+    ],
     dryer: "Delux & Meyer",
     calibrationFrequency: "3 hours",
     usesMobile: false,
@@ -351,6 +431,11 @@ export const customerTestimonials: CustomerTestimonial[] = [
     equipment: "DM510 System",
     quote: "The energy savings alone have made this investment worthwhile. Plus the grain quality improvements are significant.",
     image: "/customer-experiences/kevin-indiana.jpg",
+    installationImages: [
+      "/customer-experiences/kevin-indiana-dryer-1.jpg",
+      "/customer-experiences/kevin-indiana-dryer-2.jpg",
+      "/customer-experiences/kevin-indiana-installation.jpg"
+    ],
     dryer: "Zimmerman",
     calibrationFrequency: "1-2 hours",
     usesMobile: true,
@@ -367,6 +452,11 @@ export const customerTestimonials: CustomerTestimonial[] = [
     equipment: "DM510 Controller",
     quote: "The automation has allowed us to run longer hours with confidence. We can dry more grain in less time.",
     image: "/customer-experiences/larry-ontario.jpg",
+    installationImages: [
+      "/customer-experiences/larry-ontario-dryer-1.jpg",
+      "/customer-experiences/larry-ontario-installation.jpg",
+      "/customer-experiences/larry-ontario-control-system.jpg"
+    ],
     dryer: "Grain Handler",
     calibrationFrequency: "2 hours",
     usesMobile: true,
@@ -383,6 +473,12 @@ export const customerTestimonials: CustomerTestimonial[] = [
     equipment: "DM510 System",
     quote: "The consistent moisture control has improved our storage quality and reduced shrink. Very impressed with the results.",
     image: "/customer-experiences/anthony-ohio.jpg",
+    installationImages: [
+      "/customer-experiences/anthony-ohio-dryer-1.jpg",
+      "/customer-experiences/anthony-ohio-dryer-2.jpg",
+      "/customer-experiences/anthony-ohio-installation.jpg",
+      "/customer-experiences/anthony-ohio-control-panel.jpg"
+    ],
     dryer: "Zimmerman",
     calibrationFrequency: "1-3 hours",
     usesMobile: true,

@@ -4,6 +4,8 @@ import { customerTestimonials } from '@/lib/customerExperiencesData';
 import { ArrowLeft, MapPin, Calendar, Wheat, Star, Settings, Smartphone, CheckCircle } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import CustomerImageGallery from '@/components/CustomerImageGallery';
+import CustomerAvatar from '@/components/CustomerAvatar';
 
 interface CustomerDetailPageProps {
   params: {
@@ -51,16 +53,12 @@ export default function CustomerDetailPage({ params }: CustomerDetailPageProps) 
             {/* Customer Profile Card */}
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {/* Customer Image */}
+                {/* Customer Avatar */}
                 <div className="md:col-span-1">
-                  <div className="relative h-48 md:h-full rounded-xl overflow-hidden">
-                    <Image
-                      src={customer.image}
-                      alt={`${customer.name} - ${customer.location}`}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, 300px"
-                      priority
+                  <div className="h-48 md:h-full rounded-xl flex items-center justify-center">
+                    <CustomerAvatar 
+                      name={customer.name} 
+                      className="w-32 h-32 md:w-40 md:h-40 text-2xl md:text-3xl"
                     />
                   </div>
                 </div>
@@ -125,6 +123,14 @@ export default function CustomerDetailPage({ params }: CustomerDetailPageProps) 
                   ))}
                 </div>
               </div>
+            )}
+
+            {/* Installation Gallery */}
+            {customer.installationImages && customer.installationImages.length > 0 && (
+              <CustomerImageGallery 
+                images={customer.installationImages} 
+                customerName={customer.name}
+              />
             )}
           </div>
 
@@ -240,35 +246,57 @@ export default function CustomerDetailPage({ params }: CustomerDetailPageProps) 
           </div>
         </div>
 
-        {/* Related Customers */}
+        {/* Related Customers - Scrollable */}
         <div className="mt-16">
           <h2 className="text-2xl font-bold text-gray-900 mb-8">
             Other Customer Stories
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {customerTestimonials
-              .filter(c => c.id !== customer.id)
-              .slice(0, 3)
-              .map((relatedCustomer) => (
-                <Link
-                  key={relatedCustomer.id}
-                  href={`/customers/experiences/${relatedCustomer.slug}`}
-                  className="bg-white rounded-xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group"
-                >
-                  <div className="flex items-center gap-3 mb-3">
-                    <MapPin size={16} className="text-primary" />
-                    <span className="font-semibold text-gray-900">{relatedCustomer.name}</span>
-                    <span className="text-sm text-gray-500">{relatedCustomer.location}</span>
-                  </div>
-                  <p className="text-sm text-gray-600 line-clamp-2 mb-3">
-                    {relatedCustomer.quote}
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs text-gray-500">Since {relatedCustomer.since}</span>
-                    <span className="text-primary text-sm group-hover:translate-x-1 transition-transform duration-200">→</span>
-                  </div>
-                </Link>
-              ))}
+          <div className="relative">
+            {/* Scrollable container */}
+            <div className="overflow-x-auto scrollbar-hide">
+              <div className="flex gap-6 pb-4" style={{width: 'max-content'}}>
+                {customerTestimonials
+                  .filter(c => c.id !== customer.id)
+                  .map((relatedCustomer) => (
+                    <Link
+                      key={relatedCustomer.id}
+                      href={`/customers/experiences/${relatedCustomer.slug}`}
+                      className="bg-white rounded-xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group flex-shrink-0 w-80"
+                    >
+                      <div className="flex items-start gap-3 mb-3">
+                        <CustomerAvatar 
+                          name={relatedCustomer.name} 
+                          className="w-12 h-12 text-sm flex-shrink-0"
+                        />
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2 mb-1">
+                            <span className="font-semibold text-gray-900">{relatedCustomer.name}</span>
+                          </div>
+                          <div className="flex items-center gap-2 text-gray-500 mb-2">
+                            <MapPin size={14} className="text-primary flex-shrink-0" />
+                            <span className="text-sm truncate">{relatedCustomer.location}</span>
+                          </div>
+                        </div>
+                      </div>
+                      <p className="text-sm text-gray-600 line-clamp-3 mb-4 leading-relaxed">
+                        "{relatedCustomer.quote}"
+                      </p>
+                      <div className="flex items-center justify-between">
+                        <div className="text-xs text-gray-500">
+                          <div>Since {relatedCustomer.since}</div>
+                          <div className="text-primary font-medium">{relatedCustomer.keyBenefit}</div>
+                        </div>
+                        <span className="text-primary text-sm group-hover:translate-x-1 transition-transform duration-200">→</span>
+                      </div>
+                    </Link>
+                  ))}
+              </div>
+            </div>
+            
+            {/* Scroll indicator */}
+            <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 text-xs text-gray-400">
+              ← Scroll to see all customer stories →
+            </div>
           </div>
         </div>
       </div>
