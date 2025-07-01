@@ -100,39 +100,39 @@ export default function Contact() {
                 <div className="p-6 space-y-4">
                   
                   {/* Phone */}
-                  <div className="flex items-center gap-4 p-3 bg-blue-50 rounded-lg border border-blue-100">
-                    <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center">
+                  <div className="flex items-center gap-4 p-3 bg-primary-1 rounded-lg border border-primary-2">
+                    <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary-dark rounded-lg flex items-center justify-center">
                       <Phone size={16} className="text-white" />
                     </div>
                     <div>
-                      <div className="text-xs text-blue-600 font-medium uppercase tracking-wide">Phone</div>
-                      <a href="tel:1-519-725-4700" className="text-blue-700 font-semibold hover:underline">
+                      <div className="text-xs text-primary font-medium uppercase tracking-wide">Phone</div>
+                      <a href="tel:1-519-725-4700" className="text-primary-dark font-semibold hover:underline">
                         1.519.725.4700
                       </a>
                     </div>
                   </div>
 
                   {/* Toll Free */}
-                  <div className="flex items-center gap-4 p-3 bg-green-50 rounded-lg border border-green-100">
-                    <div className="w-10 h-10 bg-green-500 rounded-lg flex items-center justify-center">
+                  <div className="flex items-center gap-4 p-3 bg-secondary-1 rounded-lg border border-secondary-2">
+                    <div className="w-10 h-10 bg-gradient-to-br from-secondary to-secondary-dark rounded-lg flex items-center justify-center">
                       <Smartphone size={16} className="text-white" />
                     </div>
                     <div>
-                      <div className="text-xs text-green-600 font-medium uppercase tracking-wide">Toll Free</div>
-                      <a href="tel:1-800-265-2757" className="text-green-700 font-semibold hover:underline">
+                      <div className="text-xs text-secondary font-medium uppercase tracking-wide">Toll Free</div>
+                      <a href="tel:1-800-265-2757" className="text-secondary-dark font-semibold hover:underline">
                         1.800.265.2757
                       </a>
                     </div>
                   </div>
 
                   {/* Email */}
-                  <div className="flex items-center gap-4 p-3 bg-purple-50 rounded-lg border border-purple-100">
-                    <div className="w-10 h-10 bg-purple-500 rounded-lg flex items-center justify-center">
+                  <div className="flex items-center gap-4 p-3 bg-amber-50 rounded-lg border border-amber-200">
+                    <div className="w-10 h-10 bg-gradient-to-br from-amber-500 to-amber-600 rounded-lg flex items-center justify-center">
                       <Mail size={16} className="text-white" />
                     </div>
                     <div>
-                      <div className="text-xs text-purple-600 font-medium uppercase tracking-wide">Email</div>
-                      <a href="mailto:info@dryermaster.com" className="text-purple-700 font-semibold hover:underline">
+                      <div className="text-xs text-amber-700 font-medium uppercase tracking-wide">Email</div>
+                      <a href="mailto:info@dryermaster.com" className="text-amber-800 font-semibold hover:underline">
                         info@dryermaster.com
                       </a>
                     </div>
@@ -173,7 +173,7 @@ export default function Contact() {
 
               {/* Business Hours Card */}
               <div className="bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden">
-                <div className="bg-gradient-to-r from-gray-600 to-gray-700 text-white p-6">
+                <div className="bg-gradient-to-r from-primary to-primary-dark text-white p-6">
                   <h3 className="text-xl font-bold mb-2 flex items-center gap-2">
                     <Clock size={20} />
                     Business Hours
@@ -195,8 +195,8 @@ export default function Contact() {
                       <span className="font-semibold text-gray-800">Closed</span>
                     </div>
                   </div>
-                  <div className="mt-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
-                    <div className="flex items-center gap-2 text-blue-700">
+                  <div className="mt-4 p-3 bg-primary-1 rounded-lg border border-primary-2">
+                    <div className="flex items-center gap-2 text-primary">
                       <Phone size={16} />
                       <span className="text-sm font-semibold">Phone Support: 8:00 AM - 10:00 PM EST</span>
                     </div>
@@ -206,7 +206,7 @@ export default function Contact() {
 
               {/* Careers Card */}
               <div className="bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden">
-                <div className="bg-gradient-to-r from-orange-500 to-amber-500 text-white p-6">
+                <div className="bg-gradient-to-r from-secondary to-secondary-dark text-white p-6">
                   <h3 className="text-xl font-bold mb-2 flex items-center gap-2">
                     <Users size={20} />
                     Join Our Team
