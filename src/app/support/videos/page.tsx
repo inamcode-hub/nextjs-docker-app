@@ -1,5 +1,6 @@
 import { generateMetadata as genMeta } from "@/lib/metadata";
 import VideoGallery from "@/components/VideoGallery";
+import { GlobalHeroCard, GlobalHeroCardBadge, GlobalHeroCardTitle, GlobalHeroCardDescription } from '@/components/GlobalHeroCard';
 import { Video, Play, GraduationCap, Users } from 'lucide-react';
 
 export const metadata = genMeta({
@@ -30,54 +31,55 @@ export default function Videos() {
       
       <div className="min-h-screen py-8">
         {/* Hero Section */}
-        <div className="relative bg-gradient-to-br from-primary via-primary-dark to-secondary rounded-3xl p-8 md:p-16 mb-12 mx-4 sm:mx-6 lg:mx-8 max-w-7xl xl:mx-auto overflow-hidden">
-          {/* Background Pattern */}
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent transform rotate-12 translate-x-1/2 translate-y-1/2"></div>
-          </div>
-          
-          <div className="relative z-10 text-center text-white">
-            <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-6 py-3 mb-6">
-              <Video size={20} className="text-secondary-1" />
-              <span className="text-sm font-semibold">Video Library</span>
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-              Training & <span className="text-secondary-1">Product Videos</span>
-            </h1>
-            <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+        <div className="mx-4 sm:mx-6 lg:mx-8 max-w-7xl xl:mx-auto">
+          <GlobalHeroCard>
+            <GlobalHeroCardBadge 
+              icon={<Video size={20} className="text-secondary-1" />}
+            >
+              Video Library
+            </GlobalHeroCardBadge>
+            <GlobalHeroCardTitle highlightText="Product Videos">
+              Training &
+            </GlobalHeroCardTitle>
+            <GlobalHeroCardDescription>
               Master your DryerMaster systems with our comprehensive video tutorials, product demonstrations, and training materials.
-            </p>
-          </div>
+            </GlobalHeroCardDescription>
+          </GlobalHeroCard>
         </div>
 
-        {/* Quick Stats */}
+        {/* Stats Section */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white rounded-2xl border border-gray-200 shadow-lg p-6 text-center">
-              <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-4">
-                <GraduationCap size={24} className="text-blue-600" />
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 text-center">
+              <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary-dark rounded-xl flex items-center justify-center mx-auto mb-4">
+                <GraduationCap className="w-6 h-6 text-white" />
               </div>
-              <h3 className="text-2xl font-bold text-primary mb-2">13</h3>
-              <p className="text-gray-600 font-medium">Training Videos</p>
-              <p className="text-sm text-gray-500 mt-1">Step-by-step tutorials</p>
+              <div className="text-2xl font-bold text-gray-900 mb-1">13</div>
+              <div className="text-sm text-gray-600">Training Videos</div>
             </div>
 
-            <div className="bg-white rounded-2xl border border-gray-200 shadow-lg p-6 text-center">
-              <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mx-auto mb-4">
-                <Play size={24} className="text-green-600" />
+            <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 text-center">
+              <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary-dark rounded-xl flex items-center justify-center mx-auto mb-4">
+                <Play className="w-6 h-6 text-white" />
               </div>
-              <h3 className="text-2xl font-bold text-primary mb-2">5</h3>
-              <p className="text-gray-600 font-medium">Product Categories</p>
-              <p className="text-sm text-gray-500 mt-1">All DryerMaster systems</p>
+              <div className="text-2xl font-bold text-gray-900 mb-1">5</div>
+              <div className="text-sm text-gray-600">Product Categories</div>
             </div>
 
-            <div className="bg-white rounded-2xl border border-gray-200 shadow-lg p-6 text-center">
-              <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mx-auto mb-4">
-                <Users size={24} className="text-purple-600" />
+            <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 text-center">
+              <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary-dark rounded-xl flex items-center justify-center mx-auto mb-4">
+                <Users className="w-6 h-6 text-white" />
               </div>
-              <h3 className="text-2xl font-bold text-primary mb-2">40+</h3>
-              <p className="text-gray-600 font-medium">Years Experience</p>
-              <p className="text-sm text-gray-500 mt-1">Industry expertise</p>
+              <div className="text-2xl font-bold text-gray-900 mb-1">40+</div>
+              <div className="text-sm text-gray-600">Years Experience</div>
+            </div>
+
+            <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 text-center">
+              <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary-dark rounded-xl flex items-center justify-center mx-auto mb-4">
+                <Video className="w-6 h-6 text-white" />
+              </div>
+              <div className="text-2xl font-bold text-gray-900 mb-1">HD</div>
+              <div className="text-sm text-gray-600">Quality Videos</div>
             </div>
           </div>
         </div>
