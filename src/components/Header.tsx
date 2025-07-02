@@ -147,24 +147,38 @@ const Header = () => {
               onMouseEnter={() => handleButtonMouseEnter('products')}
               onMouseLeave={handleButtonMouseLeave}
             >
-              <button className={`relative flex items-center gap-0.5 lg:gap-1 px-1.5 lg:px-2 xl:px-3 py-2 rounded-xl text-xs xl:text-sm font-semibold transition-all duration-300 ${
-                isProductsActive() 
-                  ? 'bg-gradient-to-r from-primary to-primary-dark text-white shadow-lg shadow-primary/25 scale-105' 
-                  : 'text-gray-700 hover:bg-gradient-to-r hover:from-primary hover:to-primary-dark hover:text-white hover:shadow-lg hover:shadow-primary/20 hover:scale-105'
-              }`}>
+              <Link 
+                href="/products" 
+                className={`relative z-10 flex items-center gap-0.5 lg:gap-1 px-1.5 lg:px-2 xl:px-3 py-2 rounded-xl text-xs xl:text-sm font-semibold transition-all duration-300 ${
+                  isProductsActive() 
+                    ? 'bg-gradient-to-r from-primary to-primary-dark text-white shadow-lg shadow-primary/25 scale-105' 
+                    : 'text-gray-700 hover:bg-gradient-to-r hover:from-primary hover:to-primary-dark hover:text-white hover:shadow-lg hover:shadow-primary/20 hover:scale-105'
+                }`}
+                onClick={(e) => {
+                  // Ensure the link works even if dropdown is showing
+                  e.stopPropagation();
+                }}
+              >
                 <span className="whitespace-nowrap">Products</span>
                 <svg className={`ml-0.5 h-3 w-3 xl:h-4 xl:w-4 transition-transform duration-300 ${hoverDropdown === 'products' ? 'rotate-180' : ''}`} fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
                 </svg>
                 {isProductsActive() && <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-white rounded-full"></div>}
-              </button>
+              </Link>
               {hoverDropdown === 'products' && (
                 <div 
-                  className="absolute left-0 mt-2 w-72 bg-white rounded-2xl shadow-2xl ring-1 ring-primary/10 z-50 border border-gray-100 animate-in slide-in-from-top-5 duration-200"
+                  className="absolute left-0 mt-2 w-72 bg-white rounded-2xl shadow-2xl ring-1 ring-primary/10 z-50 border border-gray-100 animate-in slide-in-from-top-5 duration-200 overflow-hidden"
                   onMouseEnter={() => handleDropdownMouseEnter('products')}
                   onMouseLeave={handleDropdownMouseLeave}
                 >
-                  <div className="py-1">
+                  <div>
+                    {/* View All Products */}
+                    <Link href="/products" className={`flex items-center gap-3 px-4 py-3 text-sm font-semibold transition-colors duration-150 border-b border-gray-100 rounded-t-2xl ${pathname === '/products' ? 'bg-primary text-white' : 'text-primary hover:bg-primary-5'}`}>
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+                      </svg>
+                      View All Products
+                    </Link>
                     {/* Sub-menu items: remove hover:text-primary and hover:bg-primary-5, use only secondary color for hover */}
                     <Link href="/products/moisture-sensors" className={`flex items-center gap-3 px-4 py-2 text-sm transition-colors duration-150 ${pathname === '/products/moisture-sensors' ? 'bg-secondary text-white' : 'text-gray-700 hover:bg-secondary-1 hover:text-secondary'}`}>
                       <Target size={16} />
@@ -186,7 +200,7 @@ const Header = () => {
                       <BarChart3 size={16} />
                       Moisture Monitor Pro (MMP)
                     </Link>
-                    <Link href="/products/dm100" className={`flex items-center gap-3 px-4 py-2 text-sm transition-colors duration-150 ${pathname === '/products/dm100' ? 'bg-secondary text-white' : 'text-gray-700 hover:bg-secondary-1 hover:text-secondary'}`}>
+                    <Link href="/products/dm100" className={`flex items-center gap-3 px-4 py-2 text-sm transition-colors duration-150 rounded-b-2xl ${pathname === '/products/dm100' ? 'bg-secondary text-white' : 'text-gray-700 hover:bg-secondary-1 hover:text-secondary'}`}>
                       <Settings size={16} />
                       Dryer Master DM100
                     </Link>
@@ -214,12 +228,12 @@ const Header = () => {
               </button>
               {hoverDropdown === 'customers' && (
                 <div 
-                  className="absolute left-0 mt-2 w-72 bg-white rounded-2xl shadow-2xl ring-1 ring-primary/10 z-50 border border-gray-100 animate-in slide-in-from-top-5 duration-200"
+                  className="absolute left-0 mt-2 w-72 bg-white rounded-2xl shadow-2xl ring-1 ring-primary/10 z-50 border border-gray-100 animate-in slide-in-from-top-5 duration-200 overflow-hidden"
                   onMouseEnter={() => handleDropdownMouseEnter('customers')}
                   onMouseLeave={handleDropdownMouseLeave}
                 >
-                  <div className="py-1">
-                    <Link href="/customers/experiences" className={`flex items-center gap-3 px-4 py-2 text-sm transition-colors duration-150 ${pathname === '/customers/experiences' ? 'bg-secondary text-white' : 'text-gray-700 hover:bg-secondary-1 hover:text-secondary'}`}>
+                  <div>
+                    <Link href="/customers/experiences" className={`flex items-center gap-3 px-4 py-2 text-sm transition-colors duration-150 rounded-t-2xl ${pathname === '/customers/experiences' ? 'bg-secondary text-white' : 'text-gray-700 hover:bg-secondary-1 hover:text-secondary'}`}>
                       <Star size={16} />
                       Customer Experiences
                     </Link>
@@ -227,7 +241,7 @@ const Header = () => {
                       <Building2 size={16} />
                       Dryer Manufacturers
                     </Link>
-                    <Link href="/customers/applications" className={`flex items-center gap-3 px-4 py-2 text-sm transition-colors duration-150 ${pathname === '/customers/applications' ? 'bg-secondary text-white' : 'text-gray-700 hover:bg-secondary-1 hover:text-secondary'}`}>
+                    <Link href="/customers/applications" className={`flex items-center gap-3 px-4 py-2 text-sm transition-colors duration-150 rounded-b-2xl ${pathname === '/customers/applications' ? 'bg-secondary text-white' : 'text-gray-700 hover:bg-secondary-1 hover:text-secondary'}`}>
                       <Clipboard size={16} />
                       Application Examples
                     </Link>
@@ -255,12 +269,12 @@ const Header = () => {
               </button>
               {hoverDropdown === 'support' && (
                 <div 
-                  className="absolute left-0 mt-2 w-56 bg-white rounded-2xl shadow-2xl ring-1 ring-primary/10 z-50 border border-gray-100 animate-in slide-in-from-top-5 duration-200"
+                  className="absolute left-0 mt-2 w-56 bg-white rounded-2xl shadow-2xl ring-1 ring-primary/10 z-50 border border-gray-100 animate-in slide-in-from-top-5 duration-200 overflow-hidden"
                   onMouseEnter={() => handleDropdownMouseEnter('support')}
                   onMouseLeave={handleDropdownMouseLeave}
                 >
-                  <div className="py-1">
-                    <Link href="/support/manuals" className={`flex items-center gap-3 px-4 py-2 text-sm transition-colors duration-150 ${pathname === '/support/manuals' ? 'bg-secondary text-white' : 'text-gray-700 hover:bg-secondary-1 hover:text-secondary'}`}>
+                  <div>
+                    <Link href="/support/manuals" className={`flex items-center gap-3 px-4 py-2 text-sm transition-colors duration-150 rounded-t-2xl ${pathname === '/support/manuals' ? 'bg-secondary text-white' : 'text-gray-700 hover:bg-secondary-1 hover:text-secondary'}`}>
                       <Book size={16} />
                       Manuals
                     </Link>
@@ -272,7 +286,7 @@ const Header = () => {
                       <MessageCircle size={16} />
                       Support
                     </Link>
-                    <Link href="/support/register" className={`flex items-center gap-3 px-4 py-2 text-sm transition-colors duration-150 ${pathname === '/support/register' ? 'bg-secondary text-white' : 'text-gray-700 hover:bg-secondary-1 hover:text-secondary'}`}>
+                    <Link href="/support/register" className={`flex items-center gap-3 px-4 py-2 text-sm transition-colors duration-150 rounded-b-2xl ${pathname === '/support/register' ? 'bg-secondary text-white' : 'text-gray-700 hover:bg-secondary-1 hover:text-secondary'}`}>
                       <FileText size={16} />
                       Register
                     </Link>
@@ -401,6 +415,13 @@ const Header = () => {
               </button>
               {activeDropdown === 'products-mobile' && (
                 <div className="bg-white border-t border-gray-100 space-y-1 p-2">
+                  {/* View All Products */}
+                  <Link href="/products" onClick={closeMenu} className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-semibold transition-all duration-200 border-b border-gray-100 mb-1 ${pathname === '/products' ? 'bg-primary text-white shadow-sm' : 'text-primary hover:bg-primary-5'}`}>
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+                    </svg>
+                    View All Products
+                  </Link>
                   <Link href="/products/moisture-sensors" onClick={closeMenu} className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-all duration-200 ${pathname === '/products/moisture-sensors' ? 'bg-secondary text-white shadow-sm' : 'text-gray-600 hover:text-secondary hover:bg-secondary-1'}`}>
                     <Target size={16} />
                     Real-Time Moisture Sensors

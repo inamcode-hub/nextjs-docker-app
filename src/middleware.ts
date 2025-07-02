@@ -16,7 +16,6 @@ export function middleware(request: NextRequest) {
     
     // Additional legacy redirects that might exist
     '/support': '/support/help',
-    '/products': '/products/moisture-sensors',
     '/customers': '/customers/experiences',
     
     // Common variations
