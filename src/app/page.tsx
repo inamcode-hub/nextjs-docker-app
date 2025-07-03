@@ -112,52 +112,100 @@ export default function Home() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="text-gray-900">
-              <div className="inline-flex items-center gap-2 bg-primary/10 text-primary rounded-full px-4 py-2 mb-6">
-                <Shield className="w-5 h-5" />
-                <span className="text-sm font-semibold">Trusted Since 1983</span>
+              {/* Enhanced Trust Badge */}
+              <div className="inline-flex items-center gap-3 bg-gradient-to-r from-white/90 to-white/70 backdrop-blur-sm border border-primary/20 text-primary rounded-full px-6 py-3 mb-8 shadow-lg hover:shadow-xl transition-all duration-300">
+                <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                  <Shield className="w-4 h-4" />
+                </div>
+                <span className="text-sm font-bold">Trusted Since 1983</span>
               </div>
               
-              <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight text-gray-900">
-                Stop Losing Money on 
-                <span className="text-primary"> Every Bushel</span>
-              </h1>
+              {/* Enhanced Headline */}
+              <div className="mb-8">
+                <h1 className="text-5xl lg:text-7xl font-bold mb-4 leading-tight">
+                  <span className="bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+                    Stop Losing Money on
+                  </span>
+                  <br />
+                  <span className="bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent">
+                    Every Bushel
+                  </span>
+                </h1>
+                <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
+              </div>
               
-              <p className="text-xl lg:text-2xl text-gray-700 mb-8 leading-relaxed">
-                Farmers using Dryer Master save <strong className="text-green-600">$0.20 per bushel</strong> by hitting perfect moisture every time. 
-                No more over-drying. No more dock fees. Just profitable grain.
-              </p>
+              {/* Enhanced Description */}
+              <div className="mb-8">
+                <p className="text-xl lg:text-2xl text-gray-700 leading-relaxed">
+                  Farmers using Dryer Master save{' '}
+                  <span className="relative">
+                    <span className="bg-gradient-to-r from-green-600 to-green-700 bg-clip-text text-transparent font-bold text-2xl lg:text-3xl">
+                      $0.20 per bushel
+                    </span>
+                    <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-green-600 to-green-700 rounded-full"></div>
+                  </span>
+                  {' '}by hitting perfect moisture every time.
+                </p>
+                <p className="text-lg text-gray-600 mt-4">
+                  No more over-drying. No more dock fees. Just profitable grain.
+                </p>
+              </div>
 
-              {/* Rotating Stats */}
-              <div className="bg-white rounded-2xl p-6 mb-8 border border-gray-200 shadow-xl">
-                <div className="flex items-center gap-4">
-                  <div className="text-primary">
-                    {heroStats[currentStat].icon}
+              {/* Enhanced Rotating Stats */}
+              <div className="relative bg-gradient-to-br from-white to-gray-50 rounded-2xl p-8 mb-8 border border-gray-200 shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group">
+                <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-full blur-xl -translate-y-12 translate-x-12 group-hover:scale-150 transition-transform duration-500"></div>
+                <div className="absolute bottom-0 left-0 w-16 h-16 bg-secondary/5 rounded-full blur-lg translate-y-8 -translate-x-8 group-hover:scale-125 transition-transform duration-500"></div>
+                
+                <div className="relative flex items-center justify-between">
+                  <div className="flex items-center gap-6">
+                    <div className="w-14 h-14 bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl flex items-center justify-center text-primary shadow-lg">
+                      {heroStats[currentStat].icon}
+                    </div>
+                    <div>
+                      <div className="text-4xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+                        {heroStats[currentStat].number}
+                      </div>
+                      <div className="text-gray-600 text-base font-medium">
+                        {heroStats[currentStat].label}
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <div className="text-3xl font-bold text-gray-900">
-                      {heroStats[currentStat].number}
-                    </div>
-                    <div className="text-gray-600 text-sm">
-                      {heroStats[currentStat].label}
-                    </div>
+                  
+                  {/* Progress Indicators */}
+                  <div className="hidden sm:flex items-center gap-2">
+                    {heroStats.map((_, index) => (
+                      <div 
+                        key={index} 
+                        className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                          index === currentStat 
+                            ? 'bg-primary shadow-lg scale-110' 
+                            : 'bg-gray-300 hover:bg-gray-400'
+                        }`}
+                      />
+                    ))}
                   </div>
                 </div>
               </div>
 
+              {/* Enhanced Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   href="/contact"
-                  className="bg-secondary text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-secondary-dark transition-colors duration-200 flex items-center justify-center gap-2"
+                  className="group relative bg-gradient-to-r from-secondary to-secondary-dark text-white px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-3 transform hover:-translate-y-1 overflow-hidden"
                 >
-                  Calculate My Savings
-                  <ArrowRight className="w-5 h-5" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-secondary-dark to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <DollarSign className="w-5 h-5 relative z-10" />
+                  <span className="relative z-10">Calculate My Savings</span>
+                  <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
                 </Link>
                 <Link
                   href="/products"
-                  className="border-2 border-primary text-primary px-8 py-4 rounded-xl font-bold text-lg hover:bg-primary hover:text-white transition-all duration-200 flex items-center justify-center gap-2"
+                  className="group relative border-2 border-primary text-primary px-8 py-4 rounded-xl font-bold text-lg hover:text-white transition-all duration-300 flex items-center justify-center gap-3 transform hover:-translate-y-1 overflow-hidden"
                 >
-                  See How It Works
-                  <Monitor className="w-5 h-5" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary to-primary-dark scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                  <Monitor className="w-5 h-5 relative z-10" />
+                  <span className="relative z-10">See How It Works</span>
+                  <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
                 </Link>
               </div>
             </div>
