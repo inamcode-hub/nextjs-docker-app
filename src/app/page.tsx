@@ -87,13 +87,34 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <div className="bg-gradient-to-br from-blue-50 via-blue-100 to-primary/20 min-h-screen flex items-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="relative bg-gradient-to-br from-blue-50 via-white to-green-50 min-h-screen flex items-center overflow-hidden">
+        {/* Background Pattern Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-primary/10 to-transparent rounded-full blur-3xl transform translate-x-32 -translate-y-32"></div>
+          <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-secondary/10 to-transparent rounded-full blur-3xl transform -translate-x-24 translate-y-24"></div>
+          <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-br from-blue-100/50 to-transparent rounded-full blur-2xl transform -translate-y-1/2"></div>
+          
+          {/* Geometric Shapes */}
+          <div className="absolute top-20 right-20 w-4 h-4 bg-primary/20 rounded-full"></div>
+          <div className="absolute top-40 right-32 w-2 h-2 bg-secondary/30 rounded-full"></div>
+          <div className="absolute bottom-32 left-16 w-3 h-3 bg-primary/25 rounded-full"></div>
+          <div className="absolute bottom-20 left-32 w-2 h-2 bg-secondary/20 rounded-full"></div>
+          
+          {/* Grid Pattern */}
+          <div className="absolute inset-0 opacity-[0.02]">
+            <div className="w-full h-full" style={{
+              backgroundImage: `radial-gradient(circle at 1px 1px, rgba(99, 102, 241, 0.3) 1px, transparent 0)`,
+              backgroundSize: '24px 24px'
+            }}></div>
+          </div>
+        </div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="text-gray-900">
-              <div className="inline-flex items-center gap-2 bg-primary/10 rounded-full px-4 py-2 mb-6">
-                <Shield className="w-5 h-5 text-primary" />
-                <span className="text-sm font-semibold text-primary">Trusted Since 1983</span>
+              <div className="inline-flex items-center gap-2 bg-primary/10 text-primary rounded-full px-4 py-2 mb-6">
+                <Shield className="w-5 h-5" />
+                <span className="text-sm font-semibold">Trusted Since 1983</span>
               </div>
               
               <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight text-gray-900">
@@ -107,7 +128,7 @@ export default function Home() {
               </p>
 
               {/* Rotating Stats */}
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 mb-8 border border-gray-200 shadow-lg">
+              <div className="bg-white rounded-2xl p-6 mb-8 border border-gray-200 shadow-xl">
                 <div className="flex items-center gap-4">
                   <div className="text-primary">
                     {heroStats[currentStat].icon}
@@ -126,7 +147,7 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   href="/contact"
-                  className="bg-secondary text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-secondary-dark transition-colors duration-200 flex items-center justify-center gap-2 shadow-lg"
+                  className="bg-secondary text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-secondary-dark transition-colors duration-200 flex items-center justify-center gap-2"
                 >
                   Calculate My Savings
                   <ArrowRight className="w-5 h-5" />
@@ -142,7 +163,7 @@ export default function Home() {
             </div>
 
             {/* Live Demo Cards */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-gray-200 shadow-xl">
+            <div className="bg-white rounded-2xl p-8 border border-gray-200 shadow-xl">
               <div className="text-center mb-6">
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">Live Demo</h3>
                 <p className="text-gray-600">See real-time moisture monitoring in action</p>
@@ -160,9 +181,13 @@ export default function Home() {
       </div>
 
       {/* Farmer Problems/Solutions Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-gradient-to-br from-gray-50 via-white to-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-red-100 text-red-700 rounded-full px-4 py-2 mb-6">
+              <DollarSign className="w-5 h-5" />
+              <span className="text-sm font-semibold">FARMER CHALLENGES</span>
+            </div>
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
               Every Farmer Faces These Problems
             </h2>
@@ -173,7 +198,7 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 gap-8">
             {farmerProblems.map((item, index) => (
-              <div key={index} className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+              <div key={index} className="bg-white rounded-2xl p-8 shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center flex-shrink-0 text-red-600">
                     {item.icon}
@@ -194,15 +219,21 @@ export default function Home() {
       {/* Savings Calculator */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-3xl p-8 lg:p-12 border border-green-200">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 rounded-full px-4 py-2 mb-6">
+              <DollarSign className="w-5 h-5" />
+              <span className="text-sm font-semibold">SAVINGS CALCULATOR</span>
+            </div>
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+              Calculate Your ROI
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              See exactly how much Dryer Master will save your operation
+            </p>
+          </div>
+          <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-8 lg:p-12 border border-green-200 shadow-xl">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                  Calculate Your Savings
-                </h2>
-                <p className="text-gray-700 text-lg mb-8">
-                  See how much money Dryer Master could save your operation. Most farmers see their investment pay back in the first season.
-                </p>
 
                 <div className="space-y-6">
                   <div>
@@ -289,9 +320,9 @@ export default function Home() {
       <section className="py-16 bg-gradient-to-br from-blue-50 to-blue-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-blue-200 rounded-full px-4 py-2 mb-4">
-              <Monitor className="w-5 h-5 text-blue-700" />
-              <span className="text-sm font-semibold text-blue-700">FLAGSHIP PRODUCT</span>
+            <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 rounded-full px-4 py-2 mb-6">
+              <Monitor className="w-5 h-5" />
+              <span className="text-sm font-semibold">FLAGSHIP PRODUCT</span>
             </div>
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
               DM510 Controller
@@ -436,10 +467,9 @@ export default function Home() {
       <section className="py-16 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-full px-6 py-3 mb-6 shadow-lg">
-              <Smartphone className="w-6 h-6" />
-              <span className="font-bold">REMOTE MONITORING</span>
-              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+            <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 rounded-full px-4 py-2 mb-6">
+              <Smartphone className="w-5 h-5" />
+              <span className="text-sm font-semibold">REMOTE MONITORING</span>
             </div>
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
               Monitor From Anywhere
@@ -778,34 +808,40 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-8 items-stretch">
             {/* Farmer CTA Card */}
-            <div className="bg-gradient-to-br from-primary to-primary-dark rounded-2xl p-8 text-white shadow-xl">
-              <h2 className="text-2xl lg:text-3xl font-bold mb-4">
-                Ready to Stop Losing Money on Every Bushel?
-              </h2>
-              <p className="text-primary-100 mb-6 leading-relaxed">
-                Join 50,000+ farmers who trust Dryer Master to protect their grain and their profits. 
-                Get a custom quote and see exactly how much you could save.
-              </p>
+            <div className="bg-white rounded-2xl p-8 shadow-xl border border-gray-200">
+              <div className="mb-6">
+                <div className="inline-flex items-center gap-2 bg-secondary/10 text-secondary rounded-full px-4 py-2 mb-4">
+                  <DollarSign className="w-5 h-5" />
+                  <span className="text-sm font-semibold">SAVE MONEY</span>
+                </div>
+                <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-3">
+                  Ready to Stop Losing Money on Every Bushel?
+                </h2>
+                <p className="text-gray-600 leading-relaxed">
+                  Join 50,000+ farmers who trust Dryer Master to protect their grain and their profits. 
+                  Get a custom quote and see exactly how much you could save.
+                </p>
+              </div>
               
               <div className="flex flex-col gap-3 mb-6">
                 <Link
                   href="/contact"
-                  className="bg-secondary text-white px-6 py-3 rounded-xl font-semibold hover:bg-secondary-dark transition-colors duration-200 flex items-center justify-center gap-3"
+                  className="bg-secondary text-white px-6 py-3 rounded-xl font-semibold hover:bg-secondary-dark transition-colors duration-200 flex items-center justify-center gap-2"
                 >
                   <Phone className="w-5 h-5" />
-                  Call (519) 725-4700
+                  <span>Call (519) 725-4700</span>
                 </Link>
                 <Link
                   href="/contact"
-                  className="border-2 border-white text-white px-6 py-3 rounded-xl font-semibold hover:bg-white hover:text-primary transition-all duration-200 flex items-center justify-center gap-3"
+                  className="border-2 border-secondary text-secondary px-6 py-3 rounded-xl font-semibold hover:bg-secondary/10 transition-colors duration-200 flex items-center justify-center gap-2"
                 >
                   <Mail className="w-5 h-5" />
-                  Get Free Quote
+                  <span>Get Free Quote</span>
                 </Link>
               </div>
 
-              <div className="text-primary-200 text-sm">
-                <div className="flex items-center gap-2 mb-1">
+              <div className="text-center text-gray-500 text-sm">
+                <div className="flex items-center justify-center gap-2 mb-1">
                   <MapPin className="w-4 h-4" />
                   <span>Kitchener-Waterloo, Ontario • Since 1983</span>
                 </div>
@@ -816,7 +852,7 @@ export default function Home() {
             {/* Dealer CTA Card */}
             <div className="bg-white rounded-2xl p-8 shadow-xl border border-gray-200">
               <div className="mb-6">
-                <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 rounded-full px-4 py-2 mb-4">
+                <div className="inline-flex items-center gap-2 bg-primary/10 text-primary rounded-full px-4 py-2 mb-4">
                   <Users className="w-5 h-5" />
                   <span className="text-sm font-semibold">DEALER OPPORTUNITY</span>
                 </div>
@@ -831,20 +867,20 @@ export default function Home() {
               {/* Benefits */}
               <div className="grid grid-cols-3 gap-3 mb-6">
                 <div className="text-center">
-                  <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center mx-auto mb-2">
-                    <Clock className="w-5 h-5 text-blue-600" />
+                  <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-2">
+                    <Clock className="w-5 h-5 text-primary" />
                   </div>
                   <div className="text-xs font-medium text-gray-700">Quick Application</div>
                 </div>
                 <div className="text-center">
-                  <div className="w-10 h-10 bg-green-50 rounded-lg flex items-center justify-center mx-auto mb-2">
-                    <MapPin className="w-5 h-5 text-green-600" />
+                  <div className="w-10 h-10 bg-secondary/10 rounded-lg flex items-center justify-center mx-auto mb-2">
+                    <MapPin className="w-5 h-5 text-secondary" />
                   </div>
                   <div className="text-xs font-medium text-gray-700">Exclusive Territory</div>
                 </div>
                 <div className="text-center">
-                  <div className="w-10 h-10 bg-purple-50 rounded-lg flex items-center justify-center mx-auto mb-2">
-                    <Shield className="w-5 h-5 text-purple-600" />
+                  <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-2">
+                    <Shield className="w-5 h-5 text-primary" />
                   </div>
                   <div className="text-xs font-medium text-gray-700">Ongoing Support</div>
                 </div>
@@ -854,14 +890,14 @@ export default function Home() {
               <div className="flex flex-col gap-3">
                 <Link
                   href="/dealers"
-                  className="bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-blue-700 transition-colors duration-200 flex items-center justify-center gap-2"
+                  className="bg-primary text-white px-6 py-3 rounded-xl font-semibold hover:bg-primary-dark transition-colors duration-200 flex items-center justify-center gap-2"
                 >
                   <span>Apply Now</span>
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
                   href="/dealers"
-                  className="border-2 border-blue-600 text-blue-600 px-6 py-3 rounded-xl font-semibold hover:bg-blue-50 transition-colors duration-200 text-center"
+                  className="border-2 border-primary text-primary px-6 py-3 rounded-xl font-semibold hover:bg-primary/10 transition-colors duration-200 text-center"
                 >
                   Learn More
                 </Link>
