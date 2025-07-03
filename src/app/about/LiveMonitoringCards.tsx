@@ -49,59 +49,58 @@ export default function LiveMonitoringCards() {
   }, []);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-      {/* Inlet Monitoring Card */}
-      <div className="rounded-xl p-6 border-2 border-gray-200 h-full text-white relative overflow-hidden" style={{ backgroundColor: '#5cb85c' }}>
-        <div className="absolute top-4 right-4 text-white/80 text-sm font-medium">
-          {inletTemp.toFixed(1)}°
-        </div>
-        <div className="text-center">
-          <div className="text-6xl font-bold mb-2">
-            {inletMoisture.toFixed(1)}<span className="text-3xl">%</span>
+    <div className="w-full max-w-4xl mx-auto">
+      <div className="grid grid-cols-1 gap-4 lg:gap-6">
+        {/* Inlet Monitoring Card */}
+        <div className="rounded-xl p-3 lg:p-3 border-2 border-gray-200 h-full text-white relative overflow-hidden min-h-[120px] lg:min-h-[100px] w-full" style={{ backgroundColor: '#5cb85c' }}>
+          <div className="absolute top-4 right-4 text-white/80 text-xs lg:text-sm font-medium">
+            {inletTemp.toFixed(1)}°F
           </div>
-          <div className="text-2xl font-semibold mb-4">Inlet</div>
-          <div className="text-white/90 text-sm font-medium">{inletMoisture.toFixed(1)}%</div>
-        </div>
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/30"></div>
-        {/* Live indicator */}
-        <div className="absolute top-4 left-4 w-2 h-2 bg-white rounded-full animate-pulse"></div>
-      </div>
-
-      {/* Outlet Monitoring Card */}
-      <div className="rounded-xl p-6 border-2 border-gray-200 h-full text-white relative overflow-hidden" style={{ backgroundColor: '#428bca' }}>
-        <div className="absolute top-4 right-4 text-white/80 text-sm font-medium">
-          {outletTemp.toFixed(1)}°
-        </div>
-        <div className="text-center">
-          <div className="text-6xl font-bold mb-2">
-            {outletMoisture.toFixed(1)}<span className="text-3xl">%</span>
-          </div>
-          <div className="text-2xl font-semibold mb-4">Outlet</div>
-          <div className="text-white/90 text-sm font-medium">{outletMoisture.toFixed(1)}°</div>
-        </div>
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/30"></div>
-        {/* Live indicator */}
-        <div className="absolute top-4 left-4 w-2 h-2 bg-white rounded-full animate-pulse"></div>
-      </div>
-
-      {/* Discharge Rate Card */}
-      <div className="rounded-xl p-6 border-2 border-gray-200 h-full text-white relative overflow-hidden" style={{ backgroundColor: '#f0ad4e' }}>
-        <div className="absolute top-4 right-4 text-white/80 text-sm font-medium">
-          READY
-        </div>
-        <div className="text-center">
-          <div className="flex items-center justify-center mb-2">
-            <div className="w-12 h-12 border-4 border-white rounded-full flex items-center justify-center mr-4">
-              <span className="text-2xl font-bold">A</span>
+          <div className="text-center h-full flex flex-col justify-center px-2 lg:px-3">
+            <div className="text-5xl lg:text-6xl xl:text-7xl font-bold mb-3 leading-none">
+              {inletMoisture.toFixed(1)}<span className="text-2xl lg:text-3xl xl:text-4xl">%</span>
             </div>
-            <div className="text-4xl font-bold">{dischargeRate.toFixed(1)}</div>
+            <div className="text-lg lg:text-xl font-semibold mb-2">Inlet</div>
+            <div className="text-white/90 text-xs lg:text-sm font-medium">Moisture Content</div>
           </div>
-          <div className="text-xl font-semibold mb-4">Discharge Rate</div>
-          <div className="text-white/90 text-sm font-medium">BU/HR AUTO</div>
+          <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/30"></div>
+          {/* Live indicator */}
+          <div className="absolute top-4 left-4 w-2 h-2 bg-white rounded-full animate-pulse"></div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/30"></div>
-        {/* Live indicator */}
-        <div className="absolute top-4 left-4 w-2 h-2 bg-white rounded-full animate-pulse"></div>
+
+        {/* Outlet Monitoring Card */}
+        <div className="rounded-xl p-3 lg:p-3 border-2 border-gray-200 h-full text-white relative overflow-hidden min-h-[120px] lg:min-h-[100px] w-full" style={{ backgroundColor: '#428bca' }}>
+          <div className="absolute top-4 right-4 text-white/80 text-xs lg:text-sm font-medium">
+            {outletTemp.toFixed(1)}°F
+          </div>
+          <div className="text-center h-full flex flex-col justify-center px-2 lg:px-3">
+            <div className="text-5xl lg:text-6xl xl:text-7xl font-bold mb-3 leading-none">
+              {outletMoisture.toFixed(1)}<span className="text-2xl lg:text-3xl xl:text-4xl">%</span>
+            </div>
+            <div className="text-lg lg:text-xl font-semibold mb-2">Outlet</div>
+            <div className="text-white/90 text-xs lg:text-sm font-medium">Target: 14.5%</div>
+          </div>
+          <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/30"></div>
+          {/* Live indicator */}
+          <div className="absolute top-4 left-4 w-2 h-2 bg-white rounded-full animate-pulse"></div>
+        </div>
+
+        {/* Discharge Rate Card */}
+        <div className="rounded-xl p-3 lg:p-3 border-2 border-gray-200 h-full text-white relative overflow-hidden min-h-[120px] lg:min-h-[100px] w-full" style={{ backgroundColor: '#f0ad4e' }}>
+          <div className="absolute top-4 right-4 text-white/80 text-xs lg:text-sm font-medium">
+            AUTO
+          </div>
+          <div className="text-center h-full flex flex-col justify-center px-2 lg:px-3">
+            <div className="text-5xl lg:text-6xl xl:text-7xl font-bold mb-3 leading-none">
+              {dischargeRate.toFixed(0)}
+            </div>
+            <div className="text-lg lg:text-xl font-semibold mb-2">BU/HR</div>
+            <div className="text-white/90 text-xs lg:text-sm font-medium">Discharge Rate</div>
+          </div>
+          <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/30"></div>
+          {/* Live indicator */}
+          <div className="absolute top-4 left-4 w-2 h-2 bg-white rounded-full animate-pulse"></div>
+        </div>
       </div>
     </div>
   );
