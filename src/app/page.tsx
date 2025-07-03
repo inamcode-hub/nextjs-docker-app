@@ -7,6 +7,7 @@ import { GlobalHeroCard, GlobalHeroCardBadge, GlobalHeroCardTitle, GlobalHeroCar
 import LiveMonitoringCards from '@/app/about/LiveMonitoringCards';
 import DMobileInterface from '@/app/products/dm-mobile/DMobileInterface';
 import { customerTestimonials } from '@/lib/customerExperiencesData';
+import SchemaMarkup from '@/components/SchemaMarkup';
 
 export default function Home() {
   const [currentStat, setCurrentStat] = useState(0);
@@ -85,7 +86,9 @@ export default function Home() {
   // Use all customer testimonials from the data file
 
   return (
-    <div className="min-h-screen">
+    <>
+      <SchemaMarkup />
+      <div className="min-h-screen">
       {/* Hero Section */}
       <div className="relative bg-gradient-to-br from-blue-50 via-white to-green-50 min-h-screen flex items-center overflow-hidden">
         {/* Background Pattern Elements */}
@@ -124,11 +127,7 @@ export default function Home() {
               <div className="mb-8">
                 <h1 className="text-5xl lg:text-7xl font-bold mb-4 leading-tight">
                   <span className="bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
-                    Stop Losing Money on
-                  </span>
-                  <br />
-                  <span className="bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent">
-                    Every Bushel
+                    Stop Losing Money on Every Bushel with Dryer Master Grain Monitoring
                   </span>
                 </h1>
                 <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
@@ -296,8 +295,10 @@ export default function Home() {
                       value={bushelsPerYear}
                       onChange={(e) => setBushelsPerYear(Number(e.target.value))}
                       className="w-full slider"
+                      aria-label="Select bushels per year for savings calculation"
+                      aria-describedby="bushels-display"
                     />
-                    <div className="text-center mt-2 text-2xl font-bold text-green-700">
+                    <div id="bushels-display" className="text-center mt-2 text-2xl font-bold text-green-700">
                       {bushelsPerYear.toLocaleString()} bushels
                     </div>
                   </div>
@@ -314,8 +315,10 @@ export default function Home() {
                       value={yearsSaving}
                       onChange={(e) => setYearsSaving(Number(e.target.value))}
                       className="w-full slider"
+                      aria-label="Select years of operation for savings calculation"
+                      aria-describedby="years-display"
                     />
-                    <div className="text-center mt-2 text-2xl font-bold text-green-700">
+                    <div id="years-display" className="text-center mt-2 text-2xl font-bold text-green-700">
                       {yearsSaving} {yearsSaving === 1 ? 'year' : 'years'}
                     </div>
                   </div>
@@ -448,8 +451,11 @@ export default function Home() {
                       <div className="bg-white rounded-xl p-4 shadow-lg">
                         <img 
                           src="/products/dm-510/dm510-controller-product-photo.jpg" 
-                          alt="DM510 Controller" 
+                          alt="DM510 Controller - Smart Grain Dryer Automation System with Digital Display and Control Panel for Precision Moisture Monitoring" 
                           className="w-full h-auto rounded-lg"
+                          loading="lazy"
+                          width="400"
+                          height="300"
                         />
                       </div>
                     </div>
@@ -699,7 +705,8 @@ export default function Home() {
             <button 
               onClick={scrollLeft}
               className="hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-xl rounded-full items-center justify-center hover:bg-green-50 transition-colors duration-200 border border-gray-200"
-              aria-label="Scroll left"
+              aria-label="Scroll testimonials left"
+              type="button"
             >
               <ChevronLeft className="w-6 h-6 text-gray-600" />
             </button>
@@ -707,7 +714,8 @@ export default function Home() {
             <button 
               onClick={scrollRight}
               className="hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-xl rounded-full items-center justify-center hover:bg-green-50 transition-colors duration-200 border border-gray-200"
-              aria-label="Scroll right"
+              aria-label="Scroll testimonials right"
+              type="button"
             >
               <ChevronRight className="w-6 h-6 text-gray-600" />
             </button>
@@ -954,6 +962,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 }
